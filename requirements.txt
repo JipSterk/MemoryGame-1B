@@ -1,0 +1,23 @@
+Thema’s = must !
+keuze voor 1 of 2 spelers = must !
+formule of tabel maken van alle waarden omvormen in uiteindelijke high score, dit is voor een eerlijke score. = must !
+
+grote knoppen in memory game, het clean houden in de styling = 2e belangrijkst
+schaalbaar zijn de applicatie = 2e belangrijkst
+
+
+3e
+Plaatje met steekwoorden eronder (groter of kleiner worden)
+het moet in het Nederlands 
+new game > instellen alles tussen 4x4 en 6x6 = “anders moet je anders coderen”
+afhankelijk van bordgrootte bepaal je de highscore
+achtergrond toevoegen, tekst goed zichtbaar.
+bij start van game als laatste pas het thema kunnen kiezen.
+in een mapje alle, muziek, afbeeldingen voor tegeltjes achtergronden etc.
+nog 1 paar op tafel ligt , dat setje krijgt geen punten voor of een streak.
+speluitleg: score tabel uitleg.
+eventueel muziekjes
+schaalbaar zijn de applicatie
+open source background music(tip)
+continue > file open and file save list krijg je dan te zien
+het opslaan
