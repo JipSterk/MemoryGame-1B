@@ -1,2 +1,7 @@
-language: csharp
-solution: MemoryGame-1B.sln
+environment:
+  matrix:
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+      SLN_PATH: MemoryGame-1B.sln
+      SLN_BUILD_OPTS: /verbosity:quiet /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+      PUBLISH_NUGET: false
+      HAS_NETCORE: false
