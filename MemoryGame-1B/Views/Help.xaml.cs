@@ -8,6 +8,10 @@ namespace MemoryGame_1B.Views
     /// </summary>
     public partial class Help
     {
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Help() => InitializeComponent();
     }
 }
