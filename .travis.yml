@@ -3,4 +3,4 @@ solution: NBug.sln
 install:
   - nuget restore MemoryGame-1B.sln
 script:
-  - xbuild /p:Configuration=Release MemoryGame-1B.sln
+  - msbuild /p:Configuration=Release MemoryGame-1B.sln
