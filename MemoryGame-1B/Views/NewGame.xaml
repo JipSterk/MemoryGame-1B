@@ -38,10 +38,10 @@
                             <RowDefinition Height="40*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <Viewbox HorizontalAlignment="Left" Margin="30 0 0 0" Width="130">
-                        <TextBlock Grid.Row="0" >Playername1</TextBlock>
+                        <TextBlock MinWidth="130" Grid.Row="0" >Playername1</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0">
-                        <TextBlock>score 0</TextBlock>
+                            <TextBlock MinWidth="130">score 0</TextBlock>
                         </Viewbox>
 
                     </Grid>
