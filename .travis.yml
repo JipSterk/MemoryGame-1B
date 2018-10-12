@@ -1,6 +1,0 @@
-language: csharp
-solution: MemoryGame-1B.sln
-install:
-  - nuget restore MemoryGame-1B.sln
-script:
-  - msbuild /p:Configuration=Release MemoryGame-1B.sln
