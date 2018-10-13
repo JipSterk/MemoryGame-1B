@@ -10,6 +10,10 @@
     - 6 * 6 = 36 tiles
         - minimum score of 36 tiles * 100 points each 3600
 
+### Score depletion
+
+Per tick the score will be affected by -1 point
+
 ### StreakBonus
 
 #### 4 * 4
@@ -23,7 +27,6 @@
 |  8                | 2        |  100 + 100 * 2  |
 |  6                | 2        |  100 + 100 * 2  |
 |  2                | 0        | no streak bonus |
-
 
 #### 6 * 6
 |  Remaining Tiles  | Times    |     Points      |
