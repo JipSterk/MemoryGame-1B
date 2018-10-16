@@ -15,6 +15,11 @@
         /// </summary>
         public int Y { get; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public CardData(int x, int y)
         {
             X = x;

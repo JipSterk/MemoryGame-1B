@@ -38,6 +38,11 @@ namespace MemoryGame_1B.Views
             }
         }
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="saveData"></param>
         public NewGame(SaveData.SaveData saveData) : this(saveData.GridSize)
         {
         }

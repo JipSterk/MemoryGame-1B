@@ -1,19 +1,9 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Newtonsoft.Json;
 
 namespace MemoryGame_1B.SaveData
 {
-    public enum GridSize
-    {
-        /// <summary>
-        /// 4x4
-        /// </summary>
-        Normal,
-        /// <summary>
-        /// 6x6
-        /// </summary>
-        Large
-    }
     /// <summary>
     /// Handles user data
     /// </summary>
@@ -38,12 +28,13 @@ namespace MemoryGame_1B.SaveData
         /// Constructor
         /// </summary>
         /// <param name="turn"></param>
+        /// <param name="gridSize"></param>
         /// <param name="cardData"></param>
         public SaveData(Turn turn, GridSize gridSize, CardData[,] cardData)
         {
             Turn = turn;
             GridSize = gridSize;
-            CardData = cardData;
+            CardData = cardData ?? throw new ArgumentNullException(nameof(cardData));
         }
 
         /// <summary>
@@ -67,6 +58,12 @@ namespace MemoryGame_1B.SaveData
             return JsonConvert.DeserializeObject<SaveData>(text);
         }
 
+        /// <summary>
+        /// Deconstructs this object
+        /// </summary>
+        /// <param name="turn"></param>
+        /// <param name="gridSize"></param>
+        /// <param name="cardData"></param>
         public void Deconstruct(out Turn turn, out GridSize gridSize, out CardData[,] cardData)
         {
             turn = Turn;
