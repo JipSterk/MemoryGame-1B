@@ -9,7 +9,7 @@
       Title="NewGame">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="..\Images\Ui\Zombie\In-game_background.png"/>
+            <ImageBrush ImageSource="..\Images\Ui\Zombie\in-game_background.png"/>
         </Grid.Background>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
