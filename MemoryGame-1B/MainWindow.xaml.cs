@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Windows;
+using MemoryGame_1B.SaveData;
 using MemoryGame_1B.Views;
 using Microsoft.Win32;
 using Newtonsoft.Json;
@@ -25,7 +26,7 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private void NewGame(object sender, RoutedEventArgs e)
         {
-            Content = new NewGame();
+            Content = new NewGame(GridSize.Normal);
         }
 
         /// <summary>
@@ -46,8 +47,9 @@ namespace MemoryGame_1B
             
             var fileName = openFileDialog.FileName;
             if (!File.Exists(fileName)) return;
-            var value = File.ReadAllText(fileName);
-            var json = JsonConvert.DeserializeObject(value);
+            var saveData = SaveData.SaveData.Load(fileName);
+
+            Content = new NewGame(saveData);
         }
 
         /// <summary>
