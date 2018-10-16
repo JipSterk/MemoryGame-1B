@@ -38,27 +38,25 @@
 
                     <Grid Column="1"  Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition  Height="40*"></RowDefinition>
+                            <RowDefinition Height="40*"></RowDefinition>
                             <RowDefinition Height="40*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Canvas Width="{Binding ElementName=gd, Path=ActualWidth}"
-                                Height="{Binding ElementName=gd, Path=ActualHeight}">
-                            <Image Canvas.Left="32" Canvas.Top="15" Source = "..\Images\Placeholder.png" Stretch="Fill" Width="218" Height="152"/>
-                            <Viewbox HorizontalAlignment="Left" Margin="30 0 0 0" Width="130" Canvas.Top="30" Canvas.Left="30">
+                        <Canvas Width="500" Height="250">
+                            <Image Canvas.Left="32" Canvas.Top="15" Source = "..\Images\Ui\Zombie\Scoreboard.png" Stretch="Fill" Width="218" Height="152"/>
+                            <Viewbox HorizontalAlignment="Left" Margin="30 0 0 0" Width="130" Canvas.Top="45" Canvas.Left="30">
                                 <TextBlock MinWidth="130" Grid.Row="0" >Playername1</TextBlock>
                             </Viewbox>
-                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="50" Canvas.Left="30">
+                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="65" Canvas.Left="30">
                                 <TextBlock MinWidth="130">score 0</TextBlock>
                             </Viewbox>
-                            <Viewbox HorizontalAlignment="Left" Margin="30,0,0,0" Width="130" Canvas.Top="70" Canvas.Left="30">
+                            <Viewbox HorizontalAlignment="Left" Margin="30,0,0,0" Width="130" Canvas.Top="85" Canvas.Left="30">
                                 <TextBlock  Grid.Row="0" MinWidth="130">Playername2</TextBlock>
                             </Viewbox>
-                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="90" Canvas.Left="30">
+                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="105" Canvas.Left="30">
                                 <TextBlock Grid.Row="1" MinWidth="130">score 0</TextBlock>
                             </Viewbox>
 
                         </Canvas>
-
 
                     </Grid>
                     <Grid Column="1"  Row="2">
@@ -78,9 +76,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Image  Grid.Column="0" Source="..\Images\Ui\Zombie\RestartSteen.png" Stretch="Fill" MouseDown="aPicture_MouseDown" />
-                    <Image  Grid.Column="1" Source="..\Images\Ui\Zombie\MenuSteen.png" Stretch="Fill" MouseDown="aPicture_MouseDown"/>
-                    <Image  Grid.Column="2" Source="..\Images\Ui\Zombie\OpslaanSteen.png" Stretch="Fill" MouseDown="aPicture_MouseDown"/>
+                    <Image  Grid.Column="0" Source="..\Images\Ui\Zombie\RestartSteen.png" Stretch="Fill" MouseDown="RestartGame" />
+                    <Image  Grid.Column="1" Source="..\Images\Ui\Zombie\MenuSteen.png" Stretch="Fill" MouseDown="ShowMenu"/>
+                    <Image  Grid.Column="2" Source="..\Images\Ui\Zombie\OpslaanSteen.png" Stretch="Fill" MouseDown="Save"/>
                 </Grid>
             </Grid>
         </Grid>

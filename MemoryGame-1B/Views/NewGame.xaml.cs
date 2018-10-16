@@ -40,10 +40,6 @@ namespace MemoryGame_1B.Views
         {
             throw new System.NotImplementedException();
         }
-        private void aPicture_MouseDown(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("test on click");
-        }
 
     }
 }

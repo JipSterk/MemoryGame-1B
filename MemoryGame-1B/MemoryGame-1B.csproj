@@ -124,22 +124,10 @@
     <Resource Include="Images\Placeholder.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Cards\" />
+    <Resource Include="Images\Ui\Zombie\btnHelp.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\in-game_background.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\btn help.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\btn highscores.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\Btn nw spel.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\btn spel laden.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\MenuSteen.png" />
@@ -164,6 +152,56 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\btnLoadGameHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cards\Zombies\CardBG1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG10.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG11.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG12.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG13.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG14.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG15.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG16.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG17.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG18.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG19.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG20.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG21.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG22.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG23.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG24.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG25.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG26.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG27.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG28.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG29.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG30.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG31.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG32.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG33.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG34.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG35.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG36.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG6.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG7.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG8.png" />
+    <Resource Include="Images\Cards\Zombies\CardBG9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\Scoreboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnHighscores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnLoadGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnNewGame.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
