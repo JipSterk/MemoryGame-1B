@@ -56,9 +56,9 @@
                             <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="90" Canvas.Left="30">
                                 <TextBlock Grid.Row="1" MinWidth="130">score 0</TextBlock>
                             </Viewbox>
-                         
+
                         </Canvas>
-                      
+
 
                     </Grid>
                     <Grid Column="1"  Row="2">
@@ -78,15 +78,9 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button Grid.Column="0" Name="RestartButton"  Click="RestartGame" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
-                    <Image  Source="..\Images\Ui\Zombie\RestartSteen.png" Stretch="Fill"/> 
-                    </Button>
-                    <Button Grid.Column="1" Name="MenuButton"  Click="ShowMenu" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
-                        <Image  Source="..\Images\Ui\Zombie\MenuSteen.png" Stretch="Fill"/>
-                    </Button>
-                    <Button Grid.Column="2" Name="SaveButton"  Click="Save" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0">
-                        <Image  Source="..\Images\Ui\Zombie\OpslaanSteen.png" Stretch="Fill"/>
-                    </Button>
+                    <Image  Grid.Column="0" Source="..\Images\Ui\Zombie\RestartSteen.png" Stretch="Fill" MouseDown="aPicture_MouseDown" />
+                    <Image  Grid.Column="1" Source="..\Images\Ui\Zombie\MenuSteen.png" Stretch="Fill" MouseDown="aPicture_MouseDown"/>
+                    <Image  Grid.Column="2" Source="..\Images\Ui\Zombie\OpslaanSteen.png" Stretch="Fill" MouseDown="aPicture_MouseDown"/>
                 </Grid>
             </Grid>
         </Grid>
