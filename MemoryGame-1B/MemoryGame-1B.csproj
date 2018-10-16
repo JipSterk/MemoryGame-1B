@@ -123,5 +123,47 @@
   <ItemGroup>
     <Resource Include="Images\Placeholder.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\Cards\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\in-game_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btn help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btn highscores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\Btn nw spel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btn spel laden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\MenuSteen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\OpslaanSteen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\RestartSteen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\MainmenuBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnNewGameHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnHelpHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnHighscoresHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnLoadGameHover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
