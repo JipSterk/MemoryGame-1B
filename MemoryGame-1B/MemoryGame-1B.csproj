@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Src\MemoryGrid.cs" />
+    <Compile Include="Src\SaveData\CardData.cs" />
+    <Compile Include="Src\SaveData\GridSize.cs" />
+    <Compile Include="Src\SaveData\SaveData.cs" />
+    <Compile Include="Src\SaveData\Turn.cs" />
     <Compile Include="Views\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
     </Compile>
