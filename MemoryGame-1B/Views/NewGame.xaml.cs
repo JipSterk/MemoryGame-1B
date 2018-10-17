@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MemoryGame_1B.SaveData;
 
 namespace MemoryGame_1B.Views
 {
@@ -19,11 +21,31 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        public NewGame()
+        /// <param name="gridSize"></param>
+        public NewGame(GridSize gridSize)
         {
             InitializeComponent();
 
-            _memoryGrid = new MemoryGrid(Grid, 4, 4);
+            switch (gridSize)
+            {
+                case GridSize.Normal:
+                    _memoryGrid = new MemoryGrid(Grid, 4, 4);
+                    break;
+                case GridSize.Large:
+                    _memoryGrid = new MemoryGrid(Grid, 6, 6);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(gridSize), gridSize, null);
+            }
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="saveData"></param>
+        public NewGame(SaveData.SaveData saveData) : this(saveData.GridSize)
+        {
         }
 
         private void Save(object sender, RoutedEventArgs e)
