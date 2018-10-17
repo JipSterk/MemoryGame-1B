@@ -9,7 +9,7 @@
       Title="NewGame">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="..\Images\Ui\Zombie\in-game_background.png"/>
+            <ImageBrush ImageSource="..\Images\Ui\Zombie\InGameBackground.png"/>
         </Grid.Background>
         <Grid Margin="10">
             <Grid.ColumnDefinitions>
@@ -36,38 +36,43 @@
                         <RowDefinition Height="20*"></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Grid Column="1"  Row="1">
+                    <Grid x:Name="ScoreB" Column="1"  Row="1" Height="200">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="40*"></RowDefinition>
                             <RowDefinition Height="40*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Canvas Width="500" Height="250">
-                            <Image Canvas.Left="32" Canvas.Top="15" Source = "..\Images\Ui\Zombie\Scoreboard.png" Stretch="Fill" Width="218" Height="152"/>
-                            <Viewbox HorizontalAlignment="Left" Margin="30 0 0 0" Width="130" Canvas.Top="45" Canvas.Left="30">
-                                <TextBlock MinWidth="130" Grid.Row="0" >Playername1</TextBlock>
-                            </Viewbox>
-                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="65" Canvas.Left="30">
-                                <TextBlock MinWidth="130">score 0</TextBlock>
-                            </Viewbox>
-                            <Viewbox HorizontalAlignment="Left" Margin="30,0,0,0" Width="130" Canvas.Top="85" Canvas.Left="30">
-                                <TextBlock  Grid.Row="0" MinWidth="130">Playername2</TextBlock>
-                            </Viewbox>
-                            <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="105" Canvas.Left="30">
-                                <TextBlock Grid.Row="1" MinWidth="130">score 0</TextBlock>
-                            </Viewbox>
+                        <!-- <Canvas Width="{Binding ElementName=ScoreB, Path=ActualWidth}" -->
+                        <!-- Height="{Binding ElementName=ScoreB, Path=ActualHeight}"> -->
 
-                        </Canvas>
+                        <Grid.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="..\Images\Ui\Zombie\Scoreboard.png"/>
+                        </Grid.Background>
+                       
+                            <!-- <Image Canvas.Left="25" Canvas.Top="15" Source = "..\Images\Ui\Zombie\Scoreboard.png" Stretch="None"/> -->
+                        <Viewbox HorizontalAlignment="Left" Margin="30 0 0 0" Width="130" Canvas.Top="45" Canvas.Left="30">
+                            <TextBlock MinWidth="130" Grid.Row="0" >Playername1</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="65" Canvas.Left="30">
+                            <TextBlock MinWidth="130">score 0</TextBlock>
+                        </Viewbox>
+                        <Viewbox HorizontalAlignment="Left" Margin="30,0,0,0" Width="130" Canvas.Top="85" Canvas.Left="30">
+                            <TextBlock  Grid.Row="0" MinWidth="130">Playername2</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="105" Canvas.Left="30">
+                            <TextBlock Grid.Row="1" MinWidth="130">score 0</TextBlock>
+                        </Viewbox>
+                        <!-- </Canvas> -->
 
                     </Grid>
                     <Grid Column="1"  Row="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="40*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
                             <RowDefinition Height="40*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                     </Grid>
                 </Grid>
-                <Grid Column="2" Row="2" Margin="0,20,0,-20">
+                <Grid Column="2" Row="2" Margin="0,20,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="40*"/>
                         <ColumnDefinition Width="40*"/>
@@ -76,9 +81,45 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Image  Grid.Column="0" Source="..\Images\Ui\Zombie\RestartSteen.png" Stretch="Fill" MouseDown="RestartGame" />
-                    <Image  Grid.Column="1" Source="..\Images\Ui\Zombie\MenuSteen.png" Stretch="Fill" MouseDown="ShowMenu"/>
-                    <Image  Grid.Column="2" Source="..\Images\Ui\Zombie\OpslaanSteen.png" Stretch="Fill" MouseDown="Save"/>
+                    <Image Margin="0,0,0,-10" Grid.Column="0" MouseDown="RestartGame" Stretch="Uniform" StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="..\Images\Ui\Zombie\RestartSteen.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="..\Images\Ui\Zombie\RestartSteenHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Margin="0,0,0,-10" Grid.Column="1" MouseDown="ShowMenu" Stretch="Uniform" StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="..\Images\Ui\Zombie\MenuSteen.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="..\Images\Ui\Zombie\MenuSteenHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Margin="0,0,0,-10" Grid.Column="2" MouseDown="Save" Stretch="Uniform" StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="..\Images\Ui\Zombie\OpslaanSteen.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="..\Images\Ui\Zombie\OpslaanSteenHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <!-- <Image  Grid.Column="0" Source="..\Images\Ui\Zombie\RestartSteen.png" Stretch="Uniform" StretchDirection="DownOnly" MouseDown="RestartGame" VerticalAlignment="Bottom" Margin="0,0,0,-10" /> -->
+                    <!-- <Image  Grid.Column="1" Source="..\Images\Ui\Zombie\MenuSteen.png" Stretch="Uniform" StretchDirection="DownOnly" MouseDown="ShowMenu" VerticalAlignment="Bottom" Margin="0,0,0,-10"/> -->
+                    <!-- <Image  Grid.Column="2" Source="..\Images\Ui\Zombie\OpslaanSteen.png" Stretch="Uniform" StretchDirection="DownOnly" MouseDown="Save" VerticalAlignment="Bottom" Margin="0,0,0,-10"/> -->
                 </Grid>
             </Grid>
         </Grid>

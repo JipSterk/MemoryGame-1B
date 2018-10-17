@@ -7,70 +7,76 @@
         Title="Memory Game" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="..\Images\Ui\Zombie\MainmenuBackground.png"/>
+            <ImageBrush ImageSource="..\Images\Ui\Zombie\MainmenuBackground.png" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="120*"></RowDefinition>
-                <RowDefinition Height="60*"></RowDefinition>
-                <RowDefinition Height="60*"></RowDefinition>
-                <RowDefinition Height="60*"></RowDefinition>
-                <RowDefinition Height="60*"></RowDefinition>
-                <RowDefinition Height="60*"></RowDefinition>
+                <RowDefinition Height="20*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="35*" />
             </Grid.RowDefinitions>
-            <Image Margin="30, 10" Grid.Row="1" MouseDown="NewGame">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="..\Images\Ui\Zombie\btnNewGame.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="..\Images\Ui\Zombie\btnNewGameHover.png"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-            <Image Margin="30, 10" Grid.Row="2" MouseDown="LoadGame">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="..\Images\Ui\Zombie\btnLoadGame.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="..\Images\Ui\Zombie\btnLoadGameHover.png"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-            <Image Margin="30, 10" Grid.Row="3" MouseDown="HighScores">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="..\Images\Ui\Zombie\btnHighscores.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="..\Images\Ui\Zombie\btnHighscoresHover.png"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-            <Image Margin="30, 10" Grid.Row="4" MouseDown="HighScores">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="..\Images\Ui\Zombie\btnHelp.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="..\Images\Ui\Zombie\btnHelpHover.png"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
+            <Grid Row="1" Margin="35,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                    <RowDefinition Height="30*" />
+                </Grid.RowDefinitions>
+                <Image Margin="30, 0" Grid.Row="1" MouseDown="NewGame" Width="180">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnNewGame.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnNewGameHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Margin="30, 0" Grid.Row="2" MouseDown="LoadGame" Width="180">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnLoadGame.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnLoadGameHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Margin="30, 0" Grid.Row="3" MouseDown="HighScores" Width="180">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnHighscores.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnHighscoresHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Margin="30, 0" Grid.Row="4" MouseDown="HighScores" Width="180">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnHelp.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="..\Images\Ui\Zombie\BtnHelpHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Grid>
         </Grid>
     </Grid>
 </Window>
