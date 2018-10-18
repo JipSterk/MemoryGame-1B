@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Src\CardData.cs" />
     <Compile Include="Src\MemoryGrid.cs" />
     <Compile Include="Views\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -122,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\test.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

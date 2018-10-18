@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
 namespace MemoryGame_1B
@@ -23,6 +25,11 @@ namespace MemoryGame_1B
         /// The amount of columns
         /// </summary>
         private readonly int _columns;
+
+        /// <summary>
+        /// The data of all cards on the grid
+        /// </summary>
+        private readonly List<CardData> _cardDatas = new List<CardData>();
         
         /// <summary>
         /// Constructor
@@ -42,6 +49,13 @@ namespace MemoryGame_1B
         }
 
         /// <summary>
+        /// Create a new Image object, with a binding to the CardData supplied
+        /// </summary>
+        /// <param name="data">The CardData the resulting image will have a binding with.</param>
+        /// <returns>An Image object with a binding to a CardData</returns>
+        private Image ConvertToImage(CardData data) => new Image {Source = data.BackImage.Source, DataContext = data};
+        
+        /// <summary>
         /// Add cards to the grid
         /// </summary>
         private void AddCards()
@@ -52,10 +66,17 @@ namespace MemoryGame_1B
                 {
 //                    var uri = new Uri("Images/Placeholder.png", UriKind.Relative);
 
-                    var image = new Image
-                    {
-                        Source = new BitmapImage(new Uri("../Images/Placeholder.png", UriKind.Relative))
-                    };
+                    var backFaceImage = new Image{Source = new BitmapImage(new Uri("../Images/Placeholder.png", UriKind.Relative)) };
+                    var frontFaceImage = new Image{Source = new BitmapImage(new Uri("../Images/test.gif", UriKind.Relative))};
+                    var card = new CardData(i+j, frontFaceImage, backFaceImage);
+                    var image = ConvertToImage(card);
+                    image.MouseDown += card.OnCardClicked;
+                    _cardDatas.Add(card);
+
+                    //var image = new Image
+                    //{
+                    //    Source = new BitmapImage(new Uri("../Images/Placeholder.png", UriKind.Relative))
+                    //};
 
                     Grid.SetColumn(image, j);
                     Grid.SetRow(image, i);

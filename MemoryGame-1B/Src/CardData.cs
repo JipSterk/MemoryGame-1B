@@ -1,21 +1,34 @@
-﻿using System;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace MemoryGame_1B
 {
-    internal struct CardData
+    internal class CardData
     {
-        // Event for when card is clicked, supplying the card
+        public delegate CardData CardDataDelegate();
+        public event CardDataDelegate OnFacingImageChanged;
 
-        public readonly int ID;
+        public readonly int Id;
         public readonly Image FrontImage;
         public readonly Image BackImage;
 
         public CardData(int id, Image frontImage, Image backImage)
         {
-            ID = id;
+            Id = id;
             FrontImage = frontImage;
             BackImage = backImage;
+        }
+
+        public void OnCardClicked(object sender, MouseButtonEventArgs args)
+        {
+            Image card = (Image) sender;
+
+            if (card.Source == FrontImage.Source) return;
+            
+            card.Source =  FrontImage.Source;
+            OnFacingImageChanged?.Invoke();
         }
     }
 }
