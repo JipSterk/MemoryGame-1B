@@ -1,6 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Windows.Automation;
-using NUnit;
 using NUnit.Framework;
 using TestStack.White;
 using TestStack.White.Factory;
@@ -53,8 +54,8 @@ namespace MemoryGame_1B_Tests
                 {
                     var fileNameTextBox =
                         open.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndByText("File name:"));
-                    fileNameTextBox.Text = Path.Combine(Env.DocumentFolder,
-                        $@"Github\MemoryGame-1B\MemoryGame-1B-Tests\MockData\SaveData\{size}.json");
+                    fileNameTextBox.Text =
+                        Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $@"MockData\SaveData\{size}.json"));
 
                     var openButton =
                         open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Open"));

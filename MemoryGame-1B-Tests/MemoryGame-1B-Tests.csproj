@@ -65,11 +65,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="local.runsettings" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MockData\SaveData\4x4.json" />
-    <Content Include="MockData\SaveData\6x6.json" />
+    <Content Include="MockData\SaveData\4x4.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="MockData\SaveData\6x6.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
