@@ -82,7 +82,6 @@ namespace MemoryGame_1B.Views
             if (showDialog != true) return;
 
             var fileName = saveFileDialog.FileName;
-            if (File.Exists(fileName)) return;
             saveData.Save(fileName);
         }
 
