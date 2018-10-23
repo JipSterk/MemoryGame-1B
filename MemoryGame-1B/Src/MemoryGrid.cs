@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -111,7 +110,7 @@ namespace MemoryGame_1B
 
             for (var i = 0; i < count; i++)
             {
-                var imageNumber = i % 8 + 1;
+                var imageNumber = i % count / 2 + 1;
                 var bitmapImage = new BitmapImage(new Uri($"../Images/Cards/Zombies/CardFront/CardZombie{imageNumber}.png", UriKind.Relative));
                 list.Add(bitmapImage);
             }

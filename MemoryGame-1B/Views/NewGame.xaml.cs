@@ -1,7 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using MemoryGame_1B.SaveData;
 
 namespace MemoryGame_1B.Views
@@ -38,19 +36,31 @@ namespace MemoryGame_1B.Views
         {
         }
 
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowMenu(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
         }
 
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RestartGame(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
         }
     }
 }
