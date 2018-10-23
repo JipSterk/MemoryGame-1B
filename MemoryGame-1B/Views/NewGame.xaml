@@ -7,8 +7,111 @@
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NewGame">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Images\Ui\Zombie\InGameBackground.png"/>
+        </Grid.Background>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240*"/>
+                <ColumnDefinition Width="120*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid x:Name="Grid" Column="0">
 
-    <Grid x:Name="Grid">
+            </Grid>
+            <Grid x:Name="Score" Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60*"></RowDefinition>
+                    <RowDefinition Height="60*"></RowDefinition>
+                    <RowDefinition Height="60*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Column="1" Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"></RowDefinition>
+                        <RowDefinition Height="60*"></RowDefinition>
+                        <RowDefinition Height="60*"></RowDefinition>
+                        <RowDefinition Height="20*"></RowDefinition>
+                    </Grid.RowDefinitions>
 
+                    <Grid x:Name="ScoreB" Column="1"  Row="1" Height="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"></RowDefinition>
+                            <RowDefinition Height="40*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="..\Images\Ui\Zombie\Scoreboard.png"/>
+                        </Grid.Background>
+                        <Viewbox HorizontalAlignment="Left" Margin="30 0 0 0" Width="130" Canvas.Top="45" Canvas.Left="30">
+                            <TextBlock MinWidth="130" Grid.Row="0" >Playername1</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="65" Canvas.Left="30">
+                            <TextBlock MinWidth="130">score 0</TextBlock>
+                        </Viewbox>
+                        <Viewbox HorizontalAlignment="Left" Margin="30,0,0,0" Width="130" Canvas.Top="85" Canvas.Left="30">
+                            <TextBlock  Grid.Row="0" MinWidth="130">Playername2</TextBlock>
+                        </Viewbox>
+                        <Viewbox Grid.Row="1" HorizontalAlignment="Left" Margin="30 0 0 0" Canvas.Top="105" Canvas.Left="30">
+                            <TextBlock Grid.Row="1" MinWidth="130">score 0</TextBlock>
+                        </Viewbox>
+                    </Grid>
+                    <Grid Column="1"  Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="40*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                    </Grid>
+                </Grid>
+                <Grid Column="2" Row="2" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="40*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Margin="0,0,0,-10" Grid.Column="0" MouseDown="RestartGame" Stretch="Uniform" StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="..\Images\Ui\Zombie\RestartGravestone.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="..\Images\Ui\Zombie\RestartGravestoneHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Margin="0,0,0,-10" Grid.Column="1" MouseDown="ShowMenu" Stretch="Uniform" StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="..\Images\Ui\Zombie\MenuGravestone.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="..\Images\Ui\Zombie\MenuGravestoneHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Margin="0,0,0,-10" Grid.Column="2" MouseDown="Save" Stretch="Uniform" StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="..\Images\Ui\Zombie\SaveGravestone.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="..\Images\Ui\Zombie\SaveGravestoneHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>
