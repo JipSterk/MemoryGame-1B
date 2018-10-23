@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Media.Imaging;
-using MemoryGame_1B.SaveData;
 
 namespace MemoryGame_1B
 {
@@ -46,6 +44,5 @@ namespace MemoryGame_1B
             list.RemoveAt(0);
             return first;
         }
-
     }
 }
