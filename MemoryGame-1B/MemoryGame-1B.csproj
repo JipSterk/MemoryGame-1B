@@ -58,6 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Src\Card\CardData.cs" />
+    <Compile Include="Src\Extensions.cs" />
     <Compile Include="Src\MemoryGrid.cs" />
     <Compile Include="Src\SaveData\CardData.cs" />
     <Compile Include="Src\SaveData\GridSize.cs" />
@@ -125,98 +127,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Placeholder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnHelp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\InGameBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\MenuGravestone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\SaveGravestone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\RestartGravestone.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\MainmenuBackground.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnNewGameHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnHelpHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnHighscoresHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnLoadGameHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\Scoreboard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnHighscores.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnLoadGame.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\BtnNewGame.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\MenuGravestoneHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\SaveGravestoneHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Ui\Zombie\RestartGravestoneHover.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG10.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG11.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG12.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG13.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG14.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG15.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG16.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG17.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG18.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG19.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG20.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG21.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG22.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG23.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG24.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG25.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG26.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG27.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG28.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG29.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG30.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG31.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG32.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG33.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG34.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG35.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG36.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG7.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG8.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG9.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial1.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial10.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial11.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial12.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial13.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial14.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial15.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial16.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial17.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial18.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial2.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial3.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial4.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial5.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial6.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial7.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial8.png" />
+    <Resource Include="Images\Cards\Social\CardFront\CardSocial9.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie1.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie2.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie3.png" />
@@ -225,6 +153,61 @@
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie6.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie7.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie8.png" />
+    <Resource Include="Images\Ui\Zombie\btnHelp.png" />
+    <Resource Include="Images\Ui\Zombie\btnHelpHover.png" />
+    <Resource Include="Images\Ui\Zombie\btnHighscores.png" />
+    <Resource Include="Images\Ui\Zombie\btnHighscoresHover.png" />
+    <Resource Include="Images\Ui\Zombie\btnLoadGame.png" />
+    <Resource Include="Images\Ui\Zombie\btnLoadGameHover.png" />
+    <Resource Include="Images\Ui\Zombie\BtnNewGame.png" />
+    <Resource Include="Images\Ui\Zombie\btnNewGameHover.png" />
+    <Resource Include="Images\Ui\Zombie\InGameBackground.png" />
+    <Resource Include="Images\Ui\Zombie\MainmenuBackground.png" />
+    <Resource Include="Images\Ui\Zombie\MenuGravestone.png" />
+    <Resource Include="Images\Ui\Zombie\MenuGravestoneHover.png" />
+    <Resource Include="Images\Ui\Zombie\RestartGravestone.png" />
+    <Resource Include="Images\Ui\Zombie\RestartGravestoneHover.png" />
+    <Resource Include="Images\Ui\Zombie\SaveGravestone.png" />
+    <Resource Include="Images\Ui\Zombie\SaveGravestoneHover.png" />
+    <Resource Include="Images\Ui\Zombie\Scoreboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x6.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x6.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x6.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x6.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x6.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x1.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x2.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x3.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x4.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x5.png" />
+    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x6.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

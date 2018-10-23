@@ -26,17 +26,7 @@ namespace MemoryGame_1B.Views
         {
             InitializeComponent();
 
-            switch (gridSize)
-            {
-                case GridSize.Normal:
-                    _memoryGrid = new MemoryGrid(Grid, 4, 4);
-                    break;
-                case GridSize.Large:
-                    _memoryGrid = new MemoryGrid(Grid, 6, 6);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(gridSize), gridSize, null);
-            }
+            _memoryGrid = new MemoryGrid(Grid, gridSize);
         }
 
         /// <inheritdoc />
