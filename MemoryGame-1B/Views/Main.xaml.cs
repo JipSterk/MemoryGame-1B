@@ -12,23 +12,21 @@ namespace MemoryGame_1B.Views
     /// </summary>
     public partial class Main
     {
-        public Main()
-        {
-            InitializeComponent();
-        }
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Main() => InitializeComponent();
 
         /// <summary>
-        /// Click listener
+        /// OnClickListener
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NewGame(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
-        }
+        private void NewGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new NewGame(GridSize.Normal);
 
         /// <summary>
-        /// Click listener
+        /// OnClickListener
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -51,23 +49,17 @@ namespace MemoryGame_1B.Views
         }
 
         /// <summary>
-        /// Click listener
+        /// OnClickListener
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HighScores(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Instance.Content = new HighScores();
-        }
+        private void HighScores(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new HighScores();
 
         /// <summary>
-        /// Click listener
+        /// OnClickListener
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Help(object sender, RoutedEventArgs e)
-        {
-            MainWindow.Instance.Content = new Help();
-        }
+        private void Help(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Help();
     }
 }
