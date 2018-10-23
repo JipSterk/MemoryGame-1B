@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using MemoryGame_1B.Card;
 
 namespace MemoryGame_1B
 {
@@ -15,7 +16,7 @@ namespace MemoryGame_1B
         /// The grid
         /// </summary>
         private readonly Grid _grid;
-        
+
         /// <summary>
         /// The amount of rows
         /// </summary>
@@ -30,7 +31,7 @@ namespace MemoryGame_1B
         /// The data of all cards on the grid
         /// </summary>
         private readonly List<CardData> _cardDatas = new List<CardData>();
-        
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -49,13 +50,6 @@ namespace MemoryGame_1B
         }
 
         /// <summary>
-        /// Create a new Image object, with a binding to the CardData supplied
-        /// </summary>
-        /// <param name="data">The CardData the resulting image will have a binding with.</param>
-        /// <returns>An Image object with a binding to a CardData</returns>
-        private Image ConvertToImage(CardData data) => new Image {Source = data.BackImage.Source, DataContext = data};
-        
-        /// <summary>
         /// Add cards to the grid
         /// </summary>
         private void AddCards()
@@ -64,25 +58,36 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-//                    var uri = new Uri("Images/Placeholder.png", UriKind.Relative);
+                    var bitmapImage = new BitmapImage(new Uri("../Images/test.gif", UriKind.Relative));
 
-                    var backFaceImage = new Image{Source = new BitmapImage(new Uri("../Images/Placeholder.png", UriKind.Relative)) };
-                    var frontFaceImage = new Image{Source = new BitmapImage(new Uri("../Images/test.gif", UriKind.Relative))};
-                    var card = new CardData(i+j, frontFaceImage, backFaceImage);
-                    var image = ConvertToImage(card);
-                    image.MouseDown += card.OnCardClicked;
-                    _cardDatas.Add(card);
+                    var cardData = new CardData(i + j, bitmapImage);
+                    
+                    var image = new Image
+                    {
+                        Source = new BitmapImage(new Uri("../Images/Placeholder.png", UriKind.Relative)),
+                        DataContext = cardData,
+                    };
+                    image.MouseDown += CardClick;
 
-                    //var image = new Image
-                    //{
-                    //    Source = new BitmapImage(new Uri("../Images/Placeholder.png", UriKind.Relative))
-                    //};
+                    _cardDatas.Add(cardData);
 
                     Grid.SetColumn(image, j);
                     Grid.SetRow(image, i);
                     _grid.Children.Add(image);
                 }
             }
+        }
+
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void CardClick(object sender, MouseButtonEventArgs e)
+        {
+            var image = (Image) sender;
+            var cardData = (CardData)image.DataContext;
+            image.Source = cardData.BitmapImage;
         }
 
         /// <summary>
