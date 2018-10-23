@@ -6,24 +6,44 @@
     public class CardData
     {
         /// <summary>
-        /// X index
+        /// The front card's source
         /// </summary>
-        public int X { get; }
+        public string CardFrontUriSource { get; }
 
         /// <summary>
-        /// Y index
+        /// The back card's source
         /// </summary>
-        public int Y { get; }
+        public string CardBackUriSource { get; }
+
+        /// <summary>
+        /// Is card turned
+        /// </summary>
+        public bool Turned { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        public CardData(int x, int y)
+        /// <param name="cardFrontUriSource"></param>
+        /// <param name="cardBackUriSource"></param>
+        /// <param name="turned"></param>
+        public CardData(string cardFrontUriSource, string cardBackUriSource, bool turned)
         {
-            X = x;
-            Y = y;
+            CardFrontUriSource = cardFrontUriSource;
+            CardBackUriSource = cardBackUriSource;
+            Turned = turned;
+        }
+
+        /// <summary>
+        /// Deconstructs this object
+        /// </summary>
+        /// <param name="cardFrontUriSource"></param>
+        /// <param name="cardBackUriSource"></param>
+        /// <param name="turned"></param>
+        public void Deconstruct(out string cardFrontUriSource, out string cardBackUriSource, out bool turned)
+        {
+            cardFrontUriSource = CardFrontUriSource;
+            cardBackUriSource = CardBackUriSource;
+            turned = Turned;
         }
     }
 }

@@ -1,36 +1,63 @@
 ﻿using System;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MemoryGame_1B.Card
 {
+    /// <summary>
+    /// Data for the card
+    /// </summary>
     public class CardData
     {
         /// <summary>
-        /// The Id of the card
+        /// Is card turned
         /// </summary>
-        public int Id { get; }
+        private bool _turned;
 
         /// <summary>
         /// The card front
         /// </summary>
-        public BitmapImage CardFront { get; }
+        private readonly BitmapImage _cardFront;
 
         /// <summary>
         /// The card front
         /// </summary>
-        public BitmapImage CardBack { get; }
+        private readonly BitmapImage _cardBack;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="cardFront"></param>
         /// <param name="cardBack"></param>
-        public CardData(int id, BitmapImage cardFront, BitmapImage cardBack)
+        /// <param name="turned"></param>
+        public CardData(BitmapImage cardFront, BitmapImage cardBack, bool turned)
         {
-            Id = id;
-            CardFront = cardFront ?? throw new ArgumentNullException(nameof(cardFront));
-            CardBack = cardBack ?? throw new ArgumentNullException(nameof(cardBack));
+            _cardFront = cardFront ?? throw new ArgumentNullException(nameof(cardFront));
+            _cardBack = cardBack ?? throw new ArgumentNullException(nameof(cardBack));
+            _turned = turned;
+        }
+
+        /// <summary>
+        /// Turns the card
+        /// </summary>
+        /// <returns></returns>
+        public ImageSource Turn()
+        {
+            _turned = !_turned;
+            return _turned ? _cardFront : _cardBack;
+        }
+
+        /// <summary>
+        /// Deconstructs this object
+        /// </summary>
+        /// <param name="cardFrontUriSource"></param>
+        /// <param name="cardBackUriSource"></param>
+        /// <param name="turned"></param>
+        public void Deconstruct(out string cardFrontUriSource, out string cardBackUriSource, out bool turned)
+        {
+            cardFrontUriSource = _cardFront.UriSource.ToString();
+            cardBackUriSource = _cardBack.UriSource.ToString();
+            turned = _turned;
         }
     }
 }
