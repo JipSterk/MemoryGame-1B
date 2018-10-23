@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace MemoryGame_1B.Card
@@ -12,19 +11,26 @@ namespace MemoryGame_1B.Card
         public int Id { get; }
 
         /// <summary>
-        /// The actual image
+        /// The card front
         /// </summary>
-        public BitmapImage BitmapImage { get; }
+        public BitmapImage CardFront { get; }
+
+        /// <summary>
+        /// The card front
+        /// </summary>
+        public BitmapImage CardBack { get; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="id"></param>
-        /// <param name="bitmapImage"></param>
-        public CardData(int id, BitmapImage bitmapImage)
+        /// <param name="cardFront"></param>
+        /// <param name="cardBack"></param>
+        public CardData(int id, BitmapImage cardFront, BitmapImage cardBack)
         {
             Id = id;
-            BitmapImage = bitmapImage ?? throw new ArgumentNullException(nameof(bitmapImage));
+            CardFront = cardFront ?? throw new ArgumentNullException(nameof(cardFront));
+            CardBack = cardBack ?? throw new ArgumentNullException(nameof(cardBack));
         }
     }
 }
