@@ -31,5 +31,18 @@ namespace MemoryGame_1B
 
             return list1;
         }
+
+        /// <summary>
+        /// Removes and returns the first item
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static T Pop<T>(this List<T> list)
+        {
+            var first = list.First();
+            list.RemoveAt(0);
+            return first;
+        }
     }
 }

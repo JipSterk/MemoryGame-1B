@@ -32,7 +32,7 @@ namespace MemoryGame_1B
         /// <summary>
         /// The data of all cards on the grid
         /// </summary>
-        private readonly List<CardData> _cardDatas = new List<CardData>();
+        private readonly List<CardData> _cardData = new List<CardData>();
 
         /// <summary>
         /// The size of the grid
@@ -79,8 +79,7 @@ namespace MemoryGame_1B
                 {
                     var cardBack = new BitmapImage(new Uri($"../Images/Cards/Zombies/CardBackground/CardBG{i + 1}x{j + 1}.png", UriKind.Relative));
 
-                    var cardFront = bitmapImages.First();
-                    bitmapImages.RemoveAt(0);
+                    var cardFront = bitmapImages.Pop();
 
                     var cardData = new CardData(i + j, cardFront, cardBack);
 
@@ -92,7 +91,7 @@ namespace MemoryGame_1B
 
                     image.MouseDown += CardClick;
 
-                    _cardDatas.Add(cardData);
+                    _cardData.Add(cardData);
 
                     Grid.SetColumn(image, j);
                     Grid.SetRow(image, i);
@@ -109,6 +108,7 @@ namespace MemoryGame_1B
         {
             var count = _gridSize == GridSize.Normal ? 16 : 36;
             var list = new List<BitmapImage>();
+
             for (var i = 0; i < count; i++)
             {
                 var imageNumber = i % 8 + 1;

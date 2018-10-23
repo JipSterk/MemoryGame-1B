@@ -153,7 +153,6 @@
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie6.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie7.png" />
     <Resource Include="Images\Cards\Zombies\CardFront\CardZombie8.png" />
-    <Resource Include="Images\test.gif" />
     <Resource Include="Images\Ui\Zombie\btnHelp.png" />
     <Resource Include="Images\Ui\Zombie\btnHelpHover.png" />
     <Resource Include="Images\Ui\Zombie\btnHighscores.png" />
