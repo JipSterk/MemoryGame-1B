@@ -64,7 +64,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <Image Margin="30, 0" Grid.Row="4" MouseDown="HighScores" Width="180">
+                <Image Margin="30, 0" Grid.Row="4" MouseDown="Help" Width="180">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="Images/Ui/Zombie/btnHelp.png" />

@@ -8,7 +8,92 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HighScores">
 
-    <Grid>
+    <Grid ShowGridLines="True">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Ui/Zombie/InGameBackground.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="80*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+        <Grid Column="1" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="35*" />
+            </Grid.RowDefinitions>
+            <Grid Column="1" Row="0" HorizontalAlignment="Center" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*" />
+                    <RowDefinition Height="35*" />
+                </Grid.RowDefinitions>
+                <Viewbox Grid.Row="0" HorizontalAlignment="Center">
+                    <TextBlock MinWidth="130">Highscores</TextBlock>
+                </Viewbox>
+                <Viewbox Grid.Row="1" HorizontalAlignment="Center">
+                    <TextBlock MinWidth="130">Spelbord grootte 4x4</TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Column="1" Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <Viewbox Grid.Column="1">
+                    <TextBlock MinWidth="130" HorizontalAlignment="Center">Speler</TextBlock>
+                </Viewbox>
+                <Viewbox Grid.Column="2">
+                    <TextBlock MinWidth="130" HorizontalAlignment="Center">Punten</TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Column="1" Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="40*" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <Image Margin="30, 0" Grid.Column="1" Width="180">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/Ui/Zombie/btnHighscores.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/Ui/Zombie/btnHighscoresHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Margin="30, 0" Grid.Column="2" Width="180">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Images/Ui/Zombie/btnHighscores.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="Images/Ui/Zombie/btnHighscoresHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Grid>
+        </Grid>
         
+        <!-- <Grid Column="1" Row="1"> -->
+        <!--     <Grid.RowDefinitions> -->
+        <!--         <RowDefinition Height="40*" /> -->
+        <!--     </Grid.RowDefinitions> -->
+        <!-- </Grid> -->
+        <!-- <Grid Column="1" Row="1"> -->
+        <!--     <Grid.ColumnDefinitions> -->
+        <!--         <ColumnDefinition Width="50*" /> -->
+        <!--         <ColumnDefinition Width="50*" /> -->
+        <!--     </Grid.ColumnDefinitions> -->
+        <!--     <TextBlock MinWidth="130" Grid.Column="1">Punten</TextBlock> -->
+        <!-- </Grid> -->
     </Grid>
 </Page>
