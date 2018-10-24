@@ -14,6 +14,7 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         public static readonly Socket Socket = IO.Socket("https://sleepy-falls-91203.herokuapp.com/");
 
+        public static string Room { get; private set; }
         public static bool Online { get; private set; }
 
         public static event Action<object> OnReceiveSocket;
@@ -35,6 +36,7 @@ namespace MemoryGame_1B.Managers
         public static void LeaveGame(string name)
         {
             Socket.Emit("leave-game", name);
+            Room = string.Empty;
             Online = false;
         }
 
@@ -45,6 +47,7 @@ namespace MemoryGame_1B.Managers
         public static void JoinGame(string name)
         {
             Socket.Emit("join-game", name);
+            Room = name;
             Online = true;
         }
 

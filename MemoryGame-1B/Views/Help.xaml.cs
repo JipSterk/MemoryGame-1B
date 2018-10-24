@@ -114,7 +114,7 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// The id of the server
         /// </summary>
-        public int Id { get; set; }
+        public string Id { get; set; }
         /// <summary>
         /// The name of the server
         /// </summary>
@@ -128,9 +128,10 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Deconstructs this object
         /// </summary>
+        /// <param name="id"></param>
         /// <param name="name"></param>
         /// <param name="current"></param>
-        public void Deconstruct(out int id, out string name, out int current)
+        public void Deconstruct(out string id, out string name, out int current)
         {
             id = Id;
             name = Name;

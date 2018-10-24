@@ -26,6 +26,7 @@ namespace MemoryGame_1B.Managers
                 Query = @"
                     query getServers {
                         getServers {
+                            id
                             name
                             current
                         }

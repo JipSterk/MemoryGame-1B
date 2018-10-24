@@ -212,7 +212,7 @@ namespace MemoryGame_1B
 
                 var move = new Move
                 {
-                    Room = SocketIoManager.Socket.Io().EngineSocket.Id,
+                    Room = SocketIoManager.Room,
                     X = row,
                     Y = column
                 };
