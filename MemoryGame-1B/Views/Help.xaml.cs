@@ -2,11 +2,8 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using GraphQL.Client;
-using GraphQL.Common.Request;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
-using Quobject.SocketIoClientDotNet.Client;
 
 namespace MemoryGame_1B.Views
 {
@@ -38,7 +35,7 @@ namespace MemoryGame_1B.Views
 
             for (var i = 0; i < servers.Count; i++)
             {
-                var (_, name, current) = servers[i];
+                var (id, name, current) = servers[i];
                 if (current > 1) continue;
 
                 var rowDefinition = new RowDefinition
@@ -48,16 +45,29 @@ namespace MemoryGame_1B.Views
 
                 Servers.RowDefinitions.Add(rowDefinition);
 
-                var textBlock = new Button
+                var button = new Button
                 {
                     Content = $"Name: {name} {current}/2",
-                    Margin = new Thickness(0, 5, 0, 5)
+                    Margin = new Thickness(0, 5, 0, 5),
+                    DataContext = id
                 };
 
-                Grid.SetColumn(textBlock, 1);
-                Grid.SetRow(textBlock, i);
-                Servers.Children.Add(textBlock);
+                button.Click += Join;
+
+                Grid.SetColumn(button, 1);
+                Grid.SetRow(button, i);
+                Servers.Children.Add(button);
             }
+        }
+
+        private void Join(object sender, RoutedEventArgs e)
+        {
+            var button = (Button) sender;
+            var id = button.DataContext.ToString();
+
+            SocketIoManager.JoinGame(id);
+
+            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
         }
 
         /// <summary>
@@ -89,8 +99,8 @@ namespace MemoryGame_1B.Views
         private void CreateRoom(object sender, RoutedEventArgs e)
         {
             var roomNameText = RoomName.Text;
-            var (name, _) = Task.Run(() => GraphqlManager.CreateServer(roomNameText)).Result;
-            SocketIoManager.JoinGame(name);
+            var (id, _) = Task.Run(() => GraphqlManager.CreateServer(roomNameText)).Result;
+            SocketIoManager.JoinGame(id);
 
             MainWindow.Instance.Content = new NewGame(GridSize.Normal);
         }
