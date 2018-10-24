@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
+using Newtonsoft.Json;
 using CardData = MemoryGame_1B.Card.CardData;
 
 namespace MemoryGame_1B
@@ -38,12 +40,34 @@ namespace MemoryGame_1B
         /// </summary>
         private readonly GridSize _gridSize;
 
+        public MemoryGrid()
+        {
+            if (SocketIoManager.Online)
+            {
+                SocketIoManager.OnNewMove += OnNewMove;
+            }
+        }
+
+        ~MemoryGrid()
+        {
+            if (SocketIoManager.Online)
+            {
+                SocketIoManager.OnNewMove -= OnNewMove;
+            }
+        }
+
+        private void OnNewMove(object o)
+        {
+            var (x, y) = JsonConvert.DeserializeObject<Move>(o.ToString());
+            CardData[x, y].Turn();
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="gridSize"></param>
-        public MemoryGrid(Grid grid, GridSize gridSize)
+        public MemoryGrid(Grid grid, GridSize gridSize) : this()
         {
             _grid = grid ?? throw new ArgumentNullException(nameof(grid));
             _gridSize = gridSize;
@@ -67,7 +91,7 @@ namespace MemoryGame_1B
             AddCards();
         }
 
-        public MemoryGrid(Grid grid, GridSize gridSize, Turn turn, SaveData.CardData[,] cardData)
+        public MemoryGrid(Grid grid, GridSize gridSize, Turn turn, SaveData.CardData[,] cardData) : this()
         {
             _grid = grid ?? throw new ArgumentNullException(nameof(grid));
             _gridSize = gridSize;

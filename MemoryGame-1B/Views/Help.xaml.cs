@@ -4,6 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using GraphQL.Client;
 using GraphQL.Common.Request;
+using MemoryGame_1B.Managers;
+using MemoryGame_1B.SaveData;
+using Quobject.SocketIoClientDotNet.Client;
 
 namespace MemoryGame_1B.Views
 {
@@ -13,8 +16,6 @@ namespace MemoryGame_1B.Views
     /// </summary>
     public partial class Help
     {
-        public static readonly GraphQLClient GraphQlClient = new GraphQLClient("http://localhost:8000/graphql");
-
         /// <inheritdoc />
         /// <summary>
         /// Constructor
@@ -23,57 +24,8 @@ namespace MemoryGame_1B.Views
         {
             InitializeComponent();
 
-            var servers = Task.Run(GetServers).Result;
+            var servers = Task.Run(GraphqlManager.GetServers).Result;
             Build(servers);
-        }
-
-        /// <summary>
-        /// Gets the servers
-        /// </summary>
-        /// <returns></returns>
-        private static async Task<Server[]> GetServers()
-        {
-            var graphQlRequest = new GraphQLRequest
-            {
-                Query = @"
-                    query getServers {
-                        getServers {
-                            name
-                            current
-                        }
-                    }"
-            };
-
-            var graphQlResponse = await GraphQlClient.PostAsync(graphQlRequest);
-            return graphQlResponse.GetDataFieldAs<Server[]>("getServers");
-        }
-
-        /// <summary>
-        /// Gets the servers
-        /// </summary>
-        /// <returns></returns>
-        private static async Task<Server> CreateServer(string name)
-        {
-            var graphQlRequest = new GraphQLRequest
-            {
-                Query = @"
-                    mutation createServer($input: CreateServerInput) {
-                        createServer(input: $input) {
-                            id
-                            status
-                        }
-                    }",
-                Variables = new
-                {
-                    input = new
-                    {
-                        Name = name
-                    }
-                }
-            };
-
-            var graphQlResponse = await GraphQlClient.PostAsync(graphQlRequest);
-            return graphQlResponse.GetDataFieldAs<Server>("createServer");
         }
 
         /// <summary>
@@ -125,7 +77,7 @@ namespace MemoryGame_1B.Views
         /// <param name="e"></param>
         private void Refresh(object sender, RoutedEventArgs e)
         {
-            var servers = Task.Run(GetServers).Result;
+            var servers = Task.Run(GraphqlManager.GetServers).Result;
             Build(servers);
         }
 
@@ -137,7 +89,10 @@ namespace MemoryGame_1B.Views
         private void CreateRoom(object sender, RoutedEventArgs e)
         {
             var roomNameText = RoomName.Text;
-            var (name, current) = Task.Run(() => CreateServer(roomNameText)).Result;
+            var (name, _) = Task.Run(() => GraphqlManager.CreateServer(roomNameText)).Result;
+            SocketIoManager.JoinGame(name);
+
+            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
         }
     }
 
