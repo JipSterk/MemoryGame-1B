@@ -9,6 +9,52 @@
       Title="Help">
 
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/Ui/Zombie/InGameBackground.png"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="80*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+        <Grid Column="1" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="35*" />
+                <RowDefinition Height="35*" />
+            </Grid.RowDefinitions>
+            <Grid Column="1" Row="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35*" />
+                    <RowDefinition Height="35*" />
+                </Grid.RowDefinitions>
+                <Viewbox Grid.Row="0">
+                    <TextBlock MinWidth="130" FontSize="10" TextAlignment="Center">Help</TextBlock>
+                </Viewbox>
+                <Viewbox Grid.Row="1" VerticalAlignment="Top">
+                    <TextBlock MinWidth="130" FontSize="5" TextAlignment="Center">Spelregels</TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Column="1" Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="55*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" TextWrapping="Wrap">Memory word gespeeld met meerdere spelers. In zijn beurt draait de speler een kaartje naar keuze open. 
+                    Vervolgens draait hij een tweede kaartje open. Als de afbeeldingen op beide kaartjes gelijk zijn. 
+                    Mag de speler nog een keer een paar zoeken is deze ook weer correct. 
+                    Krijg de speler hiermee een streak dit verschilt per bordgrootte. 
+                    Heeft de speler geen paar gevonden is de volgende speler aan de beurt.</TextBlock>
+                <TextBlock Margin="0,20,0,0" Grid.Row="1" TextWrapping="Wrap">
+                Streak uitgelegd:<LineBreak/>
+                1 paar is 100 punten waard.<LineBreak/>
+                4 x 4 = 16 kaartjes<LineBreak/>
+                minimum score op 16 kaartje x 100 punten elk 1600 punten<LineBreak/>
+                6 x 6 = 36 kaartjes<LineBreak/>
+                minimum score of 36 kaartjes x 100 punten elk 3600 punten
+                </TextBlock>
+            </Grid>
+        </Grid>
+
     </Grid>
 </Page>
