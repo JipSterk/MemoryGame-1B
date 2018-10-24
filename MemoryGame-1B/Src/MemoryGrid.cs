@@ -58,7 +58,7 @@ namespace MemoryGame_1B
 
         private void OnNewMove(object o)
         {
-            var (x, y) = JsonConvert.DeserializeObject<Move>(o.ToString());
+            var (_, x, y) = JsonConvert.DeserializeObject<Move>(o.ToString());
             CardData[x, y].Turn();
         }
 
@@ -204,7 +204,22 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private static void CardClick(object sender, MouseButtonEventArgs e)
         {
-            var image = (Image) sender;
+            var image = (Image)sender;
+            if (SocketIoManager.Online)
+            {
+                var row = Grid.GetRow(image);
+                var column = Grid.GetColumn(image);
+
+                var move = new Move
+                {
+                    Room = SocketIoManager.Socket.Io().EngineSocket.Id,
+                    X = row,
+                    Y = column
+                };
+
+                SocketIoManager.FlipCard(move);
+            }
+
             var cardData = (CardData) image.DataContext;
 
             image.Source = cardData.Turn();

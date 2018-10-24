@@ -12,14 +12,16 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// The socket
         /// </summary>
-        private static readonly Socket Socket = IO.Socket("http://localhost:8000");
-
+        public static readonly Socket Socket = IO.Socket("http://localhost:8000");
 
         public static bool Online { get; private set; }
 
         public static event Action<object> OnReceiveSocket;
         public static event Action<object> OnNewMove;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         static SocketIoManager()
         {
             Socket.On("receive-socket", OnReceiveSocket);
@@ -60,11 +62,13 @@ namespace MemoryGame_1B.Managers
 
     public class Move
     {
+        public string Room { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
-        public void Deconstruct(out int x, out int y)
+        public void Deconstruct(out string room, out int x, out int y)
         {
+            room = Room;
             x = X;
             y = Y;
         }

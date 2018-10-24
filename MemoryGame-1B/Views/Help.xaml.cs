@@ -38,7 +38,7 @@ namespace MemoryGame_1B.Views
 
             for (var i = 0; i < servers.Count; i++)
             {
-                var (name, current) = servers[i];
+                var (_, name, current) = servers[i];
                 if (current > 1) continue;
 
                 var rowDefinition = new RowDefinition
@@ -102,6 +102,10 @@ namespace MemoryGame_1B.Views
     public class Server
     {
         /// <summary>
+        /// The id of the server
+        /// </summary>
+        public int Id { get; set; }
+        /// <summary>
         /// The name of the server
         /// </summary>
         public string Name { get; set; }
@@ -116,8 +120,9 @@ namespace MemoryGame_1B.Views
         /// </summary>
         /// <param name="name"></param>
         /// <param name="current"></param>
-        public void Deconstruct(out string name, out int current)
+        public void Deconstruct(out int id, out string name, out int current)
         {
+            id = Id;
             name = Name;
             current = Current;
         }
