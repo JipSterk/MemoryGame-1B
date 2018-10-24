@@ -12,6 +12,9 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        public HighScores() => InitializeComponent();
+        public HighScores()
+        {
+            InitializeComponent();
+        }
     }
 }
