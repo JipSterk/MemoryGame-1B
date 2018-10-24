@@ -58,7 +58,7 @@ namespace MemoryGame_1B.Managers
         public static void FlipCard(Move move)
         {
             var serializeObject = JsonConvert.SerializeObject(move);
-            Socket.Emit("flip-card", serializeObject);
+            Socket.Emit("new-move", serializeObject);
         }
 
     }

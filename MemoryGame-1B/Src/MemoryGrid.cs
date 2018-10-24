@@ -207,8 +207,8 @@ namespace MemoryGame_1B
             var image = (Image)sender;
             if (SocketIoManager.Online)
             {
-                var row = Grid.GetRow(image);
-                var column = Grid.GetColumn(image);
+                var row = Grid.GetRow(image) - 1;
+                var column = Grid.GetColumn(image) - 1;
 
                 var move = new Move
                 {

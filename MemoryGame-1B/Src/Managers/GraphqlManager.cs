@@ -91,9 +91,6 @@ namespace MemoryGame_1B.Managers
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
     public class DeleteServerResponse
     {
         public Status Status { get; set; }
