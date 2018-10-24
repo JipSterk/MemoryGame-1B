@@ -1,14 +1,47 @@
 ﻿<Page x:Class="MemoryGame_1B.Views.Help"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:MemoryGame_1B.Views"
-      mc:Ignorable="d" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Help">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" TextAlignment="Center" Text="Join Game" />
+            <ScrollViewer Grid.Row="1">
+                <Grid x:Name="Servers" />
+            </ScrollViewer>
+            <Button Grid.Row="2" Margin="100, 20" Content="Herlaad" Click="Refresh" />
+        </Grid>
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" TextAlignment="Center" Text="Host Game" />
+                <TextBox x:Name="RoomName" Grid.Row="2" Text="fas" Height="30" />
+                <Button Grid.Row="3" Margin="100, 0" Content="Create Room" Click="CreateRoom" />
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

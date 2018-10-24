@@ -93,7 +93,7 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-                    var(cardFrontUriSource, cardBackUriSource, turned) = cardData[i, j];
+                    var (cardFrontUriSource, cardBackUriSource, turned) = cardData[i, j];
 
                     var cardBack = new BitmapImage(new Uri(cardBackUriSource, UriKind.Relative));
                     var cardFront = new BitmapImage(new Uri(cardFrontUriSource, UriKind.Relative));
