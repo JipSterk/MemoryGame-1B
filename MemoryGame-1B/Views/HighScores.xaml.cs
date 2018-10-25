@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MemoryGame_1B.Views
 {
@@ -12,9 +13,13 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        public HighScores()
-        {
-            InitializeComponent();
-        }
+        public HighScores() => InitializeComponent();
+
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnToMenu(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Main();
     }
 }

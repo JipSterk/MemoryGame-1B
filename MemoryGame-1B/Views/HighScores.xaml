@@ -104,7 +104,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <Image Grid.Column="2" Width="180">
+                <Image Grid.Column="2" Width="180" MouseDown="ReturnToMenu">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="/Images/Ui/Zombie/btnHighscores.png" />
