@@ -60,7 +60,12 @@ namespace MemoryGame_1B.Views
             }
         }
 
-        private void Join(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Join(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
             var id = button.DataContext.ToString();

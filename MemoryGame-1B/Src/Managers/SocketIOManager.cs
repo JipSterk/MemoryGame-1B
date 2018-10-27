@@ -14,10 +14,24 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         public static readonly Socket Socket = IO.Socket("https://sleepy-falls-91203.herokuapp.com/");
 
+        /// <summary>
+        /// The Current room
+        /// </summary>
         public static string Room { get; private set; }
+
+        /// <summary>
+        /// Are we connected
+        /// </summary>
         public static bool Online { get; private set; }
 
+        /// <summary>
+        /// The event listener for receiving a socket
+        /// </summary>
         public static event Action<object> OnReceiveSocket;
+
+        /// <summary>
+        /// The event listener for a new move
+        /// </summary>
         public static event Action<object> OnNewMove;
 
         /// <summary>
@@ -63,12 +77,32 @@ namespace MemoryGame_1B.Managers
 
     }
 
+    /// <summary>
+    /// Move object
+    /// </summary>
     public class Move
     {
+        /// <summary>
+        /// The current room
+        /// </summary>
         public string Room { get; set; }
+
+        /// <summary>
+        /// The x coordinate
+        /// </summary>
         public int X { get; set; }
+
+        /// <summary>
+        /// The y coordinate
+        /// </summary>
         public int Y { get; set; }
 
+        /// <summary>
+        /// Deconstructs this object
+        /// </summary>
+        /// <param name="room"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void Deconstruct(out string room, out int x, out int y)
         {
             room = Room;

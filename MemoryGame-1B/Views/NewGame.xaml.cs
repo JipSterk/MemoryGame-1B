@@ -1,9 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 
 namespace MemoryGame_1B.Views
 {

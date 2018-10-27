@@ -37,10 +37,10 @@ namespace MemoryGame_1B.Managers
             return graphQlResponse.GetDataFieldAs<Server[]>("getServers");
         }
 
-
         /// <summary>
-        /// Gets the servers
+        /// Creates a server
         /// </summary>
+        /// <param name="name"></param>
         /// <returns></returns>
         public static async Task<CreateServerResponse> CreateServer(string name)
         {
@@ -50,7 +50,7 @@ namespace MemoryGame_1B.Managers
                     mutation createServer($input: CreateServerInput) {
                         createServer(input: $input) {
                             id
-                            status
+                            responseStatus
                         }
                     }",
                 Variables = new
@@ -66,7 +66,11 @@ namespace MemoryGame_1B.Managers
             return graphQlResponse.GetDataFieldAs<CreateServerResponse>("createServer");
         }
 
-
+        /// <summary>
+        /// Deletes a server
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static async Task<DeleteServerResponse> DeleteServer(string id)
         {
             var graphQlRequest = new GraphQLRequest
@@ -74,7 +78,7 @@ namespace MemoryGame_1B.Managers
                 Query = @"
                     mutation deleteServer($input: CreateServerInput) {
                         deleteServer(input: $input) {
-                            status
+                            responseStatus
                         }
                     }",
                 Variables = new
@@ -91,31 +95,65 @@ namespace MemoryGame_1B.Managers
         }
     }
 
+    /// <summary>
+    /// DeleteServerResponse object
+    /// </summary>
     public class DeleteServerResponse
     {
-        public Status Status { get; set; }
+        /// <summary>
+        /// The response status
+        /// </summary>
+        public ResponseStatus ResponseStatus { get; set; }
 
-        public void Deconstruct(out Status status)
+        /// <summary>
+        /// Deconstructs this object
+        /// </summary>
+        /// <param name="responseStatus"></param>
+        public void Deconstruct(out ResponseStatus responseStatus)
         {
-            status = Status;
+            responseStatus = ResponseStatus;
         }
     }
 
-    public enum Status
+    /// <summary>
+    /// ResponseStatus of the response
+    /// </summary>
+    public enum ResponseStatus
     {
+        /// <summary>
+        /// Ok status
+        /// </summary>
         Ok,
+        /// <summary>
+        /// Error Status
+        /// </summary>
         Error
     }
 
+    /// <summary>
+    /// CreateServerResponse of the response
+    /// </summary>
     public class CreateServerResponse
     {
+        /// <summary>
+        /// The id
+        /// </summary>
         public string Id { get; set; }
-        public Status Status { get; set; }
 
-        public void Deconstruct(out string id, out Status status)
+        /// <summary>
+        /// the response status
+        /// </summary>
+        public ResponseStatus ResponseStatus { get; set; }
+
+        /// <summary>
+        /// Deconstructs this object
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="responseStatus"></param>
+        public void Deconstruct(out string id, out ResponseStatus responseStatus)
         {
             id = Id;
-            status = Status;
+            responseStatus = ResponseStatus;
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -40,6 +42,9 @@ namespace MemoryGame_1B
         /// </summary>
         private readonly GridSize _gridSize;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MemoryGrid()
         {
             if (SocketIoManager.Online)
@@ -48,20 +53,7 @@ namespace MemoryGame_1B
             }
         }
 
-        ~MemoryGrid()
-        {
-            if (SocketIoManager.Online)
-            {
-                SocketIoManager.OnNewMove -= OnNewMove;
-            }
-        }
-
-        private void OnNewMove(object o)
-        {
-            var (_, x, y) = JsonConvert.DeserializeObject<Move>(o.ToString());
-            CardData[x, y].Turn();
-        }
-
+        /// <inheritdoc />
         /// <summary>
         /// Constructor
         /// </summary>
@@ -91,6 +83,14 @@ namespace MemoryGame_1B
             AddCards();
         }
 
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="gridSize"></param>
+        /// <param name="turn"></param>
+        /// <param name="cardData"></param>
         public MemoryGrid(Grid grid, GridSize gridSize, Turn turn, SaveData.CardData[,] cardData) : this()
         {
             _grid = grid ?? throw new ArgumentNullException(nameof(grid));
@@ -125,6 +125,21 @@ namespace MemoryGame_1B
                     BuildCard(cardFront, cardBack, i, j, turned);
                 }
             }
+        }
+
+        /// <summary>
+        /// OnNewMoveListener
+        /// </summary>
+        /// <param name="o"></param>
+        private void OnNewMove(object o)
+        {
+            var (_, x, y) = JsonConvert.DeserializeObject<Move>(o.ToString());
+
+            var uiElement = _grid.Children.Cast<UIElement>()
+                .First(z => Grid.GetRow(z) + 1 == x && Grid.GetColumn(z) + 1 == y);
+            var image = (Image) uiElement;
+
+            image.Source = CardData[x, y].Turn();
         }
 
         /// <summary>
@@ -204,11 +219,12 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private static void CardClick(object sender, MouseButtonEventArgs e)
         {
-            var image = (Image)sender;
+            var image = (Image) sender;
+
             if (SocketIoManager.Online)
             {
-                var row = Grid.GetRow(image) - 1;
-                var column = Grid.GetColumn(image) - 1;
+                var row = Grid.GetRow(image) + 1;
+                var column = Grid.GetColumn(image) + 1;
 
                 var move = new Move
                 {
@@ -245,6 +261,17 @@ namespace MemoryGame_1B
             _grid.Children.Clear();
             _grid.RowDefinitions.Clear();
             _grid.ColumnDefinitions.Clear();
+        }
+
+        /// <summary>
+        /// Destructor
+        /// </summary>
+        ~MemoryGrid()
+        {
+            if (SocketIoManager.Online)
+            {
+                SocketIoManager.OnNewMove -= OnNewMove;
+            }
         }
     }
 }
