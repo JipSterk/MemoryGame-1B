@@ -133,13 +133,16 @@ namespace MemoryGame_1B
         /// <param name="o"></param>
         private void OnNewMove(object o)
         {
-            var (_, x, y) = JsonConvert.DeserializeObject<Move>(o.ToString());
+            var (_, x, y) = JsonConvert.DeserializeObject<Move>((string) o);
 
-            var uiElement = _grid.Children.Cast<UIElement>()
-                .First(z => Grid.GetRow(z) + 1 == x && Grid.GetColumn(z) + 1 == y);
-            var image = (Image) uiElement;
+            _grid.Dispatcher.Invoke(() =>
+            {
+                var uiElement = _grid.Children.Cast<UIElement>()
+                    .First(element => Grid.GetRow(element) + 1 == x && Grid.GetColumn(element) + 1 == y);
+                var image = (Image) uiElement;
 
-            image.Source = CardData[x, y].Turn();
+                image.Source = CardData[x, y].Turn();
+            });
         }
 
         /// <summary>

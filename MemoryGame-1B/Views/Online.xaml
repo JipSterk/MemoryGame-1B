@@ -6,8 +6,10 @@
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Online">
-
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Ui/Zombie/InGameBackground.png" />
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />

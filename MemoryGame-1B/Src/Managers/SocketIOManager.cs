@@ -39,8 +39,15 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         static SocketIoManager()
         {
-            Socket.On("receive-socket", OnReceiveSocket);
-            Socket.On("new-move", OnNewMove);
+            Socket.On("receive-socket", o =>
+            {
+                OnReceiveSocket?.Invoke(o);
+            });
+
+            Socket.On("new-move", o =>
+            {
+                OnNewMove?.Invoke(o);
+            });
         }
 
         /// <summary>
@@ -74,7 +81,6 @@ namespace MemoryGame_1B.Managers
             var serializeObject = JsonConvert.SerializeObject(move);
             Socket.Emit("new-move", serializeObject);
         }
-
     }
 
     /// <summary>
