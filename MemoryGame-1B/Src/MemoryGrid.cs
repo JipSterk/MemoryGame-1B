@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using MemoryGame_1B.Managers;
+using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
 using Newtonsoft.Json;
 using CardData = MemoryGame_1B.Card.CardData;
@@ -168,7 +169,7 @@ namespace MemoryGame_1B
             }
 
             if (!SocketIoManager.Online) return;
-            
+
             var cardData = _gridSize == GridSize.Normal ? new SaveData.CardData[4, 4] : new SaveData.CardData[6, 6];
 
             for (var i = 0; i < CardData.GetLength(0); i++)

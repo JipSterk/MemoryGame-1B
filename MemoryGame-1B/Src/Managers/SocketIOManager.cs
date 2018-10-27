@@ -1,4 +1,5 @@
 ﻿using System;
+using MemoryGame_1B.Models;
 using Newtonsoft.Json;
 using Quobject.SocketIoClientDotNet.Client;
 
@@ -39,15 +40,9 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         static SocketIoManager()
         {
-            Socket.On("receive-socket", o =>
-            {
-                OnReceiveSocket?.Invoke(o);
-            });
+            Socket.On("receive-socket", o => { OnReceiveSocket?.Invoke(o); });
 
-            Socket.On("new-move", o =>
-            {
-                OnNewMove?.Invoke(o);
-            });
+            Socket.On("new-move", o => { OnNewMove?.Invoke(o); });
         }
 
         /// <summary>
@@ -80,40 +75,6 @@ namespace MemoryGame_1B.Managers
         {
             var serializeObject = JsonConvert.SerializeObject(move);
             Socket.Emit("new-move", serializeObject);
-        }
-    }
-
-    /// <summary>
-    /// Move object
-    /// </summary>
-    public class Move
-    {
-        /// <summary>
-        /// The current room
-        /// </summary>
-        public string Room { get; set; }
-
-        /// <summary>
-        /// The x coordinate
-        /// </summary>
-        public int X { get; set; }
-
-        /// <summary>
-        /// The y coordinate
-        /// </summary>
-        public int Y { get; set; }
-
-        /// <summary>
-        /// Deconstructs this object
-        /// </summary>
-        /// <param name="room"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        public void Deconstruct(out string room, out int x, out int y)
-        {
-            room = Room;
-            x = X;
-            y = Y;
         }
     }
 }

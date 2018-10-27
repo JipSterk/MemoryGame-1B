@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using MemoryGame_1B.Managers;
+using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
 using Newtonsoft.Json;
 
@@ -73,7 +74,7 @@ namespace MemoryGame_1B.Views
 
             SocketIoManager.JoinGame(id);
             var (cardData, _) = Task.Run(() => GraphqlManager.JoinServer(id)).Result;
-            
+
             var saveData = new SaveData.SaveData(Turn.Player1, GridSize.Normal,
                 JsonConvert.DeserializeObject<CardData[,]>(cardData));
 
@@ -113,40 +114,6 @@ namespace MemoryGame_1B.Views
             SocketIoManager.JoinGame(id);
 
             MainWindow.Instance.Content = new NewGame(GridSize.Normal);
-        }
-    }
-
-    /// <summary>
-    /// Server Object
-    /// </summary>
-    public class Server
-    {
-        /// <summary>
-        /// The id of the server
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
-        /// The name of the server
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The current amount of people on the server
-        /// </summary>
-        public int Current { get; set; }
-
-        /// <summary>
-        /// Deconstructs this object
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="current"></param>
-        public void Deconstruct(out string id, out string name, out int current)
-        {
-            id = Id;
-            name = Name;
-            current = Current;
         }
     }
 }
