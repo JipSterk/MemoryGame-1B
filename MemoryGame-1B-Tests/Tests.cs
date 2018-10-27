@@ -23,14 +23,41 @@ namespace MemoryGame_1B_Tests
         /// <summary>
         /// Creates new game test
         /// </summary>
-        [Test]
+        [Test, Order(1)]
         public void NewGame()
         {
             var application = GetApplication();
             using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
             {
-                var newGame = window.Get<Button>(SearchCriteria.ByText("New Game"));
+                var newGame = window.Get<Image>("NewGame");
                 newGame.Click();
+            }
+        }
+
+        [Test, Order(2)]
+        public void Save()
+        {
+            var application = GetApplication();
+
+            using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
+            {
+                var newGame = window.Get<Image>("NewGame");
+                newGame.Click();
+
+                var save = window.Get<Image>("Save");
+                save.Click();
+                
+                using (var open = application.GetWindow("Memory Game", InitializeOption.NoCache))
+                {
+                    var fileNameTextBox =
+                        open.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndByText("File name:"));
+                    fileNameTextBox.Text =
+                        $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\Jip\MemoryGame-1B\4x4.json";
+
+                    var saveButton =
+                        open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Save"));
+                    saveButton.Click();
+                }
             }
         }
 
@@ -38,9 +65,8 @@ namespace MemoryGame_1B_Tests
         /// Load game tests
         /// </summary>
         /// <param name="size"></param>
-        [Test]
+        [Test, Order(3)]
         [TestCase("4x4")]
-        [TestCase("6x6")]
         public void LoadGame(string size)
         {
             var application = GetApplication();
@@ -55,7 +81,7 @@ namespace MemoryGame_1B_Tests
                     var fileNameTextBox =
                         open.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndByText("File name:"));
                     fileNameTextBox.Text =
-                        Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $@"MockData\SaveData\{size}.json"));
+                        $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\Jip\MemoryGame-1B\4x4.json";
 
                     var openButton =
                         open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Open"));
