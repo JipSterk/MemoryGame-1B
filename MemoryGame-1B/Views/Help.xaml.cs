@@ -5,15 +5,15 @@ namespace MemoryGame_1B.Views
 {
     /// <inheritdoc cref="Page" />
     /// <summary>
-    /// Interaction logic for HighScores.xaml
+    /// Interaction logic for Help.xaml
     /// </summary>
-    public partial class HighScores
+    public partial class Help
     {
         /// <inheritdoc />
         /// <summary>
         /// Constructor
         /// </summary>
-        public HighScores() => InitializeComponent();
+        public Help() => InitializeComponent();
 
         /// <summary>
         /// OnClickListener
