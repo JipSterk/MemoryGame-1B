@@ -9,15 +9,15 @@ namespace MemoryGame_1B.Views
 {
     /// <inheritdoc cref="Page" />
     /// <summary>
-    /// Interaction logic for Help.xaml
+    /// Interaction logic for Online.xaml
     /// </summary>
-    public partial class Help
+    public partial class Online
     {
         /// <inheritdoc />
         /// <summary>
         /// Constructor
         /// </summary>
-        public Help()
+        public Online()
         {
             InitializeComponent();
 

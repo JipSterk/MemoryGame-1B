@@ -60,6 +60,6 @@ namespace MemoryGame_1B.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Help(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Help();
+        private void Help(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Online();
     }
 }
