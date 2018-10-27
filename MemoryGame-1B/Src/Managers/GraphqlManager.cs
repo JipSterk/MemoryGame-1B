@@ -114,7 +114,7 @@ namespace MemoryGame_1B.Managers
                             responseStatus
                         }
                     }",
-                Variables =
+                Variables = new
                 {
                     input = new
                     {

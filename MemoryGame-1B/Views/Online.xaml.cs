@@ -69,7 +69,7 @@ namespace MemoryGame_1B.Views
         private static void Join(object sender, RoutedEventArgs e)
         {
             var button = (Button) sender;
-            var id = button.DataContext.ToString();
+            var id = (string) button.DataContext;
 
             SocketIoManager.JoinGame(id);
             var (cardData, _) = Task.Run(() => GraphqlManager.JoinServer(id)).Result;
