@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -141,7 +142,7 @@ namespace MemoryGame_1B
                     .First(element => Grid.GetRow(element) + 1 == x && Grid.GetColumn(element) + 1 == y);
                 var image = (Image) uiElement;
 
-                image.Source = CardData[x, y].Turn();
+                image.Source = CardData[x - 1, y - 1].Turn();
             });
         }
 
@@ -165,6 +166,22 @@ namespace MemoryGame_1B
                     BuildCard(cardFront, cardBack, i, j);
                 }
             }
+
+            if (!SocketIoManager.Online) return;
+            
+            var cardData = _gridSize == GridSize.Normal ? new SaveData.CardData[4, 4] : new SaveData.CardData[6, 6];
+
+            for (var i = 0; i < CardData.GetLength(0); i++)
+            {
+                for (var j = 0; j < CardData.GetLength(1); j++)
+                {
+                    var (cardFrontUriSource, cardBackUriSource, turned) = CardData[i, j];
+                    cardData[i, j] = new SaveData.CardData(cardFrontUriSource, cardBackUriSource, turned);
+                }
+            }
+
+            var serializeObject = JsonConvert.SerializeObject(cardData);
+            Task.Run(() => GraphqlManager.CreateDataGrid(SocketIoManager.Room, serializeObject));
         }
 
         /// <summary>

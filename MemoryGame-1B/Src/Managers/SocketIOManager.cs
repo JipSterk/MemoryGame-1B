@@ -12,7 +12,7 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// The socket
         /// </summary>
-        public static readonly Socket Socket = IO.Socket("https://sleepy-falls-91203.herokuapp.com/");
+        public static readonly Socket Socket = IO.Socket("http://localhost:8000/");
 
         /// <summary>
         /// The Current room

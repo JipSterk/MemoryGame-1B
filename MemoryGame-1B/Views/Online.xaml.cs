@@ -21,7 +21,7 @@ namespace MemoryGame_1B.Views
         {
             InitializeComponent();
 
-            var servers = Task.Run(GraphqlManager.GetServers).Result;
+            var (servers, _) = Task.Run(GraphqlManager.GetServers).Result;
             Build(servers);
         }
 
@@ -92,7 +92,7 @@ namespace MemoryGame_1B.Views
         /// <param name="e"></param>
         private void Refresh(object sender, RoutedEventArgs e)
         {
-            var servers = Task.Run(GraphqlManager.GetServers).Result;
+            var (servers, _) = Task.Run(GraphqlManager.GetServers).Result;
             Build(servers);
         }
 
