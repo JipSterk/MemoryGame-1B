@@ -14,7 +14,7 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// The graphql client
         /// </summary>
-        public static readonly GraphQLClient GraphQlClient = new GraphQLClient("http://localhost:8000/graphql");
+        public static readonly GraphQLClient GraphQlClient = new GraphQLClient("https://sleepy-falls-91203.herokuapp.com/graphql");
 
         /// <summary>
         /// Gets the servers
@@ -204,9 +204,11 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// Deconstructs this object
         /// </summary>
+        /// <param name="cardData"></param>
         /// <param name="responseStatus"></param>
-        public void Deconstruct(out ResponseStatus responseStatus)
+        public void Deconstruct(out CardData[,] cardData, out ResponseStatus responseStatus)
         {
+            cardData = CardData;
             responseStatus = ResponseStatus;
         }
     }

@@ -71,8 +71,11 @@ namespace MemoryGame_1B.Views
             var id = button.DataContext.ToString();
 
             SocketIoManager.JoinGame(id);
+            var (cardData, _)= Task.Run(() => GraphqlManager.JoinServer(id)).Result;
 
-            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
+            var saveData = new SaveData.SaveData(Turn.Player1, GridSize.Normal,cardData);
+
+            MainWindow.Instance.Content = new NewGame(saveData);
         }
 
         /// <summary>
