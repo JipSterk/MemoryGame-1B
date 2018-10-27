@@ -152,6 +152,13 @@
     </ApplicationDefinition>
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
+    <Compile Include="Src\Models\CreateServerResponse.cs" />
+    <Compile Include="Src\Models\ResponseStatus.cs" />
+    <Compile Include="Src\Models\DeleteServerResponse.cs" />
+    <Compile Include="Src\Models\CreateCardDataResponse.cs" />
+    <Compile Include="Src\Models\Move.cs" />
+    <Compile Include="Src\Models\JoinServerResponse.cs" />
+    <Compile Include="Src\Models\GetServersResponse.cs" />
     <Compile Include="Src\Managers\GraphqlManager.cs" />
     <Compile Include="Src\Managers\SocketIOManager.cs" />
     <Compile Include="Src\MemoryGrid.cs" />
@@ -174,6 +181,7 @@
     <Compile Include="Views\Online.xaml.cs">
       <DependentUpon>Online.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Src\Models\Server.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -317,5 +325,6 @@
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x5.png" />
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x6.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
