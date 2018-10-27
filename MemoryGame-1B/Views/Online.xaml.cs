@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
+using Newtonsoft.Json;
 
 namespace MemoryGame_1B.Views
 {
@@ -71,9 +72,10 @@ namespace MemoryGame_1B.Views
             var id = button.DataContext.ToString();
 
             SocketIoManager.JoinGame(id);
-            var (cardData, _)= Task.Run(() => GraphqlManager.JoinServer(id)).Result;
-
-            var saveData = new SaveData.SaveData(Turn.Player1, GridSize.Normal,cardData);
+            var (cardData, _) = Task.Run(() => GraphqlManager.JoinServer(id)).Result;
+            
+            var saveData = new SaveData.SaveData(Turn.Player1, GridSize.Normal,
+                JsonConvert.DeserializeObject<CardData[,]>(cardData));
 
             MainWindow.Instance.Content = new NewGame(saveData);
         }
@@ -123,6 +125,7 @@ namespace MemoryGame_1B.Views
         /// The id of the server
         /// </summary>
         public string Id { get; set; }
+
         /// <summary>
         /// The name of the server
         /// </summary>

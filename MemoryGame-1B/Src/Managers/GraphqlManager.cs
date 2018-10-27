@@ -110,9 +110,8 @@ namespace MemoryGame_1B.Managers
                 Query = @"
                     query joinServer($input: JoinServerInput) {
                         joinServer(input: $input) {
-                            id
-                            name
-                            current
+                            cardData
+                            responseStatus
                         }
                     }",
                 Variables =
@@ -194,7 +193,7 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// The card data for that game
         /// </summary>
-        public CardData[,] CardData { get; set; }
+        public string CardData { get; set; }
 
         /// <summary>
         /// The response status
@@ -206,7 +205,7 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         /// <param name="cardData"></param>
         /// <param name="responseStatus"></param>
-        public void Deconstruct(out CardData[,] cardData, out ResponseStatus responseStatus)
+        public void Deconstruct(out string cardData, out ResponseStatus responseStatus)
         {
             cardData = CardData;
             responseStatus = ResponseStatus;
