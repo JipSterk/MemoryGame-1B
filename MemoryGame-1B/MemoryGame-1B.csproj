@@ -60,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
+    <Compile Include="Src\Managers\SoundManager.cs" />
     <Compile Include="Src\MemoryGrid.cs" />
     <Compile Include="Src\SaveData\CardData.cs" />
     <Compile Include="Src\SaveData\GridSize.cs" />
@@ -215,6 +216,13 @@
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x4.png" />
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x5.png" />
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SoundEffects\Zombie\1.wav" />
+    <Content Include="SoundEffects\Zombie\2.wav" />
+    <Content Include="SoundEffects\Zombie\3.wav" />
+    <Content Include="SoundEffects\Zombie\4.wav" />
+    <Content Include="SoundEffects\Zombie\5.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
