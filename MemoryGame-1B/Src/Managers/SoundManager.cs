@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Media;
-using System.Windows.Media;
 
 namespace MemoryGame_1B.Managers
 {
