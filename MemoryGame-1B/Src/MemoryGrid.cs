@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,11 @@ namespace MemoryGame_1B
     /// </summary>
     public class MemoryGrid
     {
+        /// <summary>
+        /// Singleton
+        /// </summary>
+        public static MemoryGrid Instance { get; private set; }
+
         /// <summary>
         /// The data of all cards on the grid
         /// </summary>
@@ -49,6 +55,8 @@ namespace MemoryGame_1B
         /// </summary>
         public MemoryGrid()
         {
+            Instance = this;
+
             if (SocketIoManager.Online)
             {
                 SocketIoManager.OnNewMove += OnNewMove;
@@ -137,14 +145,7 @@ namespace MemoryGame_1B
         {
             var (_, x, y) = JsonConvert.DeserializeObject<Move>((string) o);
 
-            _grid.Dispatcher.Invoke(() =>
-            {
-                var uiElement = _grid.Children.Cast<UIElement>()
-                    .First(element => Grid.GetRow(element) + 1 == x && Grid.GetColumn(element) + 1 == y);
-                var image = (Image) uiElement;
-
-                image.Source = CardData[x - 1, y - 1].Turn();
-            });
+            _grid.Dispatcher.Invoke(() => CardData[x - 1, y - 1].Turn());
         }
 
         /// <summary>
@@ -196,13 +197,13 @@ namespace MemoryGame_1B
         /// <param name="turned"></param>
         private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number, bool turned = false)
         {
-            var cardData = new CardData(cardFront, cardBack, turned, number);
-
             var image = new Image
             {
-                Source = turned ? cardFront : cardBack,
-                DataContext = cardData,
+                Source = turned ? cardFront : cardBack
             };
+
+            var cardData = new CardData(image, cardFront, cardBack, turned, number);
+
 
             image.MouseDown += CardClick;
 
@@ -239,8 +240,10 @@ namespace MemoryGame_1B
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void CardClick(object sender, MouseButtonEventArgs e)
+        private void CardClick(object sender, MouseButtonEventArgs e)
         {
+            if(CardData.Cast<CardData>().Count(x => !x.FoundPair && x.Turned) == 2) return;
+
             var image = (Image) sender;
 
             if (SocketIoManager.Online)
@@ -260,9 +263,9 @@ namespace MemoryGame_1B
 
             var cardData = (CardData) image.DataContext;
 
-            image.Source = cardData.Turn();
+            cardData.Turn();
 
-            GameManager.PickCard(image, cardData);
+            GameManager.PickCard();
         }
 
         /// <summary>

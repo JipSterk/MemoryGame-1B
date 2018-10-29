@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using MemoryGame_1B.SaveData;
 using CardData = MemoryGame_1B.Card.CardData;
 
@@ -19,26 +19,6 @@ namespace MemoryGame_1B.Managers
         public static event Action<Turn> OnTurnChanged;
 
         /// <summary>
-        /// Players first pick
-        /// </summary>
-        private static Image _image1;
-
-        /// <summary>
-        /// Players first pick
-        /// </summary>
-        private static CardData _pick1;
-
-        /// <summary>
-        /// Players second pick
-        /// </summary>
-        private static Image _image2;
-
-        /// <summary>
-        /// Players second pick
-        /// </summary>
-        private static CardData _pick2;
-
-        /// <summary>
         /// Start a new game
         /// </summary>
         public static void StartGame()
@@ -51,44 +31,35 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// Picks a card
         /// </summary>
-        /// <param name="image"></param>
-        /// <param name="cardData"></param>
-        public static void PickCard(Image image, CardData cardData)
+        public static void PickCard()
         {
-            if (_pick1 == null)
-            {
-                _image1 = image;
-                _pick1 = cardData;
-            }
-            else if (_pick2 == null)
-            {
-                _image2 = image;
-                _pick2 = cardData;
+            var cardData = MemoryGrid.Instance.CardData.Cast<CardData>().Where(x => !x.FoundPair && x.Turned).ToArray();
 
-                Task.Run(Compare);
-            }
+            if (cardData.Length < 2) return;
+
+            var (lhs, rhs) = Tuple.Create(cardData[0], cardData[1]);
+            Task.Run(() => Compare(lhs, rhs));
         }
 
         /// <summary>
         /// Are the picks the same
         /// </summary>
-        private static async Task Compare()
+        private static async Task Compare(CardData lhs, CardData rhs)
         {
-            var same = _pick1.Number == _pick2.Number;
+            if (lhs.Number == rhs.Number)
+            {
+                SoundManager.PlayRandom();
+
+                lhs.FoundPair = rhs.FoundPair = true;
+            }
 
             await Task.Delay(1000);
 
-            if (same)
-            {
-                NewPick();
-            }
-            else
-            {
-                _image1.Dispatcher.Invoke(() => _image1.Source = _pick1.Turn());
-                _image2.Dispatcher.Invoke(() => _image2.Source = _pick2.Turn());
+            foreach (var cardData in MemoryGrid.Instance.CardData.Cast<CardData>().Where(x => !x.FoundPair && x.Turned)
+                .ToArray())
+                cardData.Turn();
 
-                NewPick();
-            }
+            NewPick();
         }
 
         /// <summary>
@@ -96,10 +67,7 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         private static void NewPick()
         {
-            _pick1 = _pick2 = null;
-            _image1 = _image2 = null;
-
-            Turn ^= Turn;
+            Turn = Turn == Turn.Player1 ? Turn.Player2 : Turn.Player1;
 
             OnTurnChanged?.Invoke(Turn);
         }
