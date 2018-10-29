@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
 
@@ -21,15 +23,51 @@ namespace MemoryGame_1B.Views
         /// </summary>
         private readonly MemoryGrid _memoryGrid;
 
+        /// <summary>
+        /// Who's turn is it
+        /// </summary>
+        private readonly Turn _turn;
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        private NewGame()
+        {
+            InitializeComponent();
+
+            _turn = _turn.Random();
+
+            ToggleTurn();
+        }
+
+        /// <summary>
+        /// Toggels the turn
+        /// </summary>
+        private void ToggleTurn()
+        {
+            switch (_turn)
+            {
+                case Turn.Player1:
+                    Player1.Foreground = new SolidColorBrush(Colors.Green);
+                    Player2.Foreground = new SolidColorBrush(Colors.Black);
+                    break;
+                case Turn.Player2:
+                    Player1.Foreground = new SolidColorBrush(Colors.Black);
+                    Player2.Foreground = new SolidColorBrush(Colors.Green);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         /// <inheritdoc />
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="gridSize"></param>
-        public NewGame(GridSize gridSize)
+        public NewGame(GridSize gridSize) : this()
         {
-            InitializeComponent();
-
             _gridSize = gridSize;
             _memoryGrid = new MemoryGrid(Grid, _gridSize);
         }
@@ -39,10 +77,8 @@ namespace MemoryGame_1B.Views
         /// Constructor
         /// </summary>
         /// <param name="saveData"></param>
-        public NewGame(SaveData.SaveData saveData)
+        public NewGame(SaveData.SaveData saveData) : this()
         {
-            InitializeComponent();
-
             var (turn, gridSize, cardData) = saveData;
 
             _memoryGrid = new MemoryGrid(Grid, gridSize, turn, cardData);
