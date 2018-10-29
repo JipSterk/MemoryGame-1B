@@ -234,6 +234,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="font\Deanna.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -352,6 +353,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\BtnReloadHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnReturn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnReturnHover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
