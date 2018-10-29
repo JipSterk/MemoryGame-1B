@@ -63,19 +63,21 @@ namespace MemoryGame_1B.Managers
                 cardData.Turn();
 
                 if (!SocketIoManager.Online) continue;
-                var row = Grid.GetRow(cardData.Image) + 1;
-                var column = Grid.GetColumn(cardData.Image) + 1;
-
-                var move = new Move
+                cardData.Image.Dispatcher.Invoke(() =>
                 {
-                    Room = SocketIoManager.Room,
-                    X = row,
-                    Y = column
-                };
+                    var row = Grid.GetRow(cardData.Image) + 1;
+                    var column = Grid.GetColumn(cardData.Image) + 1;
 
-                SocketIoManager.FlipCard(move);
+                    var move = new Move
+                    {
+                        Room = SocketIoManager.Room,
+                        X = row,
+                        Y = column
+                    };
+
+                    SocketIoManager.FlipCard(move);
+                });
             }
-                
 
             NewPick();
         }
