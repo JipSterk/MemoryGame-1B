@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
 using CardData = MemoryGame_1B.Card.CardData;
 
@@ -57,7 +59,23 @@ namespace MemoryGame_1B.Managers
 
             foreach (var cardData in MemoryGrid.Instance.CardData.Cast<CardData>().Where(x => !x.FoundPair && x.Turned)
                 .ToArray())
+            {
                 cardData.Turn();
+
+                if (!SocketIoManager.Online) continue;
+                var row = Grid.GetRow(cardData.Image) + 1;
+                var column = Grid.GetColumn(cardData.Image) + 1;
+
+                var move = new Move
+                {
+                    Room = SocketIoManager.Room,
+                    X = row,
+                    Y = column
+                };
+
+                SocketIoManager.FlipCard(move);
+            }
+                
 
             NewPick();
         }

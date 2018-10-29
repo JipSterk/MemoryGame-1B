@@ -11,6 +11,11 @@ namespace MemoryGame_1B.Card
     public class CardData
     {
         /// <summary>
+        /// The image
+        /// </summary>
+        public readonly Image Image;
+
+        /// <summary>
         /// The number of the card
         /// </summary>
         public int Number { get; }
@@ -34,12 +39,7 @@ namespace MemoryGame_1B.Card
         /// The card front
         /// </summary>
         private readonly BitmapImage _cardBack;
-
-        /// <summary>
-        /// The image
-        /// </summary>
-        private readonly Image _image;
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
@@ -50,13 +50,13 @@ namespace MemoryGame_1B.Card
         /// <param name="number"></param>
         public CardData(Image image, BitmapImage cardFront, BitmapImage cardBack, bool turned, int number)
         {
-            _image = image ?? throw new ArgumentNullException(nameof(image));
+            Image = image ?? throw new ArgumentNullException(nameof(image));
             _cardFront = cardFront ?? throw new ArgumentNullException(nameof(cardFront));
             _cardBack = cardBack ?? throw new ArgumentNullException(nameof(cardBack));
             Turned = turned;
             Number = number;
 
-            _image.DataContext = this;
+            Image.DataContext = this;
         }
         
         /// <summary>
@@ -67,7 +67,7 @@ namespace MemoryGame_1B.Card
         {
             if (FoundPair) return;
             Turned = !Turned;
-            _image.Dispatcher.Invoke(() => _image.Source = Turned ? _cardFront : _cardBack);
+            Image.Dispatcher.Invoke(() => Image.Source = Turned ? _cardFront : _cardBack);
         }
 
         /// <summary>
