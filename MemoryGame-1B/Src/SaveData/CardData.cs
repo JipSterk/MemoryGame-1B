@@ -1,4 +1,6 @@
-﻿namespace MemoryGame_1B.SaveData
+﻿using System;
+
+namespace MemoryGame_1B.SaveData
 {
     /// <summary>
     /// Data for the card
@@ -28,8 +30,8 @@
         /// <param name="turned"></param>
         public CardData(string cardFrontUriSource, string cardBackUriSource, bool turned)
         {
-            CardFrontUriSource = cardFrontUriSource;
-            CardBackUriSource = cardBackUriSource;
+            CardFrontUriSource = cardFrontUriSource ?? throw new ArgumentNullException(nameof(cardFrontUriSource));
+            CardBackUriSource = cardBackUriSource ?? throw new ArgumentNullException(nameof(cardBackUriSource));
             Turned = turned;
         }
 
