@@ -326,5 +326,17 @@
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x5.png" />
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x6.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMultiplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMultiplayerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnNextHover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
