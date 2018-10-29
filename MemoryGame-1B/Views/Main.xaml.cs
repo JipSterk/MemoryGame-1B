@@ -25,7 +25,7 @@ namespace MemoryGame_1B.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void NewGame(object sender, RoutedEventArgs e) =>
-            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
+            MainWindow.Instance.Content = new InputNames();
 
         /// <summary>
         /// OnClickListener
