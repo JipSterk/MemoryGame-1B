@@ -21,6 +21,16 @@ namespace MemoryGame_1B.Views
     public partial class InputNames : Page
     {
         public InputNames() => InitializeComponent();
+
+        private void NewGame(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MainMenu(object sender, RoutedEventArgs e)
+        {
+
+        }
         
     }
 }
