@@ -119,12 +119,12 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = cardData[i, j];
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = cardData[i, j];
 
                     var cardBack = new BitmapImage(new Uri(cardBackUriSource, UriKind.Relative));
                     var cardFront = new BitmapImage(new Uri(cardFrontUriSource, UriKind.Relative));
 
-                    BuildCard(cardFront, cardBack, i, j, turned);
+                    BuildCard(cardFront, cardBack, i, j, number, turned);
                 }
             }
         }
@@ -162,9 +162,9 @@ namespace MemoryGame_1B
                         new BitmapImage(new Uri($"../Images/Cards/Zombies/CardBackground/CardBG{i + 1}x{j + 1}.png",
                             UriKind.Relative));
 
-                    var cardFront = bitmapImages.Pop();
+                    var (i1, cardFront) = bitmapImages.Pop();
 
-                    BuildCard(cardFront, cardBack, i, j);
+                    BuildCard(cardFront, cardBack, i, j, i1);
                 }
             }
 
@@ -176,8 +176,8 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < CardData.GetLength(1); j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = CardData[i, j];
-                    cardData[i, j] = new SaveData.CardData(cardFrontUriSource, cardBackUriSource, turned);
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = CardData[i, j];
+                    cardData[i, j] = new SaveData.CardData(cardFrontUriSource, cardBackUriSource, turned, number);
                 }
             }
 
@@ -192,10 +192,11 @@ namespace MemoryGame_1B
         /// <param name="cardBack"></param>
         /// <param name="i"></param>
         /// <param name="j"></param>
+        /// <param name="number"></param>
         /// <param name="turned"></param>
-        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, bool turned = false)
+        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number, bool turned = false)
         {
-            var cardData = new CardData(cardFront, cardBack, turned);
+            var cardData = new CardData(cardFront, cardBack, turned, number);
 
             var image = new Image
             {
@@ -216,10 +217,10 @@ namespace MemoryGame_1B
         /// Gets all the images
         /// </summary>
         /// <returns></returns>
-        private List<BitmapImage> GetImages()
+        private List<(int, BitmapImage)> GetImages()
         {
             var count = _gridSize == GridSize.Normal ? 16 : 36;
-            var list = new List<BitmapImage>();
+            var list = new List<(int, BitmapImage)>();
 
             for (var i = 0; i < count; i++)
             {
@@ -227,7 +228,7 @@ namespace MemoryGame_1B
                 var bitmapImage =
                     new BitmapImage(new Uri($"../Images/Cards/Zombies/CardFront/CardZombie{imageNumber}.png",
                         UriKind.Relative));
-                list.Add(bitmapImage);
+                list.Add((imageNumber, bitmapImage));
             }
 
             return list;
@@ -260,6 +261,8 @@ namespace MemoryGame_1B
             var cardData = (CardData) image.DataContext;
 
             image.Source = cardData.Turn();
+
+            GameManager.PickCard(image, cardData);
         }
 
         /// <summary>

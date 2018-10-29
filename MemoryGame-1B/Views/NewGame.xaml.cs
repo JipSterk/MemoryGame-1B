@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
 
@@ -23,11 +24,6 @@ namespace MemoryGame_1B.Views
         /// </summary>
         private readonly MemoryGrid _memoryGrid;
 
-        /// <summary>
-        /// Who's turn is it
-        /// </summary>
-        private readonly Turn _turn;
-
         /// <inheritdoc />
         /// <summary>
         /// Constructor
@@ -36,29 +32,7 @@ namespace MemoryGame_1B.Views
         {
             InitializeComponent();
 
-            _turn = _turn.Random();
-
-            ToggleTurn();
-        }
-
-        /// <summary>
-        /// Toggels the turn
-        /// </summary>
-        private void ToggleTurn()
-        {
-            switch (_turn)
-            {
-                case Turn.Player1:
-                    Player1.Foreground = new SolidColorBrush(Colors.Green);
-                    Player2.Foreground = new SolidColorBrush(Colors.Black);
-                    break;
-                case Turn.Player2:
-                    Player1.Foreground = new SolidColorBrush(Colors.Black);
-                    Player2.Foreground = new SolidColorBrush(Colors.Green);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            GameManager.OnTurnChanged += ToggleTurn;
         }
 
         /// <inheritdoc />
@@ -70,6 +44,18 @@ namespace MemoryGame_1B.Views
         {
             _gridSize = gridSize;
             _memoryGrid = new MemoryGrid(Grid, _gridSize);
+        }
+
+        /// <summary>
+        /// Toggles the turn
+        /// </summary>
+        private void ToggleTurn(Turn turn)
+        {
+            Player1.Dispatcher.Invoke(() =>
+                Player1.Foreground = new SolidColorBrush(turn == Turn.Player1 ? Colors.Green : Colors.Black));
+            Player2.Dispatcher.Invoke(() =>
+                Player2.Foreground = new SolidColorBrush(turn == Turn.Player2 ? Colors.Green : Colors.Black));
+
         }
 
         /// <inheritdoc />
@@ -97,8 +83,8 @@ namespace MemoryGame_1B.Views
             {
                 for (var j = 0; j < _memoryGrid.CardData.GetLength(1); j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = _memoryGrid.CardData[i, j];
-                    cardData[i, j] = new CardData(cardFrontUriSource, cardBackUriSource, turned);
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = _memoryGrid.CardData[i, j];
+                    cardData[i, j] = new CardData(cardFrontUriSource, cardBackUriSource, turned, number);
                 }
             }
 
