@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
+using MemoryGame_1B.Views;
 using CardData = MemoryGame_1B.Card.CardData;
 
 namespace MemoryGame_1B.Managers
@@ -57,8 +58,19 @@ namespace MemoryGame_1B.Managers
 
             await Task.Delay(1000);
 
-            foreach (var cardData in MemoryGrid.Instance.CardData.Cast<CardData>().Where(x => !x.FoundPair && x.Turned)
-                .ToArray())
+            var array = MemoryGrid.Instance.CardData.Cast<CardData>().ToArray();
+
+            if (array.Length - array.Count(x => x.Turned) == 2)
+            {
+                foreach (var cardData in array.Where(x => !x.FoundPair))
+                    cardData.FoundPair = true;
+
+                await Task.Delay(5000);
+                EndGame();
+                return;
+            }
+
+            foreach (var cardData in array.Where(x => !x.FoundPair && x.Turned))
             {
                 cardData.Turn();
 
@@ -80,6 +92,20 @@ namespace MemoryGame_1B.Managers
             }
 
             NewPick();
+        }
+
+        /// <summary>
+        /// Ends Game
+        /// </summary>
+        private static void EndGame()
+        {
+            if (SocketIoManager.Online)
+            {
+                SocketIoManager.LeaveGame(SocketIoManager.Room);
+                Task.Run(() => GraphqlManager.DeleteServer(SocketIoManager.Room));
+            }
+
+            MainWindow.Instance.Content = new Main();
         }
 
         /// <summary>

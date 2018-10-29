@@ -55,7 +55,6 @@ namespace MemoryGame_1B.Views
                 Player1.Foreground = new SolidColorBrush(turn == Turn.Player1 ? Colors.Green : Colors.Black));
             Player2.Dispatcher.Invoke(() =>
                 Player2.Foreground = new SolidColorBrush(turn == Turn.Player2 ? Colors.Green : Colors.Black));
-
         }
 
         /// <inheritdoc />
