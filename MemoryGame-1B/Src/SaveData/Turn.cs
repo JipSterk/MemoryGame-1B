@@ -9,6 +9,7 @@
         /// Player 1
         /// </summary>
         Player1,
+
         /// <summary>
         /// Player 2
         /// </summary>
