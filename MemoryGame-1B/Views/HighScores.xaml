@@ -9,7 +9,7 @@
       Title="HighScores">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/Ui/Zombie/InGameBackground.png" />
+            <ImageBrush ImageSource="../Images/Ui/Zombie/InGameBackground.png" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*" />
@@ -93,7 +93,7 @@
                 <Image Grid.Column="1" Width="180" MouseDown="ReturnToMenu">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="/Images/Ui/Zombie/BtnReturn.png" />
+                            <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReturn.png" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturnHover.png"/>
