@@ -33,6 +33,19 @@ namespace MemoryGame_1B
         }
 
         /// <summary>
+        /// Get a random item from list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static T Random<T>(this List<T> list)
+        {
+            var random = new Random();
+            var next = random.Next(list.Count);
+            return list[next];
+        }
+
+        /// <summary>
         /// Removes and returns the first item
         /// </summary>
         /// <typeparam name="T"></typeparam>

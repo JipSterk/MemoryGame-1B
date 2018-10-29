@@ -152,6 +152,7 @@
     </ApplicationDefinition>
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
+    <Compile Include="Src\Managers\SoundManager.cs" />
     <Compile Include="Src\Models\CreateServerResponse.cs" />
     <Compile Include="Src\Models\ResponseStatus.cs" />
     <Compile Include="Src\Models\DeleteServerResponse.cs" />
@@ -325,6 +326,5 @@
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x5.png" />
     <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x6.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
