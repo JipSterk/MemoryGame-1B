@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
 
@@ -23,7 +24,8 @@ namespace MemoryGame_1B.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NewGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new NewGame(GridSize.Normal);
+        private void NewGame(object sender, RoutedEventArgs e) =>
+            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
 
         /// <summary>
         /// OnClickListener
@@ -61,5 +63,13 @@ namespace MemoryGame_1B.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Help(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Help();
+
+
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Online(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Online();
     }
 }
