@@ -338,5 +338,20 @@
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\BtnNextHover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundImgNewGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnHost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnHostHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnReload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnReloadHover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

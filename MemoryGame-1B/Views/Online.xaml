@@ -17,14 +17,26 @@
         <Grid Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="4*" />
+                <RowDefinition Height="3*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" TextAlignment="Center" Text="Join Game" />
             <ScrollViewer Grid.Row="1">
                 <Grid x:Name="Servers" />
             </ScrollViewer>
-            <Button Grid.Row="2" Margin="100, 20" Content="Herlaad" Click="Refresh" />
+            <Image Margin="100,020" Grid.Row="2" MouseDown="Refresh" MinWidth="150" MaxWidth="300">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReload.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReloadHover.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <!-- <Button Grid.Row="2" Margin="100, 20" Content="Herlaad" Click="Refresh" /> -->
         </Grid>
         <Grid Column="1">
             <Grid.RowDefinitions>
@@ -42,7 +54,19 @@
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="1" TextAlignment="Center" Text="Host Game" />
                 <TextBox x:Name="RoomName" Grid.Row="2" Text="fas" Height="30" />
-                <Button Grid.Row="3" Margin="100, 0" Content="Create Room" Click="CreateRoom" />
+                <Image Margin="30,0" Grid.Row="3" MouseDown="CreateRoom" MinWidth="180" MaxWidth="300">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="../Images/Ui/Zombie/btnMultiplayer.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="../Images/Ui/Zombie/btnMultiplayerHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <!-- <Button Grid.Row="3" Margin="100, 0" Content="Create Room" Click="CreateRoom" /> -->
             </Grid>
         </Grid>
     </Grid>
