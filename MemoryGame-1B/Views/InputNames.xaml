@@ -32,13 +32,13 @@
             <Grid Row="2">
                 <TextBlock Padding="5" FontSize="15">Name Player 1</TextBlock>
                 <TextBox Name="NamePlayer1" Padding="5" FontSize="15" VerticalAlignment="Center">
-                    <Binding Source="_namePlayer1" Path="_namePlayer1"/>
+                    Insert name player 1
                 </TextBox>
             </Grid>
             <Grid Row="3">
                 <TextBlock Padding="5" FontSize="15">Name Player 1</TextBlock>
                 <TextBox Name="NamePlayer2" Padding="5" FontSize="15" VerticalAlignment="Center">
-                    <Binding Source="_namePlayer2" Path="_namePlayer2"/>
+                    Insert name player 2
                 </TextBox>
             </Grid>
             <Grid Row="4">

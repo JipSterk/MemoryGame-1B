@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,13 +19,13 @@ namespace MemoryGame_1B.Views
     /// <summary>
     /// Interaction logic for InputNames.xaml
     /// </summary>
-    public partial class InputNames : Page, INotifyPropertyChanged
+    public partial class InputNames : Page
     {
         public InputNames() => InitializeComponent();
 
-        private string _namePlayer1 { get; set; } = "Name player 1";
-        private string _namePlayer2 { get; set; } = "Name player 2";
-        private GridSize _selectedGridSize { get; set; } = GridSize.Large;
+        private string _namePlayer1;
+        private string _namePlayer2;
+        private GridSize _selectedGridSize = GridSize.Large;
 
         private void NewGame(object sender, RoutedEventArgs e)
         {
@@ -36,11 +34,5 @@ namespace MemoryGame_1B.Views
         }
 
         private void MainMenu(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Main();
-        public event PropertyChangedEventHandler PropertyChanged;
-        
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }
