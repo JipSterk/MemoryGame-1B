@@ -207,8 +207,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\InputNames.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Main.xaml">
       <SubType>Designer</SubType>
