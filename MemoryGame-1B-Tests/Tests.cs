@@ -2,12 +2,10 @@
 using System.IO;
 using System.Windows.Automation;
 using System.Windows.Forms;
-using Castle.Components.DictionaryAdapter.Xml;
 using NUnit.Framework;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
-using TestStack.White.UIItems.WindowStripControls;
 using Application = TestStack.White.Application;
 using Button = TestStack.White.UIItems.Button;
 using ComboBox = TestStack.White.UIItems.ListBoxItems.ComboBox;
@@ -16,6 +14,7 @@ using TextBox = TestStack.White.UIItems.TextBox;
 namespace MemoryGame_1B_Tests
 {
     [TestFixture]
+    [NonParallelizable]
     public class Tests
     {
         /// <summary>
@@ -60,7 +59,7 @@ namespace MemoryGame_1B_Tests
             }
         }
 
-        [Test, Order(2)]
+        [Test, Order(3)]
         public void Save()
         {
             var application = GetApplication();
