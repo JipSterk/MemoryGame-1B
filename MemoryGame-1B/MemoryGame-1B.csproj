@@ -384,6 +384,24 @@
     <Resource Include="Images\Ui\Zombie\btnReturnHover.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundHighscores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundMultiplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMakeGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMakeGameHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exe.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="exe.ico" />
     <Content Include="SoundEffects\Zombie\1.wav" />
     <Content Include="SoundEffects\Zombie\2.wav" />
