@@ -201,6 +201,7 @@ namespace MemoryGame_1B
             {
                 Source = turned ? cardFront : cardBack,
                 DataContext = cardData,
+                Margin = new Thickness(0, 10 , 0 , 10)
             };
 
             image.MouseDown += CardClick;
