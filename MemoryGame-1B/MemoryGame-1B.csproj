@@ -153,6 +153,7 @@
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
     <Compile Include="Src\Managers\GameManager.cs" />
+    <Compile Include="Src\Score\ScoreEntry.cs" />
     <Compile Include="Src\Managers\SoundManager.cs" />
     <Compile Include="Src\Models\CreateServerResponse.cs" />
     <Compile Include="Src\Models\ResponseStatus.cs" />

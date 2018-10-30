@@ -4,11 +4,15 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
+using MemoryGame_1B.Score;
 using MemoryGame_1B.Views;
 using CardData = MemoryGame_1B.Card.CardData;
 
 namespace MemoryGame_1B.Managers
 {
+    /// <summary>
+    /// Handles all the game logic
+    /// </summary>
     public static class GameManager
     {
         /// <summary>
@@ -104,6 +108,13 @@ namespace MemoryGame_1B.Managers
                 SocketIoManager.LeaveGame(SocketIoManager.Room);
                 Task.Run(() => GraphqlManager.DeleteServer(SocketIoManager.Room));
             }
+
+            var scoreEntry = new ScoreEntry
+            {
+
+            };
+
+            ScoreManager.AddEntry(scoreEntry);
 
             MainWindow.Instance.Content = new Main();
         }
