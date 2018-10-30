@@ -26,6 +26,16 @@ namespace MemoryGame_1B.Managers
         public static event Action<Turn> OnTurnChanged;
 
         /// <summary>
+        /// First players name
+        /// </summary>
+        public static string NamePlayer1;
+
+        /// <summary>
+        /// First players name
+        /// </summary>
+        public static string NamePlayer2;
+
+        /// <summary>
         /// Start a new game
         /// </summary>
         public static void StartGame()

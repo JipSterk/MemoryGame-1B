@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using MemoryGame_1B.Managers;
@@ -33,6 +32,8 @@ namespace MemoryGame_1B.Views
             InitializeComponent();
 
             GameManager.OnTurnChanged += ToggleTurn;
+            Player1.Text = GameManager.NamePlayer1 ?? "";
+            Player2.Text = GameManager.NamePlayer2 ?? "";
         }
 
         /// <inheritdoc />
@@ -64,7 +65,10 @@ namespace MemoryGame_1B.Views
         /// <param name="saveData"></param>
         public NewGame(SaveData.SaveData saveData) : this()
         {
-            var (turn, gridSize, cardData) = saveData;
+            var (playerName1, playerName2, turn, gridSize, cardData) = saveData;
+
+            Player1.Text = playerName1;
+            Player2.Text = playerName2;
 
             _memoryGrid = new MemoryGrid(Grid, gridSize, turn, cardData);
         }
@@ -87,11 +91,11 @@ namespace MemoryGame_1B.Views
                 }
             }
 
-            var saveData = new SaveData.SaveData(Turn.Player2, _gridSize, cardData);
+            var saveData = new SaveData.SaveData(Player1.Text, Player2.Text, GameManager.Turn, _gridSize, cardData);
 
             var saveFileDialog = new SaveFileDialog
             {
-                FileName = "Player1VsPlayer2",
+                FileName = $"{Player1.Text}Vs{Player2.Text}",
                 DefaultExt = ".json",
                 Filter = "Json documents (.json)|*.json"
             };
@@ -109,15 +113,13 @@ namespace MemoryGame_1B.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowMenu(object sender, RoutedEventArgs e)
-        {
-        }
+        private void ShowMenu(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Main();
 
         /// <summary>
         /// OnClickListener
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RestartGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Main();
+        private void RestartGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new InputNames();
     }
 }
