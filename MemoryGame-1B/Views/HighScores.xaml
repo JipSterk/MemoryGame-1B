@@ -9,32 +9,30 @@
       Title="HighScores">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Images/Ui/Zombie/InGameBackground.png" />
+            <ImageBrush ImageSource="../Images/Ui/Zombie/BackgroundHighscores.png" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*" />
-            <ColumnDefinition Width="80*" />
+            <ColumnDefinition Width="30*" />
             <ColumnDefinition Width="10*" />
         </Grid.ColumnDefinitions>
         <Grid Column="1" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40*" />
+                <RowDefinition Height="25*" />
                 <RowDefinition Height="35*" />
                 <RowDefinition Height="35*" />
             </Grid.RowDefinitions>
-            <Grid Column="1" Row="0" Grid.ColumnSpan="3">
+            <Grid Column="1" Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35*" />
-                    <RowDefinition Height="35*" />
+                    <RowDefinition Height="25*" />
                 </Grid.RowDefinitions>
-                <Viewbox Grid.Row="0">
-                    <TextBlock MinWidth="130" FontSize="10" TextAlignment="Center">Highscores</TextBlock>
-                </Viewbox>
-                <Viewbox Grid.Row="1" VerticalAlignment="Top">
-                    <TextBlock MinWidth="130" FontSize="5" TextAlignment="Center">Spelbord grootte 4x4</TextBlock>
-                </Viewbox>
+                <!-- <Viewbox Grid.Row="0"> -->
+                <!--     <TextBlock MinWidth="130" FontSize="10" TextAlignment="Center">Highscores</TextBlock> -->
+                <!-- </Viewbox> -->
+                
             </Grid>
-            <Grid Column="1" Row="1" Margin="0,-50,0,0">
+            <Grid Column="1" Row="1"></Grid>
+            <Grid Column="1" Row="1" Margin="40,-10,40,0" ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="48*" />
                     <ColumnDefinition Width="25*" />
@@ -84,13 +82,13 @@
                     </Viewbox>
                 </Grid>
             </Grid>
-            <Grid Column="1" Row="2" Margin="0,20,0,0" MaxHeight="150" VerticalAlignment="Top">
+            <Grid Column="1" Row="2" Margin="0,0,0,0"  VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="25*" />
                     <ColumnDefinition Width="40*" />
-                    <ColumnDefinition Width="35*" />
+                    <ColumnDefinition Width="25*" />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="1" Width="180" MouseDown="ReturnToMenu">
+                <Image Grid.Column="1" MinWidth="120" MaxWidth="180"  MouseDown="ReturnToMenu">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReturn.png" />

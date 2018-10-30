@@ -360,5 +360,8 @@
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\btnReturnHover.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundHighscores.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
