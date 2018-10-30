@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
 
@@ -25,11 +28,24 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="gridSize"></param>
-        public NewGame(GridSize gridSize)
+        private NewGame()
         {
             InitializeComponent();
 
+            GameManager.OnTurnChanged += ToggleTurn;
+            GameManager.OnScoreChanged += ScoreChanged;
+
+            Player1Name.Text = GameManager.NamePlayer1;
+            Player2Name.Text = GameManager.NamePlayer2;
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="gridSize"></param>
+        public NewGame(GridSize gridSize) : this()
+        {
             _gridSize = gridSize;
             _memoryGrid = new MemoryGrid(Grid, _gridSize);
         }
@@ -39,15 +55,45 @@ namespace MemoryGame_1B.Views
         /// Constructor
         /// </summary>
         /// <param name="saveData"></param>
-        public NewGame(SaveData.SaveData saveData)
+        public NewGame(SaveData.SaveData saveData) : this()
         {
-            InitializeComponent();
+            var (playerName1, playerName2, turn, gridSize, cardData) = saveData;
 
-            var (turn, gridSize, cardData) = saveData;
+            Player1Name.Text = playerName1;
+            Player2Name.Text = playerName2;
 
             _memoryGrid = new MemoryGrid(Grid, gridSize, turn, cardData);
         }
 
+        /// <summary>
+        /// Toggles the turn
+        /// </summary>
+        private void ToggleTurn(Turn turn)
+        {
+            Player1Name.Dispatcher.Invoke(() =>
+                Player1Name.Foreground = new SolidColorBrush(turn == Turn.Player1 ? Colors.Green : Colors.Black));
+            Player2Name.Dispatcher.Invoke(() =>
+                Player2Name.Foreground = new SolidColorBrush(turn == Turn.Player2 ? Colors.Green : Colors.Black));
+        }
+
+        /// <summary>
+        /// Updates the score
+        /// </summary>
+        /// <param name="turn"></param>
+        /// <param name="score"></param>
+        private void ScoreChanged(Turn turn, int score)
+        {
+            Player1Score.Dispatcher.Invoke(() =>
+            {
+                if(turn == Turn.Player1) Player1Score.Text = $"Score: {score}";
+            });
+
+            Player2Score.Dispatcher.Invoke(() =>
+            {
+                if (turn == Turn.Player2) Player2Score.Text = $"Score: {score}";
+            });
+        }
+        
         /// <summary>
         /// OnClickListener
         /// </summary>
@@ -61,16 +107,16 @@ namespace MemoryGame_1B.Views
             {
                 for (var j = 0; j < _memoryGrid.CardData.GetLength(1); j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = _memoryGrid.CardData[i, j];
-                    cardData[i, j] = new CardData(cardFrontUriSource, cardBackUriSource, turned);
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = _memoryGrid.CardData[i, j];
+                    cardData[i, j] = new CardData(cardFrontUriSource, cardBackUriSource, turned, number);
                 }
             }
 
-            var saveData = new SaveData.SaveData(Turn.Player2, _gridSize, cardData);
+            var saveData = new SaveData.SaveData(Player1Name.Text, Player2Name.Text, GameManager.Turn, _gridSize, cardData);
 
             var saveFileDialog = new SaveFileDialog
             {
-                FileName = "Player1VsPlayer2",
+                FileName = $"{Player1Name.Text}Vs{Player2Name.Text}",
                 DefaultExt = ".json",
                 Filter = "Json documents (.json)|*.json"
             };
@@ -88,15 +134,29 @@ namespace MemoryGame_1B.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowMenu(object sender, RoutedEventArgs e)
-        {
-        }
+        private void ShowMenu(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Main();
 
         /// <summary>
         /// OnClickListener
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RestartGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Main();
+        private void RestartGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new InputNames();
+
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnToMenu(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Main();
+
+        /// <summary>
+        /// Deconstructor
+        /// </summary>
+        ~NewGame()
+        {
+            GameManager.OnTurnChanged -= ToggleTurn;
+            GameManager.OnScoreChanged -= ScoreChanged;
+        }
     }
 }

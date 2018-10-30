@@ -46,7 +46,7 @@ namespace MemoryGame_1B.Managers
         }
 
         /// <summary>
-        /// Joins a game
+        /// Leaves a game
         /// </summary>
         /// <param name="name"></param>
         public static void LeaveGame(string name)
