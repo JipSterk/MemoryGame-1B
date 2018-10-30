@@ -61,6 +61,8 @@ namespace MemoryGame_1B.Managers
                     ScoreEntries.RemoveAt(0);
             }
 
+            ScoreEntries.Sort();
+
             SaveScores();
         }
     }

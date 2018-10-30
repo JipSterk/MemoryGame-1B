@@ -153,6 +153,7 @@
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
     <Compile Include="Src\Managers\GameManager.cs" />
+    <Compile Include="Src\Managers\ScoreManager.cs" />
     <Compile Include="Src\Score\ScoreEntry.cs" />
     <Compile Include="Src\Managers\SoundManager.cs" />
     <Compile Include="Src\Models\CreateServerResponse.cs" />
@@ -368,6 +369,23 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\btnReturnHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie9.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie10.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie11.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie12.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie13.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie14.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie15.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie16.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie17.png" />
+    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie18.png" />
+    <Content Include="SoundEffects\Zombie\1.wav" />
+    <Content Include="SoundEffects\Zombie\2.wav" />
+    <Content Include="SoundEffects\Zombie\3.wav" />
+    <Content Include="SoundEffects\Zombie\4.wav" />
+    <Content Include="SoundEffects\Zombie\5.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
