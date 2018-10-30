@@ -9,7 +9,7 @@
       Title="InputNames">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="../Images/Ui/Zombie/InGameBackground.png" />
+            <ImageBrush ImageSource="../Images/Ui/Zombie/BackgroundImgNewGame.png" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25*"/>
@@ -18,44 +18,62 @@
         </Grid.ColumnDefinitions>
         <Grid Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="13*"/>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="5*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
+                <RowDefinition Height="28*"/>
+                <!-- <RowDefinition Height="15*"/> -->
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="1" FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">New Game</TextBlock>
-            <TextBlock Grid.Row="2" Margin="20, 0"  Padding="5">Name Player 1</TextBlock>
-            <TextBox Grid.Row="2" Margin="20" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <TextBlock Grid.Row="3" Margin="20, 0" Padding="5">Name Player 2</TextBlock>
-            <TextBox Grid.Row="3" Margin="20" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <ComboBox Grid.Row="4" Margin="20, 0" Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
-            <Image Grid.Row="5" Width="180" HorizontalAlignment="Left" MouseDown="MainMenu">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturn.png" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturnHover.png" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-            <Image Grid.Row="5" Width="180" HorizontalAlignment="Right" MouseDown="NewGame">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
+            <Grid x:Name="buttons" Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Margin="20, 0"  Padding="5" Content="Naam speler 1" FontSize="13" VerticalAlignment="Top"></Label>
+                <TextBox Grid.Column="0" Margin="20" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+                <Label Grid.Column="1" Margin="20, 0" Padding="5" Content="Naam speler 2" FontSize="13"></Label>
+                <TextBox Grid.Column="1" Margin="20" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+            </Grid>
+            <Grid Column="1" Row="3" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0" Margin="20, 0" Height="25" MaxHeight="25"  Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
+                <ComboBox Grid.Column="1" Margin="20, 0" Height="25" MaxHeight="25" Name="ThemeChange" Padding="5" SelectionChanged="ChangeTheme"/>
+            </Grid>
+            <Grid x:Name="inputboxes" Row="4" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" MinWidth="150" MaxWidth="300" MouseDown="MainMenu">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturn.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturnHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image Grid.Column="1" MinWidth="150" MaxWidth="300" MouseDown="NewGame">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Grid>
         </Grid>
     </Grid>
 </Page>
