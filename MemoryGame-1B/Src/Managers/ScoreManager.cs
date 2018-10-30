@@ -62,7 +62,7 @@ namespace MemoryGame_1B.Managers
                     ScoreEntries.RemoveAt(0);
             }
 
-            ScoreEntries = ScoreEntries.OrderBy(x => x.Score).ToList();
+            ScoreEntries = ScoreEntries.OrderByDescending(x => x.Score).ToList();
 
             SaveScores();
         }
