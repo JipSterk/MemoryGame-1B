@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using MemoryGame_1B.Score;
 using Newtonsoft.Json;
 
@@ -19,7 +20,7 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// Path where to save and load from
         /// </summary>
-        private static readonly string Path = AppDomain.CurrentDomain.BaseDirectory;
+        private static readonly string Path = $"{AppDomain.CurrentDomain.BaseDirectory}/Scores.json";
 
         /// <summary>
         /// Constructor
@@ -61,7 +62,7 @@ namespace MemoryGame_1B.Managers
                     ScoreEntries.RemoveAt(0);
             }
 
-            ScoreEntries.Sort();
+            ScoreEntries = ScoreEntries.OrderBy(x => x.Score).ToList();
 
             SaveScores();
         }

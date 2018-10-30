@@ -103,7 +103,7 @@ namespace MemoryGame_1B.Managers
 
             var array = MemoryGrid.Instance.CardData.Cast<CardData>().ToArray();
 
-            if (array.Length - array.Count(x => x.Turned) == 2)
+            if (array.Length - array.Count(x => x.Turned && x.FoundPair) == 2)
             {
                 foreach (var cardData in array.Where(x => !x.FoundPair))
                     cardData.FoundPair = true;
@@ -156,9 +156,11 @@ namespace MemoryGame_1B.Managers
                 Score = b ? ScorePlayer1 : ScorePlayer2
             };
 
+            ScorePlayer1 = ScorePlayer2 = 0;
+
             ScoreManager.AddEntry(scoreEntry);
 
-            MainWindow.Instance.Content = new Main();
+            MainWindow.Instance.Dispatcher.Invoke(() => MainWindow.Instance.Content = new Main());
         }
 
         /// <summary>
