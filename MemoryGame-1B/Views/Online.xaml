@@ -1,0 +1,95 @@
+﻿<Page x:Class="MemoryGame_1B.Views.Online"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Online">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Ui/Zombie/BackgroundMultiplayer.png" />
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="32*" />
+            <ColumnDefinition Width="10*" />
+        </Grid.ColumnDefinitions>
+        <Grid Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40*" />
+                <ColumnDefinition Width="40*" />
+            </Grid.ColumnDefinitions>
+            <Grid Column="0" Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" TextAlignment="Center" Text="Join Game" FontSize="48" FontFamily="/MemoryGame-1B;component/font/#Deanna"/>
+                <ScrollViewer Grid.Row="1">
+                    <Grid x:Name="Servers" />
+                </ScrollViewer>
+                
+                <Grid x:Name="buttons" Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*" />
+                        <ColumnDefinition Width="10*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,0,0,20" Grid.Column="0" MouseDown="Refresh" MinWidth="150" MaxWidth="300" VerticalAlignment="Top">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReload.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReloadHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                    <Image Margin="0,0,0,20" Grid.Column="1" MouseDown="ReturnToMenu" MinWidth="150" MaxWidth="300" VerticalAlignment="Top">
+                        <Image.Style>
+                            <Style TargetType="{x:Type Image}">
+                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturn.png" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturnHover.png" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </Grid>
+            </Grid>
+            
+            <!-- <Button Grid.Row="2" Margin="100, 20" Content="Herlaad" Click="Refresh" /> -->
+            <Grid Column="1" Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" TextAlignment="Center" Text="Host Game" FontSize="48" FontFamily="/MemoryGame-1B;component/font/#Deanna" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="RoomName" Grid.Row="1" Text="Spel naam" Height="30"  />
+                <Image HorizontalAlignment="center" Margin="50,-20,100,20" Grid.Row="2" MouseDown="CreateRoom" MinWidth="180" MaxWidth="300" Grid.ColumnSpan="2">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="../Images/Ui/Zombie/BtnMakeGame.png" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Source" Value="../Images/Ui/Zombie/BtnMakeGameHover.png" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
