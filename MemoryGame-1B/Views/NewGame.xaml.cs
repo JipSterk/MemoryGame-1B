@@ -35,15 +35,27 @@ namespace MemoryGame_1B.Views
             GameManager.OnTurnChanged += ToggleTurn;
         }
 
+        /// <summary>
+        /// First players name
+        /// </summary>
+        private readonly string _namePlayer1;
+
+        /// <summary>
+        /// First players name
+        /// </summary>
+        private readonly string _namePlayer2;
+
         /// <inheritdoc />
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="gridSize"></param>
-        public NewGame(GridSize gridSize) : this()
+        public NewGame(GridSize gridSize, string namePlayer1, string namePlayer2) : this()
         {
             _gridSize = gridSize;
             _memoryGrid = new MemoryGrid(Grid, _gridSize);
+            _namePlayer1 = namePlayer1;
+            _namePlayer2 = namePlayer2;
         }
 
         /// <summary>
