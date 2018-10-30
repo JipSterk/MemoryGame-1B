@@ -16,7 +16,6 @@ namespace MemoryGame_1B
         /// <param name="list"></param>
         public static List<T> Shuffle<T>(this List<T> list)
         {
-            var list1 = list.ToList();
             var count = list.Count;
             var random = new Random();
 
@@ -24,12 +23,12 @@ namespace MemoryGame_1B
             {
                 count--;
                 var index = random.Next(count + 1);
-                var value = list1[index];
-                list1[index] = list1[count];
-                list1[count] = value;
+                var value = list[index];
+                list[index] = list[count];
+                list[count] = value;
             }
 
-            return list1;
+            return list;
         }
 
         /// <summary>
@@ -43,6 +42,18 @@ namespace MemoryGame_1B
             var random = new Random();
             var next = random.Next(list.Count);
             return list[next];
+        }
+
+        /// <summary>
+        /// Get a random enum member
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static T Random<T>(this T @enum)
+        {
+            var random = new Random();
+            var values = (T[]) Enum.GetValues(typeof(T));
+            return values[random.Next(values.Length)];
         }
 
         /// <summary>

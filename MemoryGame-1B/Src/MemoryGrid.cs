@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,11 @@ namespace MemoryGame_1B
     /// </summary>
     public class MemoryGrid
     {
+        /// <summary>
+        /// Singleton
+        /// </summary>
+        public static MemoryGrid Instance { get; private set; }
+
         /// <summary>
         /// The data of all cards on the grid
         /// </summary>
@@ -49,6 +55,8 @@ namespace MemoryGame_1B
         /// </summary>
         public MemoryGrid()
         {
+            Instance = this;
+
             if (SocketIoManager.Online)
             {
                 SocketIoManager.OnNewMove += OnNewMove;
@@ -119,12 +127,12 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = cardData[i, j];
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = cardData[i, j];
 
                     var cardBack = new BitmapImage(new Uri(cardBackUriSource, UriKind.Relative));
                     var cardFront = new BitmapImage(new Uri(cardFrontUriSource, UriKind.Relative));
 
-                    BuildCard(cardFront, cardBack, i, j, turned);
+                    BuildCard(cardFront, cardBack, i, j, number, turned);
                 }
             }
         }
@@ -137,14 +145,7 @@ namespace MemoryGame_1B
         {
             var (_, x, y) = JsonConvert.DeserializeObject<Move>((string) o);
 
-            _grid.Dispatcher.Invoke(() =>
-            {
-                var uiElement = _grid.Children.Cast<UIElement>()
-                    .First(element => Grid.GetRow(element) + 1 == x && Grid.GetColumn(element) + 1 == y);
-                var image = (Image) uiElement;
-
-                image.Source = CardData[x - 1, y - 1].Turn();
-            });
+            _grid.Dispatcher.Invoke(() => CardData[x - 1, y - 1].Turn());
         }
 
         /// <summary>
@@ -162,9 +163,9 @@ namespace MemoryGame_1B
                         new BitmapImage(new Uri($"../Images/Cards/Zombies/CardBackground/CardBG{i + 1}x{j + 1}.png",
                             UriKind.Relative));
 
-                    var cardFront = bitmapImages.Pop();
+                    var (i1, cardFront) = bitmapImages.Pop();
 
-                    BuildCard(cardFront, cardBack, i, j);
+                    BuildCard(cardFront, cardBack, i, j, i1);
                 }
             }
 
@@ -176,8 +177,8 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < CardData.GetLength(1); j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = CardData[i, j];
-                    cardData[i, j] = new SaveData.CardData(cardFrontUriSource, cardBackUriSource, turned);
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = CardData[i, j];
+                    cardData[i, j] = new SaveData.CardData(cardFrontUriSource, cardBackUriSource, turned, number);
                 }
             }
 
@@ -192,17 +193,19 @@ namespace MemoryGame_1B
         /// <param name="cardBack"></param>
         /// <param name="i"></param>
         /// <param name="j"></param>
+        /// <param name="number"></param>
         /// <param name="turned"></param>
-        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, bool turned = false)
+        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number, bool turned = false)
         {
-            var cardData = new CardData(cardFront, cardBack, turned);
-
             var image = new Image
             {
                 Source = turned ? cardFront : cardBack,
-                DataContext = cardData,
-                Margin = new Thickness(0, 10 , 0 , 10)
+                Margin = new Thickness(0, 10, 0, 10)
             };
+
+            var cardData = new CardData(image, cardFront, cardBack, turned, number);
+
+            image.DataContext = cardData;
 
             image.MouseDown += CardClick;
 
@@ -217,10 +220,10 @@ namespace MemoryGame_1B
         /// Gets all the images
         /// </summary>
         /// <returns></returns>
-        private List<BitmapImage> GetImages()
+        private List<(int, BitmapImage)> GetImages()
         {
             var count = _gridSize == GridSize.Normal ? 16 : 36;
-            var list = new List<BitmapImage>();
+            var list = new List<(int, BitmapImage)>();
 
             for (var i = 0; i < count; i++)
             {
@@ -228,7 +231,7 @@ namespace MemoryGame_1B
                 var bitmapImage =
                     new BitmapImage(new Uri($"../Images/Cards/Zombies/CardFront/CardZombie{imageNumber}.png",
                         UriKind.Relative));
-                list.Add(bitmapImage);
+                list.Add((imageNumber, bitmapImage));
             }
 
             return list;
@@ -239,8 +242,10 @@ namespace MemoryGame_1B
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void CardClick(object sender, MouseButtonEventArgs e)
+        private void CardClick(object sender, MouseButtonEventArgs e)
         {
+            if(CardData.Cast<CardData>().Count(x => !x.FoundPair && x.Turned) == 2) return;
+
             var image = (Image) sender;
 
             if (SocketIoManager.Online)
@@ -260,7 +265,9 @@ namespace MemoryGame_1B
 
             var cardData = (CardData) image.DataContext;
 
-            image.Source = cardData.Turn();
+            cardData.Turn();
+
+            GameManager.PickCard();
         }
 
         /// <summary>

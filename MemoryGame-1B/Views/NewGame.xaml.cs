@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
 
@@ -25,13 +28,33 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="gridSize"></param>
-        public NewGame(GridSize gridSize)
+        private NewGame()
         {
             InitializeComponent();
 
+            GameManager.OnTurnChanged += ToggleTurn;
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="gridSize"></param>
+        public NewGame(GridSize gridSize) : this()
+        {
             _gridSize = gridSize;
             _memoryGrid = new MemoryGrid(Grid, _gridSize);
+        }
+
+        /// <summary>
+        /// Toggles the turn
+        /// </summary>
+        private void ToggleTurn(Turn turn)
+        {
+            Player1.Dispatcher.Invoke(() =>
+                Player1.Foreground = new SolidColorBrush(turn == Turn.Player1 ? Colors.Green : Colors.Black));
+            Player2.Dispatcher.Invoke(() =>
+                Player2.Foreground = new SolidColorBrush(turn == Turn.Player2 ? Colors.Green : Colors.Black));
         }
 
         /// <inheritdoc />
@@ -39,10 +62,8 @@ namespace MemoryGame_1B.Views
         /// Constructor
         /// </summary>
         /// <param name="saveData"></param>
-        public NewGame(SaveData.SaveData saveData)
+        public NewGame(SaveData.SaveData saveData) : this()
         {
-            InitializeComponent();
-
             var (turn, gridSize, cardData) = saveData;
 
             _memoryGrid = new MemoryGrid(Grid, gridSize, turn, cardData);
@@ -61,8 +82,8 @@ namespace MemoryGame_1B.Views
             {
                 for (var j = 0; j < _memoryGrid.CardData.GetLength(1); j++)
                 {
-                    var (cardFrontUriSource, cardBackUriSource, turned) = _memoryGrid.CardData[i, j];
-                    cardData[i, j] = new CardData(cardFrontUriSource, cardBackUriSource, turned);
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = _memoryGrid.CardData[i, j];
+                    cardData[i, j] = new CardData(cardFrontUriSource, cardBackUriSource, turned, number);
                 }
             }
 

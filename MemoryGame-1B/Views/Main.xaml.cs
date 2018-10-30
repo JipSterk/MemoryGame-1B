@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
 
@@ -24,8 +25,11 @@ namespace MemoryGame_1B.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NewGame(object sender, RoutedEventArgs e) =>
+        private void NewGame(object sender, RoutedEventArgs e)
+        {
             MainWindow.Instance.Content = new NewGame(GridSize.Normal);
+            GameManager.StartGame();
+        }
 
         /// <summary>
         /// OnClickListener
