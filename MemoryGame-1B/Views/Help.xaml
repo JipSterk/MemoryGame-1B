@@ -7,9 +7,9 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Help">
     <Grid>
-        <!-- <Grid.Background> -->
-        <!--     <ImageBrush ImageSource="../Images/Ui/Zombie/BackgroundHelp.png" /> -->
-        <!-- </Grid.Background> -->
+        <Grid.Background>
+            <ImageBrush ImageSource="../Images/Ui/Zombie/BackgroundHelp.png" />
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*" />
             <ColumnDefinition Width="80*" />
@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid Column="1" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40*" />
+                <RowDefinition Height="5*" />
                 <RowDefinition Height="80*" />
             </Grid.RowDefinitions>
             <Grid Column="1" Row="0" Grid.ColumnSpan="3">
@@ -42,26 +42,26 @@
                     <RowDefinition Height="25*" />
                     <RowDefinition Height="55*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" MinWidth="150" MaxWidth="650"
-                           MaxHeight="80">
-                    Memory word gespeeld met meerdere spelers. In zijn beurt draait de speler een kaartje naar keuze open.
-                    Vervolgens draait hij een tweede kaartje open. Als de afbeeldingen op beide kaartjes gelijk zijn.
-                    Mag de speler nog een keer een paar zoeken is deze ook weer correct.
-                    Krijg de speler hiermee een streak dit verschilt per bordgrootte.
-                    Heeft de speler geen paar gevonden is de volgende speler aan de beurt.
-                </TextBlock>
-                <TextBlock Margin="0,0,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top"
-                           MinWidth="150" MaxWidth="650" MaxHeight="100">
-                    <Bold>Streak uitgelegd:</Bold><LineBreak />
-                    1 paar is 100 punten waard.<LineBreak />
-                    4 x 4 = 16 kaartjes<LineBreak />
-                    minimum score op 16 kaartje x 100 punten elk 1600 punten<LineBreak />
-                    6 x 6 = 36 kaartjes<LineBreak />
-                    minimum score of 36 kaartjes x 100 punten elk 3600 punten
-                </TextBlock>
+                <!-- <TextBlock Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" MinWidth="150" MaxWidth="650" -->
+                <!--            MaxHeight="80"> -->
+                <!--     Memory word gespeeld met meerdere spelers. In zijn beurt draait de speler een kaartje naar keuze open. -->
+                <!--     Vervolgens draait hij een tweede kaartje open. Als de afbeeldingen op beide kaartjes gelijk zijn. -->
+                <!--     Mag de speler nog een keer een paar zoeken is deze ook weer correct. -->
+                <!--     Krijg de speler hiermee een streak dit verschilt per bordgrootte. -->
+                <!--     Heeft de speler geen paar gevonden is de volgende speler aan de beurt. -->
+                <!-- </TextBlock> -->
+                <!-- <TextBlock Margin="0,0,0,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Top" -->
+                <!--            MinWidth="150" MaxWidth="650" MaxHeight="100"> -->
+                <!--     <Bold>Streak uitgelegd:</Bold><LineBreak /> -->
+                <!--     1 paar is 100 punten waard.<LineBreak /> -->
+                <!--     4 x 4 = 16 kaartjes<LineBreak /> -->
+                <!--     minimum score op 16 kaartje x 100 punten elk 1600 punten<LineBreak /> -->
+                <!--     6 x 6 = 36 kaartjes<LineBreak /> -->
+                <!--     minimum score of 36 kaartjes x 100 punten elk 3600 punten -->
+                <!-- </TextBlock> -->
                 <Grid Grid.Column="1" Grid.Row="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50*" />
+                        <!-- <RowDefinition Height="50*" /> -->
                         <RowDefinition Height="50*" />
                     </Grid.RowDefinitions>
                     

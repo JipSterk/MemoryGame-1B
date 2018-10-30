@@ -17,14 +17,14 @@
         <Grid Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="2*" />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" TextAlignment="Center" Text="Join Game" />
+            <TextBlock Grid.Row="0" TextAlignment="Center" Text="Join Game" FontSize="48" FontFamily="/MemoryGame-1B;component/font/#Deanna"/>
             <ScrollViewer Grid.Row="1">
                 <Grid x:Name="Servers" />
             </ScrollViewer>
-            <Image Margin="100,020" Grid.Row="2" MouseDown="Refresh" MinWidth="150" MaxWidth="300">
+            <Image Margin="100,0,100,20" Grid.Row="2" MouseDown="Refresh" MinWidth="150" MaxWidth="300" VerticalAlignment="Top">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Source" Value="../Images/Ui/Zombie/BtnReload.png" />
@@ -47,12 +47,12 @@
             <Grid Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
                     <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" TextAlignment="Center" Text="Host Game" />
+                <TextBlock Grid.Row="1" TextAlignment="Center" Text="Host Game" FontSize="48" FontFamily="/MemoryGame-1B;component/font/#Deanna"/>
                 <TextBox x:Name="RoomName" Grid.Row="2" Text="fas" Height="30" />
                 <Image Margin="30,0" Grid.Row="3" MouseDown="CreateRoom" MinWidth="180" MaxWidth="300">
                     <Image.Style>
