@@ -245,7 +245,7 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
-            if(CardData.Cast<CardData>().Count(x => !x.FoundPair && x.Turned) == 2) return;
+            if(CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
             var image = (Image) sender;
 

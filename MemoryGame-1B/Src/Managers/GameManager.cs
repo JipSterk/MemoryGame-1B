@@ -4,11 +4,15 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
+using MemoryGame_1B.Score;
 using MemoryGame_1B.Views;
 using CardData = MemoryGame_1B.Card.CardData;
 
 namespace MemoryGame_1B.Managers
 {
+    /// <summary>
+    /// Handles all the game logic
+    /// </summary>
     public static class GameManager
     {
         /// <summary>
@@ -22,14 +26,29 @@ namespace MemoryGame_1B.Managers
         public static event Action<Turn> OnTurnChanged;
 
         /// <summary>
+        /// The event listener for updating the score
+        /// </summary>
+        public static event Action<Turn, int> OnScoreChanged;
+
+        /// <summary>
         /// First players name
         /// </summary>
         public static string NamePlayer1;
 
         /// <summary>
-        /// First players name
+        /// Second players name
         /// </summary>
         public static string NamePlayer2;
+
+        /// <summary>
+        /// First players score
+        /// </summary>
+        public static int ScorePlayer1 { get; set; }
+
+        /// <summary>
+        /// Second players score
+        /// </summary>
+        public static int ScorePlayer2 { get; set; }
 
         /// <summary>
         /// Start a new game
@@ -64,13 +83,27 @@ namespace MemoryGame_1B.Managers
                 SoundManager.PlayRandom();
 
                 lhs.FoundPair = rhs.FoundPair = true;
+
+                switch (Turn)
+                {
+                    case Turn.Player1:
+                        ScorePlayer1 += 100;
+                        break;
+                    case Turn.Player2:
+                        ScorePlayer2 += 100;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                OnScoreChanged?.Invoke(Turn, Turn == Turn.Player1 ? ScorePlayer1 : ScorePlayer2);
             }
 
             await Task.Delay(1000);
 
             var array = MemoryGrid.Instance.CardData.Cast<CardData>().ToArray();
 
-            if (array.Length - array.Count(x => x.Turned) == 2)
+            if (array.Length - array.Count(x => x.Turned && x.FoundPair) == 2)
             {
                 foreach (var cardData in array.Where(x => !x.FoundPair))
                     cardData.FoundPair = true;
@@ -115,7 +148,19 @@ namespace MemoryGame_1B.Managers
                 Task.Run(() => GraphqlManager.DeleteServer(SocketIoManager.Room));
             }
 
-            MainWindow.Instance.Content = new Main();
+            var b = ScorePlayer1 > ScorePlayer2;
+
+            var scoreEntry = new ScoreEntry
+            {
+                Name = b ? NamePlayer1 : NamePlayer2,
+                Score = b ? ScorePlayer1 : ScorePlayer2
+            };
+
+            ScorePlayer1 = ScorePlayer2 = 0;
+
+            ScoreManager.AddEntry(scoreEntry);
+
+            MainWindow.Instance.Dispatcher.Invoke(() => MainWindow.Instance.Content = new Main());
         }
 
         /// <summary>
