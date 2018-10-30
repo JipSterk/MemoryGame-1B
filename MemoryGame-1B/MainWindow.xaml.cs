@@ -9,6 +9,9 @@ namespace MemoryGame_1B
     /// </summary>
     public partial class MainWindow
     {
+        /// <summary>
+        /// Singleton
+        /// </summary>
         public static MainWindow Instance { get; private set; }
 
         /// <inheritdoc />

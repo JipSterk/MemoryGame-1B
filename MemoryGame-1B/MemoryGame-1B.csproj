@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>exe.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EngineIoClientDotNet, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EngineIoClientDotNet.1.0.7\lib\net45\EngineIoClientDotNet.dll</HintPath>
@@ -152,6 +155,7 @@
     </ApplicationDefinition>
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
+    <Compile Include="Src\Managers\GameManager.cs" />
     <Compile Include="Src\Managers\SoundManager.cs" />
     <Compile Include="Src\Models\CreateServerResponse.cs" />
     <Compile Include="Src\Models\ResponseStatus.cs" />
@@ -172,6 +176,9 @@
     </Compile>
     <Compile Include="Views\HighScores.xaml.cs">
       <DependentUpon>HighScores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InputNames.xaml.cs">
+      <DependentUpon>InputNames.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
@@ -200,6 +207,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\HighScores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InputNames.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -374,6 +385,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\BtnMakeGameHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exe.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="exe.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
