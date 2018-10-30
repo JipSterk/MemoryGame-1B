@@ -366,5 +366,14 @@
   <ItemGroup>
     <Resource Include="Images\Ui\Zombie\BackgroundHelp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundMultiplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMakeGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMakeGameHover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
