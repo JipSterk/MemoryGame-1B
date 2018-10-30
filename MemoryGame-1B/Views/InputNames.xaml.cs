@@ -37,6 +37,8 @@ namespace MemoryGame_1B.Views
             InitializeComponent();
             GridSize.ItemsSource = Enum.GetValues(typeof(GridSize));
             GridSize.SelectedItem = SaveData.GridSize.Normal;
+            GameManager.NamePlayer1 = null;
+            GameManager.NamePlayer2 = null;
         }
 
         /// <summary>
@@ -54,6 +56,8 @@ namespace MemoryGame_1B.Views
         private void NewGame(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(_namePlayer1) || string.IsNullOrEmpty(_namePlayer2)) return;
+            GameManager.NamePlayer1 = _namePlayer1;
+            GameManager.NamePlayer2 = _namePlayer2;
             MainWindow.Instance.Content = new NewGame(_gridSize);
             GameManager.StartGame();
         }
