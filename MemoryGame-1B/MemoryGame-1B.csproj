@@ -399,9 +399,6 @@
     <Resource Include="Images\Ui\Zombie\BtnMakeGameHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\exe.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="exe.ico" />
     <Content Include="SoundEffects\Zombie\1.wav" />
     <Content Include="SoundEffects\Zombie\2.wav" />
