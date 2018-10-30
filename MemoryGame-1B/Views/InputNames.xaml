@@ -7,7 +7,6 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="InputNames">
-
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="../Images/Ui/Zombie/InGameBackground.png" />
@@ -25,50 +24,38 @@
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
-            <Grid Row="1">
-                <TextBlock FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">New Game</TextBlock>
-            </Grid>
-            <Grid Row="2">
-                <TextBlock Padding="5" FontSize="15">Name Player 1</TextBlock>
-                <TextBox Name="NamePlayer1" Padding="5" FontSize="15" VerticalAlignment="Center">
-                    <Binding Source="_namePlayer1" XPath="_namePlayer1"/>
-                </TextBox>
-            </Grid>
-            <Grid Row="3">
-                <TextBlock Padding="5" FontSize="15">Name Player 1</TextBlock>
-                <TextBox Name="NamePlayer2" Padding="5" FontSize="15" VerticalAlignment="Center">
-                    <Binding Source="_namePlayer2" XPath="_namePlayer2"/>
-                </TextBox>
-            </Grid>
-            <Grid Row="4">
-                <Image Margin="30, 0" Width="180" HorizontalAlignment="Left" MouseDown="MainMenu">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png" />
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                </Image>
-            </Grid>
-            <Grid Row="4">
-                <Image Margin="30, 0" Width="180" HorizontalAlignment="Right" MouseDown="NewGame">
-                    <Image.Style>
-                        <Style TargetType="{x:Type Image}">
-                            <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Style>
-                </Image>
-            </Grid>
+            <TextBlock Grid.Row="1" FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">New Game</TextBlock>
+            <TextBlock Grid.Row="2" Padding="5">Name Player 1</TextBlock>
+            <TextBox Grid.Row="2" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+            <TextBlock Grid.Row="3" Padding="5">Name Player 1</TextBlock>
+            <TextBox Grid.Row="3" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+            <ComboBox Grid.Row="4" Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
+            <Image Grid.Row="5" Margin="30, 0" Width="180" HorizontalAlignment="Left" MouseDown="MainMenu">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image Grid.Row="5" Margin="30, 0" Width="180" HorizontalAlignment="Right" MouseDown="NewGame">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
         </Grid>
     </Grid>
 </Page>

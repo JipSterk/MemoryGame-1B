@@ -1,48 +1,92 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 
 namespace MemoryGame_1B.Views
 {
+    /// <inheritdoc cref="Page" />
     /// <summary>
     /// Interaction logic for InputNames.xaml
     /// </summary>
-    public partial class InputNames : Page, INotifyPropertyChanged
+    public partial class InputNames
     {
-        public InputNames() => InitializeComponent();
+        /// <summary>
+        /// First players name
+        /// </summary>
+        private string _namePlayer1;
 
-        private string _namePlayer1 { get; set; } = "Player1";
-        private string _namePlayer2 { get; set; } = "Player2";
-        private GridSize _selectedGridSize { get; set; } = GridSize.Large;
+        /// <summary>
+        /// Second players name
+        /// </summary>
+        private string _namePlayer2;
 
-        private void NewGame(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// The size of the grid
+        /// </summary>
+        private GridSize _gridSize;
+
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public InputNames()
         {
-            // Save names of Player1 and Player2 from TextBoxes somewhere, somehow
-            MainWindow.Instance.Content = new NewGame(GridSize.Large);
+            InitializeComponent();
+            GridSize.ItemsSource = Enum.GetValues(typeof(GridSize));
+            GridSize.SelectedItem = SaveData.GridSize.Normal;
         }
 
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMenu(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new Main();
 
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged( string propertyName = null)
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewGame(object sender, RoutedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (string.IsNullOrEmpty(_namePlayer1) || string.IsNullOrEmpty(_namePlayer2)) return;
+            MainWindow.Instance.Content = new NewGame(_gridSize);
+            GameManager.StartGame();
+        }
+
+        /// <summary>
+        /// OnChangeListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeName(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+
+             if (textBox == NamePlayer1)
+            {
+                _namePlayer1 = textBox.Text;
+            }
+            else if (textBox == NamePlayer2)
+            {
+                _namePlayer2 = textBox.Text;
+            }
+        }
+
+        /// <summary>
+        /// OnChangeListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangeGridSize(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = (ComboBox)sender;
+
+            _gridSize = (GridSize)comboBox.SelectedItem;
         }
     }
 }
