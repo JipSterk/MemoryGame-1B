@@ -18,41 +18,40 @@
         </Grid.ColumnDefinitions>
         <Grid Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="15*"/>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
                 <RowDefinition Height="5*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
+                <RowDefinition Height="30*"/>
+                <!-- <RowDefinition Height="15*"/> -->
             </Grid.RowDefinitions>
-            <Grid x:Name="buttons" Row="5">
+            <Grid x:Name="buttons" Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*" />
                     <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
-
-                </Grid>
-            <!-- <TextBlock Grid.Row="1" FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">Nieuw Spel</TextBlock> -->
-            <Label Grid.Row="2" Margin="20, 0"  Padding="5" Content="Naam speler 1"></Label>
-            <!-- <TextBlock Grid.Row="2" Margin="20, 0"  Padding="5">Naam speler 1</TextBlock> -->
-            <TextBox Grid.Row="2" Margin="20" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <Label Grid.Row="3" Margin="20, 0" Padding="5" Content="Naam speler 2"></Label>
-            <TextBox Grid.Row="3" Margin="20" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <Grid Column="1" Row="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*" />
-                    <ColumnDefinition Width="10*" />
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="0" Margin="20, 0" Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
-                <ComboBox Grid.Column="1" Margin="20, 0" Name="ThemaChanges" Padding="5" SelectionChanged="ChangeTheme"/>
+                <!-- <TextBlock Grid.Row="1" FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">Nieuw Spel</TextBlock> -->
+                <Label Grid.Column="0" Margin="20, 0"  Padding="5" Content="Naam speler 1"></Label>
+                <!-- <TextBlock Grid.Row="2" Margin="20, 0"  Padding="5">Naam speler 1</TextBlock> -->
+                <TextBox Grid.Column="0" Margin="20" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+                <Label Grid.Column="1" Margin="20, 0" Padding="5" Content="Naam speler 2"></Label>
+                <TextBox Grid.Column="1" Margin="20" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
             </Grid>
-            <Grid x:Name="inputboxes" Row="5">
+            <Grid Column="1" Row="3" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*" />
                     <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" MinWidth="150" MaxWidth="300" HorizontalAlignment="Left" MouseDown="MainMenu">
+                <ComboBox Grid.Column="0" Margin="20, 0" Height="25" MaxHeight="25"  Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
+                <ComboBox Grid.Column="1" Margin="20, 0" Height="25" MaxHeight="25" Name="ThemeChange" Padding="5" SelectionChanged="ChangeTheme"/>
+            </Grid>
+            <Grid x:Name="inputboxes" Row="4" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="10*" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" MinWidth="150" MaxWidth="300" MouseDown="MainMenu">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturn.png" />
@@ -64,7 +63,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <Image Grid.Column="1" Width="180" HorizontalAlignment="Right" MouseDown="NewGame">
+                <Image Grid.Column="1" MinWidth="150" MaxWidth="300" MouseDown="NewGame">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png"/>
