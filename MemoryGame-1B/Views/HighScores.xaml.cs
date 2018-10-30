@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
+using MemoryGame_1B.Managers;
 
 namespace MemoryGame_1B.Views
 {
@@ -13,7 +14,29 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        public HighScores() => InitializeComponent();
+        public HighScores()
+        {
+            InitializeComponent();
+
+            foreach (var (name, score) in ScoreManager.ScoreEntries)
+            {
+                if (string.IsNullOrEmpty(Name1.Text))
+                {
+                    Name1.Text = name;
+                    Score1.Text = score.ToString();
+                }
+                else if (string.IsNullOrEmpty(Name2.Text))
+                {
+                    Name2.Text = name;
+                    Score2.Text = score.ToString();
+                }
+                else if (string.IsNullOrEmpty(Name3.Text))
+                {
+                    Name3.Text = name;
+                    Score3.Text = score.ToString();
+                }
+            }
+        }
 
         /// <summary>
         /// OnClickListener
