@@ -12,9 +12,9 @@
             <ImageBrush ImageSource="../Images/Ui/Zombie/InGameBackground.png" />
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20*"/>
-            <ColumnDefinition Width="60*"/>
-            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="25*"/>
         </Grid.ColumnDefinitions>
         <Grid Column="1">
             <Grid.RowDefinitions>
@@ -22,29 +22,29 @@
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
+                <RowDefinition Height="5*"/>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">New Game</TextBlock>
-            <TextBlock Grid.Row="2" Padding="5">Name Player 1</TextBlock>
-            <TextBox Grid.Row="2" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <TextBlock Grid.Row="3" Padding="5">Name Player 1</TextBlock>
-            <TextBox Grid.Row="3" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <ComboBox Grid.Row="4" Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
-            <Image Grid.Row="5" Margin="30, 0" Width="180" HorizontalAlignment="Left" MouseDown="MainMenu">
+            <TextBlock Grid.Row="2" Margin="20, 0"  Padding="5">Name Player 1</TextBlock>
+            <TextBox Grid.Row="2" Margin="20" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+            <TextBlock Grid.Row="3" Margin="20, 0" Padding="5">Name Player 1</TextBlock>
+            <TextBox Grid.Row="3" Margin="20" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
+            <ComboBox Grid.Row="4" Margin="20, 0" Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
+            <Image Grid.Row="5" Width="180" HorizontalAlignment="Left" MouseDown="MainMenu">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
-                        <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png" />
+                        <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturn.png" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnNewGameHover.png" />
+                                <Setter Property="Source" Value="../Images/Ui/Zombie/btnReturnHover.png" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </Image.Style>
             </Image>
-            <Image Grid.Row="5" Margin="30, 0" Width="180" HorizontalAlignment="Right" MouseDown="NewGame">
+            <Image Grid.Row="5" Width="180" HorizontalAlignment="Right" MouseDown="NewGame">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png"/>
