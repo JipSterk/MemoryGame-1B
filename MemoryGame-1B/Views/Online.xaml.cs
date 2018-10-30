@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
@@ -115,5 +116,6 @@ namespace MemoryGame_1B.Views
 
             MainWindow.Instance.Content = new NewGame(GridSize.Normal);
         }
+        private void ReturnToMenu(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Main();
     }
 }

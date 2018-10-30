@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
@@ -121,5 +122,12 @@ namespace MemoryGame_1B.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void RestartGame(object sender, RoutedEventArgs e) => MainWindow.Instance.Content = new InputNames();
+
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ReturnToMenu(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Main();
     }
 }

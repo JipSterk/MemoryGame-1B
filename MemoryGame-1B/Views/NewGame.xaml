@@ -36,16 +36,16 @@
                             <RowDefinition Height="30*" />
                             <RowDefinition Height="20*" />
                         </Grid.RowDefinitions>
-                        <Viewbox Grid.Row="0">
+                        <Viewbox Grid.Row="0" Margin="20,0,0,0">
                             <TextBlock MinWidth="130" x:Name="Player1" Foreground="black"/>
                         </Viewbox>
-                        <Viewbox Grid.Row="1">
+                        <Viewbox Grid.Row="1" Margin="20,0,0,0">
                             <TextBlock MinWidth="130">Score 0</TextBlock>
                         </Viewbox>
-                        <Viewbox Grid.Row="2">
+                        <Viewbox Grid.Row="2" Margin="20,0,0,0">
                             <TextBlock MinWidth="130" x:Name="Player2" Foreground="black">Playername2</TextBlock>
                         </Viewbox>
-                        <Viewbox Grid.Row="3">
+                        <Viewbox Grid.Row="3" Margin="20,0,0,0">
                             <TextBlock MinWidth="130">Score 0</TextBlock>
                         </Viewbox>
                     </Grid>
@@ -73,7 +73,7 @@
                             </Style>
                         </Image.Style>
                     </Image>
-                    <Image Margin="0,0,0,-10" Grid.Column="1" MouseDown="ShowMenu" Stretch="Uniform"
+                    <Image Margin="0,0,0,-10" Grid.Column="1" MouseDown="ReturnToMenu" Stretch="Uniform"
                            StretchDirection="DownOnly" VerticalAlignment="Bottom">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
