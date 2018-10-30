@@ -29,7 +29,7 @@
             <TextBlock Grid.Row="1" FontSize="50" HorizontalAlignment="Center" FontWeight="Bold">New Game</TextBlock>
             <TextBlock Grid.Row="2" Margin="20, 0"  Padding="5">Name Player 1</TextBlock>
             <TextBox Grid.Row="2" Margin="20" Name="NamePlayer1" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
-            <TextBlock Grid.Row="3" Margin="20, 0" Padding="5">Name Player 1</TextBlock>
+            <TextBlock Grid.Row="3" Margin="20, 0" Padding="5">Name Player 2</TextBlock>
             <TextBox Grid.Row="3" Margin="20" Name="NamePlayer2" Padding="5" VerticalAlignment="Center" TextChanged="ChangeName"/>
             <ComboBox Grid.Row="4" Margin="20, 0" Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
             <Image Grid.Row="5" Width="180" HorizontalAlignment="Left" MouseDown="MainMenu">
