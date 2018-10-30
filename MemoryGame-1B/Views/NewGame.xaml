@@ -37,13 +37,13 @@
                             <RowDefinition Height="20*" />
                         </Grid.RowDefinitions>
                         <Viewbox Grid.Row="0">
-                            <TextBlock MinWidth="130">Playername1</TextBlock>
+                            <TextBlock MinWidth="130" x:Name="Player1" Foreground="black">Playername1</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="1">
                             <TextBlock MinWidth="130">Score 0</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="2">
-                            <TextBlock MinWidth="130">Playername2</TextBlock>
+                            <TextBlock MinWidth="130" x:Name="Player2" Foreground="black">Playername2</TextBlock>
                         </Viewbox>
                         <Viewbox Grid.Row="3">
                             <TextBlock MinWidth="130">Score 0</TextBlock>
