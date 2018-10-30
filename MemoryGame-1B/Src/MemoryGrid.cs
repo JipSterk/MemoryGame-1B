@@ -199,7 +199,9 @@ namespace MemoryGame_1B
         {
             var image = new Image
             {
-                Source = turned ? cardFront : cardBack
+                Source = turned ? cardFront : cardBack,
+                DataContext = cardData,
+                Margin = new Thickness(0, 10 , 0 , 10)
             };
 
             var cardData = new CardData(image, cardFront, cardBack, turned, number);
