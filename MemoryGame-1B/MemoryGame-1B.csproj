@@ -384,15 +384,12 @@
     <Resource Include="Images\Ui\Zombie\btnReturnHover.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="exe.ico" />
     <Content Include="SoundEffects\Zombie\1.wav" />
     <Content Include="SoundEffects\Zombie\2.wav" />
     <Content Include="SoundEffects\Zombie\3.wav" />
     <Content Include="SoundEffects\Zombie\4.wav" />
     <Content Include="SoundEffects\Zombie\5.wav" />
-    <Resource Include="Images\exe.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="exe.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
