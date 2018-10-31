@@ -5,4 +5,5 @@ build_script:
   - msbuild /p:Configuration="Release"  /p:Targets="Build" /verbosity:quiet  /p:BuildInParallel=true /m
 
 test:
-  - nunit3-console MemoryGame_1B_Tests.dll --result=myresults.xml;format=AppVeyor
+  assemblies:
+  - MemoryGame_1B_Tests.dll
