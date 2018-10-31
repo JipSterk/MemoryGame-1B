@@ -92,5 +92,10 @@ namespace MemoryGame_1B.Views
 
             _gridSize = (GridSize)comboBox.SelectedItem;
         }
+
+        private void ChangeTheme(object sender, SelectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
