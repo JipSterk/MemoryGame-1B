@@ -18,6 +18,21 @@ namespace MemoryGame_1B_Tests
     public class Tests
     {
         /// <summary>
+        /// First player name
+        /// </summary>
+        private const string PlayerName1 = "Jip";
+
+        /// <summary>
+        /// Second player name
+        /// </summary>
+        private const string PlayerName2 = "Para";
+
+        /// <summary>
+        /// Save path
+        /// </summary>
+        private readonly string _savePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+        /// <summary>
         /// Creates a new Application
         /// </summary>
         /// <returns></returns>
@@ -33,11 +48,13 @@ namespace MemoryGame_1B_Tests
             var application = GetApplication();
             using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
             {
-                var newGame = window.Get<Image>("NewGame");
-                newGame.Click();
+                window.Get<Image>("NewGame").Click();
             }
         }
 
+        /// <summary>
+        /// Test the setup of the game
+        /// </summary>
         [Test, Order(2)]
         public void InputNames()
         {
@@ -45,85 +62,75 @@ namespace MemoryGame_1B_Tests
 
             using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
             {
-                var newGame = window.Get<Image>("NewGame");
-                newGame.Click();
+                window.Get<Image>("NewGame").Click();
 
-                var playerName1TextBox = window.Get<TextBox>("PlayerName1");
-                playerName1TextBox.Text = "Jip";
-
-                var playerName2TextBox = window.Get<TextBox>("PlayerName2");
-                playerName2TextBox.Text = "Para";
-
-                var changeGridSize = window.Get<ComboBox>("ChangeGridSize");
-//                changeGridSize.Get<Text>()
+                window.Get<TextBox>("PlayerName1").Text = PlayerName1;
+                window.Get<TextBox>("PlayerName2").Text = PlayerName2;
             }
         }
 
+        /// <summary>
+        /// Test the saving of the layout
+        /// </summary>
         [Test, Order(3)]
-        public void Save()
+        [TestCase(0, "4x4")]
+        [TestCase(1, "6x6")]
+        public void Save(int index, string size)
         {
             var application = GetApplication();
 
             using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
             {
-                var newGame = window.Get<Image>("NewGame");
-                newGame.Click();
+                window.Get<Image>("NewGame").Click();
 
-                var playerName1TextBox = window.Get<TextBox>("PlayerName1");
-                playerName1TextBox.Text = "Jip";
+                window.Get<TextBox>("PlayerName1").Text = PlayerName1;
+                window.Get<TextBox>("PlayerName2").Text = PlayerName2;
+                window.Get<ComboBox>("ChangeGridSize").Select(index);
 
-                var playerName2TextBox = window.Get<TextBox>("PlayerName2");
-                playerName2TextBox.Text = "Para";
+                window.Get<Image>("NewGame").Click();
 
-                var startGame = window.Get<Image>("NewGame");
-                startGame.Click();
-
-                var save = window.Get<Image>("Save");
-                save.Click();
+                window.Get<Image>("Save").Click();
 
                 using (var open = application.GetWindow("Memory Game", InitializeOption.NoCache))
                 {
-                    var uiItem = window.Get(SearchCriteria.ByAutomationId("Item 202"));
-                    uiItem.Click();
+                    window.Get(SearchCriteria.ByAutomationId("Item 202")).Click();
+                    SendKeys.SendWait(_savePath);
 
-                    SendKeys.SendWait(
-                        $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}/Jip/MemoryGame-1B/4x4.json");
+                    window.Get(SearchCriteria.ByAutomationId("1001")).Click();
+                    SendKeys.SendWait(size);
 
-                    var saveButton =
-                        open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Save"));
-                    saveButton.Click();
+                    open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Save")).Click();
                 }
             }
         }
 
-//
-//        /// <summary>
-//        /// Load game tests
-//        /// </summary>
-//        /// <param name="size"></param>
-//        [Test, Order(3)]
-//        [TestCase("4x4")]
-//        public void LoadGame(string size)
-//        {
-//            var application = GetApplication();
-//            using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
-//            {
-//                var loadGame = window.Get<Button>(SearchCriteria.ByText("Load Game"));
-//
-//                loadGame.Click();
-//
-//                using (var open = application.GetWindow("Memory Game", InitializeOption.NoCache))
-//                {
-//                    var fileNameTextBox =
-//                        open.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndByText("File name:"));
-//                    fileNameTextBox.Text =
-//                        $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\Jip\MemoryGame-1B\4x4.json";
-//
-//                    var openButton =
-//                        open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Open"));
-//                    openButton.Click();
-//                }
-//            }
-//        }
+
+        /// <summary>
+        /// Load game tests
+        /// </summary>
+        /// <param name="size"></param>
+        [Test, Order(4)]
+        [TestCase("4x4")]
+        [TestCase("6x6")]
+        public void LoadGame(string size)
+        {
+            var application = GetApplication();
+
+            using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
+            {
+                window.Get<Image>("LoadGame").Click();
+
+                using (var open = application.GetWindow("Memory Game", InitializeOption.NoCache))
+                {
+                    window.Get(SearchCriteria.ByAutomationId("Item 202")).Click();
+                    SendKeys.SendWait(_savePath);
+                    
+                    window.Get(SearchCriteria.ByAutomationId("1148")).Click();
+                    SendKeys.SendWait($"{PlayerName1}Vs{PlayerName2}{size}.json");
+
+                    open.Get<Button>(SearchCriteria.ByControlType(ControlType.Button).AndByText("Open")).Click();
+                }
+            }
+        }
     }
 }

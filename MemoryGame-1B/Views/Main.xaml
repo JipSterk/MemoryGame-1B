@@ -45,7 +45,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <Image Margin="30, 0" Grid.Row="2" MouseDown="LoadGame" MinWidth="180" MaxWidth="300">
+                <Image Margin="30, 0" Grid.Row="2" MouseDown="LoadGame" MinWidth="180" MaxWidth="300" AutomationProperties.AutomationId="LoadGame">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/btnLoadGame.png" />
