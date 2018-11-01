@@ -253,13 +253,13 @@ namespace MemoryGame_1B
             var image = (Image) sender;
        
         image.RenderTransformOrigin = new Point(0.5, 0.5);
-            var FlipCard = new RotateTransform
+            var FlipCard = new ScaleTransform
             {
 //                CenterX = 0.5,
 //                CenterY = -1,
 //                ScaleX = 1,
-//                ScaleY = -1,
-                //                Angle = 0,
+                ScaleY = 1,
+//                Angle = 20,
             };
             //            flipTrans.ScaleY = -1;
             image.RenderTransform = FlipCard;
@@ -267,14 +267,13 @@ namespace MemoryGame_1B
             DoubleAnimation animation = new DoubleAnimation()
             {
                 From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(1),
-                AutoReverse = true,
-                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+//                To = 360,
+                Duration = TimeSpan.FromSeconds(0.5),
+                AutoReverse = false,
+//                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
             };
 
-
-            FlipCard.BeginAnimation(RotateTransform.AngleProperty, animation);
+            FlipCard.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
 
 
             if (SocketIoManager.Online)
