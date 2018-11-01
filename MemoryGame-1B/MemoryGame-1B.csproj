@@ -400,6 +400,8 @@
     <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x5.png" />
     <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x6.png" />
     <Resource Include="Images\Cards\Social\CardBack\BgSocial.png" />
+    <Resource Include="Images\Ui\Zombie\SoundImg.png" />
+    <Content Include="SoundEffects\Background\Background.wav" />
     <Content Include="SoundEffects\Zombie\1.wav" />
     <Content Include="SoundEffects\Zombie\2.wav" />
     <Content Include="SoundEffects\Zombie\3.wav" />

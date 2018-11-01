@@ -18,7 +18,11 @@ namespace MemoryGame_1B.Views
         /// <summary>
         /// Constructor
         /// </summary>
-        public Main() => InitializeComponent();
+        public Main()
+        {
+            InitializeComponent();
+            SoundManager.LoadSounds();
+        }
 
         /// <summary>
         /// OnClickListener
@@ -71,5 +75,12 @@ namespace MemoryGame_1B.Views
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Online(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Online();
+
+        /// <summary>
+        /// OnClickListener
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToggleSound(object sender, MouseButtonEventArgs e) => SoundManager.ToggleSound();
     }
 }
