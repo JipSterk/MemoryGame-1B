@@ -1,10 +1,14 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace MemoryGame_1B.Views
 {
@@ -47,7 +51,7 @@ namespace MemoryGame_1B.Views
         /// <param name="theme"></param>
         public NewGame(GridSize gridSize, Theme theme) : this()
         {
-            _gridSize = gridSize;
+            _gridSize = GameManager.Gridsize = gridSize;
             _memoryGrid = new MemoryGrid(Grid, _gridSize, theme);
         }
 
@@ -86,7 +90,7 @@ namespace MemoryGame_1B.Views
         {
             Player1Score.Dispatcher.Invoke(() =>
             {
-                if(turn == Turn.Player1) Player1Score.Text = $"Score: {score}";
+                if (turn == Turn.Player1) Player1Score.Text = $"Score: {score}";
             });
 
             Player2Score.Dispatcher.Invoke(() =>
@@ -94,7 +98,7 @@ namespace MemoryGame_1B.Views
                 if (turn == Turn.Player2) Player2Score.Text = $"Score: {score}";
             });
         }
-        
+
         /// <summary>
         /// OnClickListener
         /// </summary>
