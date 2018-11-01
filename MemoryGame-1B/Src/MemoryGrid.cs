@@ -245,29 +245,29 @@ namespace MemoryGame_1B
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-       
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
             if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
             var image = (Image) sender;
-       
-        image.RenderTransformOrigin = new Point(0.5, 0.5);
-            var FlipCard = new ScaleTransform
+
+            image.RenderTransformOrigin = new Point(0.5, 0.5);
+
+            var flipCard = new ScaleTransform
             {
                 ScaleY = 1,
             };
-            image.RenderTransform = FlipCard;
-           
-            DoubleAnimation animation = new DoubleAnimation()
+
+            image.RenderTransform = flipCard;
+
+            var animation = new DoubleAnimation
             {
                 From = 0,
                 Duration = TimeSpan.FromSeconds(0.5),
                 AutoReverse = false,
             };
 
-            FlipCard.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
-
+            flipCard.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
 
             if (SocketIoManager.Online)
             {
@@ -323,13 +323,5 @@ namespace MemoryGame_1B
                 SocketIoManager.OnNewMove -= OnNewMove;
             }
         }
-
-//        private void ClickAnimation(Image img)
-//        {
-//            img.RenderTransformOrigin = new Point(0.5, 0.5);
-//            var flipTrans = new ScaleTransform {ScaleX = -1};
-////            flipTrans.ScaleY = -1;
-//            img.RenderTransform = flipTrans;
-//        }
     }
 }
