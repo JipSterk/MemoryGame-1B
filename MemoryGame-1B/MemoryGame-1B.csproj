@@ -34,12 +34,104 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>exe.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EngineIoClientDotNet, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EngineIoClientDotNet.1.0.7\lib\net45\EngineIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphQL.Client, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.Client.1.0.3\lib\netstandard2.0\GraphQL.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="GraphQL.Common, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GraphQL.Common.1.0.3\lib\netstandard2.0\GraphQL.Common.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SocketIoClientDotNet, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SocketIoClientDotNet.1.0.7.1\lib\net45\SocketIoClientDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.NameResolution, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.NameResolution.4.3.0\lib\net46\System.Net.NameResolution.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Security.4.3.0\lib\net46\System.Net.Security.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net463\System.Runtime.InteropServices.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.RegularExpressions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.RegularExpressions.4.3.0\lib\net463\System.Text.RegularExpressions.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,6 +140,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.15.2.11, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.2\lib\net45\WebSocket4Net.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -60,6 +155,20 @@
     </ApplicationDefinition>
     <Compile Include="Src\Card\CardData.cs" />
     <Compile Include="Src\Extensions.cs" />
+    <Compile Include="Src\Managers\GameManager.cs" />
+    <Compile Include="Src\Managers\ScoreManager.cs" />
+    <Compile Include="Src\SaveData\Theme.cs" />
+    <Compile Include="Src\Score\ScoreEntry.cs" />
+    <Compile Include="Src\Managers\SoundManager.cs" />
+    <Compile Include="Src\Models\CreateServerResponse.cs" />
+    <Compile Include="Src\Models\ResponseStatus.cs" />
+    <Compile Include="Src\Models\DeleteServerResponse.cs" />
+    <Compile Include="Src\Models\CreateCardDataResponse.cs" />
+    <Compile Include="Src\Models\Move.cs" />
+    <Compile Include="Src\Models\JoinServerResponse.cs" />
+    <Compile Include="Src\Models\GetServersResponse.cs" />
+    <Compile Include="Src\Managers\GraphqlManager.cs" />
+    <Compile Include="Src\Managers\SocketIOManager.cs" />
     <Compile Include="Src\MemoryGrid.cs" />
     <Compile Include="Src\SaveData\CardData.cs" />
     <Compile Include="Src\SaveData\GridSize.cs" />
@@ -71,12 +180,19 @@
     <Compile Include="Views\HighScores.xaml.cs">
       <DependentUpon>HighScores.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\InputNames.xaml.cs">
+      <DependentUpon>InputNames.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewGame.xaml.cs">
       <DependentUpon>NewGame.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Online.xaml.cs">
+      <DependentUpon>Online.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Src\Models\Server.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -90,10 +206,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Help.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HighScores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HighScores.xaml">
+    <Page Include="Views\InputNames.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,6 +224,10 @@
     <Page Include="Views\NewGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Online.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +248,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="font\Deanna.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -152,14 +277,24 @@
     <Resource Include="Images\Cards\Social\CardFront\CardSocial7.png" />
     <Resource Include="Images\Cards\Social\CardFront\CardSocial8.png" />
     <Resource Include="Images\Cards\Social\CardFront\CardSocial9.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie1.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie2.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie3.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie4.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie5.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie6.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie7.png" />
-    <Resource Include="Images\Cards\Zombies\CardFront\CardZombie8.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie10.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie11.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie12.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie13.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie14.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie15.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie16.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie17.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie18.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie1.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie2.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie3.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie4.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie5.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie6.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie7.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie8.png" />
+    <Resource Include="Images\Cards\Zombie\CardFront\CardZombie9.png" />
     <Resource Include="Images\Ui\Zombie\btnHelp.png" />
     <Resource Include="Images\Ui\Zombie\btnHelpHover.png" />
     <Resource Include="Images\Ui\Zombie\btnHighscores.png" />
@@ -179,42 +314,98 @@
     <Resource Include="Images\Ui\Zombie\Scoreboard.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG1x6.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG2x6.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG3x6.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG4x6.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG5x6.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x1.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x2.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x3.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x4.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x5.png" />
-    <Resource Include="Images\Cards\Zombies\CardBackground\CardBG6x6.png" />
+    <Resource Include="Images\Ui\Zombie\BtnMultiplayer.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMultiplayerHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnNext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnNextHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundImgNewGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnHost.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnHostHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnReload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnReloadHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnReturn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\btnReturnHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundHighscores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundHelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BackgroundMultiplayer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMakeGame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Ui\Zombie\BtnMakeGameHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="exe.ico" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG1x1.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG1x2.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG1x3.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG1x4.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG1x5.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG1x6.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG2x1.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG2x2.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG2x3.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG2x4.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG2x5.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG2x6.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG3x1.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG3x2.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG3x3.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG3x4.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG3x5.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG3x6.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG4x1.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG4x2.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG4x3.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG4x4.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG4x5.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG4x6.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG5x1.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG5x2.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG5x3.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG5x4.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG5x5.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG5x6.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x1.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x2.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x3.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x4.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x5.png" />
+    <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x6.png" />
+    <Resource Include="Images\Cards\Social\CardBack\BgSocial.png" />
+    <Content Include="SoundEffects\Zombie\1.wav" />
+    <Content Include="SoundEffects\Zombie\2.wav" />
+    <Content Include="SoundEffects\Zombie\3.wav" />
+    <Content Include="SoundEffects\Zombie\4.wav" />
+    <Content Include="SoundEffects\Zombie\5.wav" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

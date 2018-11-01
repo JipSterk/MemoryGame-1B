@@ -1,9 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using MemoryGame_1B.Managers;
+using MemoryGame_1B.Models;
 using MemoryGame_1B.SaveData;
+using Newtonsoft.Json;
 using CardData = MemoryGame_1B.Card.CardData;
 
 namespace MemoryGame_1B
@@ -13,6 +20,11 @@ namespace MemoryGame_1B
     /// </summary>
     public class MemoryGrid
     {
+        /// <summary>
+        /// Singleton
+        /// </summary>
+        public static MemoryGrid Instance { get; private set; }
+
         /// <summary>
         /// The data of all cards on the grid
         /// </summary>
@@ -39,14 +51,35 @@ namespace MemoryGame_1B
         private readonly GridSize _gridSize;
 
         /// <summary>
+        /// The theme of the grid
+        /// </summary>
+        private readonly Theme _theme;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public MemoryGrid()
+        {
+            Instance = this;
+
+            if (SocketIoManager.Online)
+            {
+                SocketIoManager.OnNewMove += OnNewMove;
+            }
+        }
+
+        /// <inheritdoc />
+        /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="gridSize"></param>
-        public MemoryGrid(Grid grid, GridSize gridSize)
+        /// <param name="theme"></param>
+        public MemoryGrid(Grid grid, GridSize gridSize, Theme theme) : this()
         {
             _grid = grid ?? throw new ArgumentNullException(nameof(grid));
             _gridSize = gridSize;
+            _theme = theme;
 
             switch (_gridSize)
             {
@@ -67,7 +100,15 @@ namespace MemoryGame_1B
             AddCards();
         }
 
-        public MemoryGrid(Grid grid, GridSize gridSize, Turn turn, SaveData.CardData[,] cardData)
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="gridSize"></param>
+        /// <param name="turn"></param>
+        /// <param name="cardData"></param>
+        public MemoryGrid(Grid grid, GridSize gridSize, Turn turn, SaveData.CardData[,] cardData) : this()
         {
             _grid = grid ?? throw new ArgumentNullException(nameof(grid));
             _gridSize = gridSize;
@@ -93,14 +134,25 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-                    var(cardFrontUriSource, cardBackUriSource, turned) = cardData[i, j];
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = cardData[i, j];
 
                     var cardBack = new BitmapImage(new Uri(cardBackUriSource, UriKind.Relative));
                     var cardFront = new BitmapImage(new Uri(cardFrontUriSource, UriKind.Relative));
 
-                    BuildCard(cardFront, cardBack, i, j, turned);
+                    BuildCard(cardFront, cardBack, i, j, number, turned);
                 }
             }
+        }
+
+        /// <summary>
+        /// OnNewMoveListener
+        /// </summary>
+        /// <param name="o"></param>
+        private void OnNewMove(object o)
+        {
+            var (_, x, y) = JsonConvert.DeserializeObject<Move>((string) o);
+
+            _grid.Dispatcher.Invoke(() => CardData[x - 1, y - 1].Turn());
         }
 
         /// <summary>
@@ -114,15 +166,32 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-                    var cardBack =
-                        new BitmapImage(new Uri($"../Images/Cards/Zombies/CardBackground/CardBG{i + 1}x{j + 1}.png",
-                            UriKind.Relative));
+                    var uriString = _theme == Theme.Zombie
+                        ? $"../Images/Cards/Zombie/CardBack/CardBG{i + 1}x{j + 1}.png"
+                        : "../Images/Cards/Social/CardBack/BgSocial.png";
+                    var cardBack = new BitmapImage(new Uri(uriString, UriKind.Relative));
 
-                    var cardFront = bitmapImages.Pop();
+                    var (i1, cardFront) = bitmapImages.Pop();
 
-                    BuildCard(cardFront, cardBack, i, j);
+                    BuildCard(cardFront, cardBack, i, j, i1);
                 }
             }
+
+            if (!SocketIoManager.Online) return;
+
+            var cardData = _gridSize == GridSize.Normal ? new SaveData.CardData[4, 4] : new SaveData.CardData[6, 6];
+
+            for (var i = 0; i < CardData.GetLength(0); i++)
+            {
+                for (var j = 0; j < CardData.GetLength(1); j++)
+                {
+                    var (cardFrontUriSource, cardBackUriSource, turned, number) = CardData[i, j];
+                    cardData[i, j] = new SaveData.CardData(cardFrontUriSource, cardBackUriSource, turned, number);
+                }
+            }
+
+            var serializeObject = JsonConvert.SerializeObject(cardData);
+            Task.Run(() => GraphqlManager.CreateDataGrid(SocketIoManager.Room, serializeObject));
         }
 
         /// <summary>
@@ -132,16 +201,20 @@ namespace MemoryGame_1B
         /// <param name="cardBack"></param>
         /// <param name="i"></param>
         /// <param name="j"></param>
+        /// <param name="number"></param>
         /// <param name="turned"></param>
-        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, bool turned = false)
+        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number,
+            bool turned = false)
         {
-            var cardData = new CardData(cardFront, cardBack, turned);
-
             var image = new Image
             {
                 Source = turned ? cardFront : cardBack,
-                DataContext = cardData,
+                Margin = new Thickness(0, 10, 0, 10)
             };
+
+            var cardData = new CardData(image, cardFront, cardBack, turned, number);
+
+            image.DataContext = cardData;
 
             image.MouseDown += CardClick;
 
@@ -156,18 +229,18 @@ namespace MemoryGame_1B
         /// Gets all the images
         /// </summary>
         /// <returns></returns>
-        private List<BitmapImage> GetImages()
+        private List<(int, BitmapImage)> GetImages()
         {
             var count = _gridSize == GridSize.Normal ? 16 : 36;
-            var list = new List<BitmapImage>();
+            var list = new List<(int, BitmapImage)>();
 
             for (var i = 0; i < count; i++)
             {
                 var imageNumber = i % count / 2 + 1;
                 var bitmapImage =
-                    new BitmapImage(new Uri($"../Images/Cards/Zombies/CardFront/CardZombie{imageNumber}.png",
+                    new BitmapImage(new Uri($"../Images/Cards/{_theme}/CardFront/Card{_theme}{imageNumber}.png",
                         UriKind.Relative));
-                list.Add(bitmapImage);
+                list.Add((imageNumber, bitmapImage));
             }
 
             return list;
@@ -178,12 +251,32 @@ namespace MemoryGame_1B
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private static void CardClick(object sender, MouseButtonEventArgs e)
+        private void CardClick(object sender, MouseButtonEventArgs e)
         {
+            if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
+
             var image = (Image) sender;
+
+            if (SocketIoManager.Online)
+            {
+                var row = Grid.GetRow(image) + 1;
+                var column = Grid.GetColumn(image) + 1;
+
+                var move = new Move
+                {
+                    Room = SocketIoManager.Room,
+                    X = row,
+                    Y = column
+                };
+
+                SocketIoManager.FlipCard(move);
+            }
+
             var cardData = (CardData) image.DataContext;
 
-            image.Source = cardData.Turn();
+            cardData.Turn();
+
+            GameManager.PickCard();
         }
 
         /// <summary>
@@ -206,6 +299,17 @@ namespace MemoryGame_1B
             _grid.Children.Clear();
             _grid.RowDefinitions.Clear();
             _grid.ColumnDefinitions.Clear();
+        }
+
+        /// <summary>
+        /// Destructor
+        /// </summary>
+        ~MemoryGrid()
+        {
+            if (SocketIoManager.Online)
+            {
+                SocketIoManager.OnNewMove -= OnNewMove;
+            }
         }
     }
 }

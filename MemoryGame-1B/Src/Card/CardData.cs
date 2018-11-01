@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -10,9 +11,24 @@ namespace MemoryGame_1B.Card
     public class CardData
     {
         /// <summary>
+        /// The image
+        /// </summary>
+        public readonly Image Image;
+
+        /// <summary>
+        /// The number of the card
+        /// </summary>
+        public int Number { get; }
+
+        /// <summary>
+        /// Is the pair found
+        /// </summary>
+        public bool FoundPair { get; set; }
+
+        /// <summary>
         /// Is card turned
         /// </summary>
-        private bool _turned;
+        public bool Turned { get; private set; }
 
         /// <summary>
         /// The card front
@@ -23,28 +39,35 @@ namespace MemoryGame_1B.Card
         /// The card front
         /// </summary>
         private readonly BitmapImage _cardBack;
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="image"></param>
         /// <param name="cardFront"></param>
         /// <param name="cardBack"></param>
         /// <param name="turned"></param>
-        public CardData(BitmapImage cardFront, BitmapImage cardBack, bool turned)
+        /// <param name="number"></param>
+        public CardData(Image image, BitmapImage cardFront, BitmapImage cardBack, bool turned, int number)
         {
+            Image = image ?? throw new ArgumentNullException(nameof(image));
             _cardFront = cardFront ?? throw new ArgumentNullException(nameof(cardFront));
             _cardBack = cardBack ?? throw new ArgumentNullException(nameof(cardBack));
-            _turned = turned;
-        }
+            Turned = turned;
+            Number = number;
 
+            Image.DataContext = this;
+        }
+        
         /// <summary>
         /// Turns the card
         /// </summary>
         /// <returns></returns>
-        public ImageSource Turn()
+        public void Turn()
         {
-            _turned = !_turned;
-            return _turned ? _cardFront : _cardBack;
+            if (FoundPair) return;
+            Turned = !Turned;
+            Image.Dispatcher.Invoke(() => Image.Source = Turned ? _cardFront : _cardBack);
         }
 
         /// <summary>
@@ -53,11 +76,13 @@ namespace MemoryGame_1B.Card
         /// <param name="cardFrontUriSource"></param>
         /// <param name="cardBackUriSource"></param>
         /// <param name="turned"></param>
-        public void Deconstruct(out string cardFrontUriSource, out string cardBackUriSource, out bool turned)
+        /// <param name="number"></param>
+        public void Deconstruct(out string cardFrontUriSource, out string cardBackUriSource, out bool turned, out int number)
         {
             cardFrontUriSource = _cardFront.UriSource.ToString();
             cardBackUriSource = _cardBack.UriSource.ToString();
-            turned = _turned;
+            turned = Turned;
+            number = Number;
         }
     }
 }
