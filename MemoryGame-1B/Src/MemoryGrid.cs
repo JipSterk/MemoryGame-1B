@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.Models;
@@ -195,7 +197,8 @@ namespace MemoryGame_1B
         /// <param name="j"></param>
         /// <param name="number"></param>
         /// <param name="turned"></param>
-        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number, bool turned = false)
+        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number,
+            bool turned = false)
         {
             var image = new Image
             {
@@ -203,10 +206,70 @@ namespace MemoryGame_1B
                 Margin = new Thickness(0, 10, 0, 10)
             };
 
+            var registerRoutedEvent = EventManager.RegisterRoutedEvent("Test", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Image));
+            image.AddToEventRoute(new EventRoute(registerRoutedEvent), new RoutedEventArgs(registerRoutedEvent, image));
+//            var eventTrigger = new EventTrigger(registerRoutedEvent);
+//            registerRoutedEvent.
+//            eventTrigger.Actions.Add(new BeginStoryboard
+//            {
+//                Storyboard = new Storyboard
+//                {
+//                    Children = new TimelineCollection
+//                    {
+//                        new DoubleAnimation
+//                        {
+//                            From = 0,
+//                            To = 0,
+//                            Duration = TimeSpan.FromSeconds(3),
+//                            AutoReverse = true,
+//                        }
+//                    }
+//                }
+//            });
+//
+//            image.Triggers.Add(eventTrigger);
+
             var cardData = new CardData(image, cardFront, cardBack, turned, number);
 
             image.DataContext = cardData;
+            image.RenderTransformOrigin = new Point(0.5, 0.5);
+            image.RenderTransform = new ScaleTransform
+            {
+                ScaleX = 1,
+                ScaleY = -1
+            };
+//
+//            var registerRoutedEvent = EventManager.RegisterRoutedEvent("Loaded", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(Image));
+//
+//            image.AddToEventRoute(new EventRoute(registerRoutedEvent), new RoutedEventArgs());
+//
+//            var eventTrigger = new EventTrigger();
+//
+//            eventTrigger.Actions.Add(new BeginStoryboard
+//            {
+//                Storyboard = new Storyboard
+//                {
+//                    Children = new TimelineCollection
+//                    {
+//                        new DoubleAnimation
+//                        {
+//                            From = 0,
+//                            To = 0,
+//                            Duration = TimeSpan.FromSeconds(3),
+//                            AutoReverse = true,
+//                        }
+//                    }
+//                }
+//            });
+//
+//            image.Triggers.Add(eventTrigger);
+//            
+            //            flipTrans.ScaleY = -1;
+//            image.RenderTransform = FlipCard;
 
+//            DoubleAnimation animation =
+
+//            FlipCard.BeginAnimation(RotateTransform.AngleProperty, animation);
             image.MouseDown += CardClick;
 
             CardData[i, j] = cardData;
@@ -215,7 +278,7 @@ namespace MemoryGame_1B
             Grid.SetRow(image, i);
             _grid.Children.Add(image);
         }
-
+        void Test(object sender, MouseButtonEventArgs e) { }
         /// <summary>
         /// Gets all the images
         /// </summary>
@@ -244,9 +307,10 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
-            if(CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
+            if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
             var image = (Image) sender;
+
 
             if (SocketIoManager.Online)
             {
@@ -302,5 +366,13 @@ namespace MemoryGame_1B
                 SocketIoManager.OnNewMove -= OnNewMove;
             }
         }
+
+//        private void ClickAnimation(Image img)
+//        {
+//            img.RenderTransformOrigin = new Point(0.5, 0.5);
+//            var flipTrans = new ScaleTransform {ScaleX = -1};
+////            flipTrans.ScaleY = -1;
+//            img.RenderTransform = flipTrans;
+//        }
     }
 }
