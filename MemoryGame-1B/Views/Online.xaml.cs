@@ -114,7 +114,7 @@ namespace MemoryGame_1B.Views
             var (id, _) = Task.Run(() => GraphqlManager.CreateServer(roomNameText)).Result;
             SocketIoManager.JoinGame(id);
 
-            MainWindow.Instance.Content = new NewGame(GridSize.Normal);
+            MainWindow.Instance.Content = new NewGame(GridSize.Normal, Theme.Zombie);
         }
         private void ReturnToMenu(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Main();
     }

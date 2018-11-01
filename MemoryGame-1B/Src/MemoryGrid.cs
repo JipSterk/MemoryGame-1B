@@ -51,6 +51,11 @@ namespace MemoryGame_1B
         private readonly GridSize _gridSize;
 
         /// <summary>
+        /// The theme of the grid
+        /// </summary>
+        private readonly Theme _theme;
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public MemoryGrid()
@@ -69,10 +74,12 @@ namespace MemoryGame_1B
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="gridSize"></param>
-        public MemoryGrid(Grid grid, GridSize gridSize) : this()
+        /// <param name="theme"></param>
+        public MemoryGrid(Grid grid, GridSize gridSize, Theme theme) : this()
         {
             _grid = grid ?? throw new ArgumentNullException(nameof(grid));
             _gridSize = gridSize;
+            _theme = theme;
 
             switch (_gridSize)
             {
@@ -159,9 +166,10 @@ namespace MemoryGame_1B
             {
                 for (var j = 0; j < _columns; j++)
                 {
-                    var cardBack =
-                        new BitmapImage(new Uri($"../Images/Cards/Zombies/CardBackground/CardBG{i + 1}x{j + 1}.png",
-                            UriKind.Relative));
+                    var uriString = _theme == Theme.Zombie
+                        ? $"../Images/Cards/Zombie/CardBack/CardBG{i + 1}x{j + 1}.png"
+                        : "../Images/Cards/Social/CardBack/BgSocial.png";
+                    var cardBack = new BitmapImage(new Uri(uriString, UriKind.Relative));
 
                     var (i1, cardFront) = bitmapImages.Pop();
 
@@ -195,7 +203,8 @@ namespace MemoryGame_1B
         /// <param name="j"></param>
         /// <param name="number"></param>
         /// <param name="turned"></param>
-        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number, bool turned = false)
+        private void BuildCard(BitmapImage cardFront, BitmapImage cardBack, int i, int j, int number,
+            bool turned = false)
         {
             var image = new Image
             {
@@ -229,7 +238,7 @@ namespace MemoryGame_1B
             {
                 var imageNumber = i % count / 2 + 1;
                 var bitmapImage =
-                    new BitmapImage(new Uri($"../Images/Cards/Zombies/CardFront/CardZombie{imageNumber}.png",
+                    new BitmapImage(new Uri($"../Images/Cards/{_theme}/CardFront/Card{_theme}{imageNumber}.png",
                         UriKind.Relative));
                 list.Add((imageNumber, bitmapImage));
             }
@@ -244,7 +253,7 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
-            if(CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
+            if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
             var image = (Image) sender;
 

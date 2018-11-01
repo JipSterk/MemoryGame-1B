@@ -48,10 +48,11 @@ namespace MemoryGame_1B.Views
         /// Constructor
         /// </summary>
         /// <param name="gridSize"></param>
-        public NewGame(GridSize gridSize) : this()
+        /// <param name="theme"></param>
+        public NewGame(GridSize gridSize, Theme theme) : this()
         {
             _gridSize = GameManager.Gridsize = gridSize;
-            _memoryGrid = new MemoryGrid(Grid, _gridSize);
+            _memoryGrid = new MemoryGrid(Grid, _gridSize, theme);
         }
 
         /// <inheritdoc />
