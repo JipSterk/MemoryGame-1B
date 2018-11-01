@@ -255,22 +255,15 @@ namespace MemoryGame_1B
         image.RenderTransformOrigin = new Point(0.5, 0.5);
             var FlipCard = new ScaleTransform
             {
-//                CenterX = 0.5,
-//                CenterY = -1,
-//                ScaleX = 1,
                 ScaleY = 1,
-//                Angle = 20,
             };
-            //            flipTrans.ScaleY = -1;
             image.RenderTransform = FlipCard;
            
             DoubleAnimation animation = new DoubleAnimation()
             {
                 From = 0,
-//                To = 360,
                 Duration = TimeSpan.FromSeconds(0.5),
                 AutoReverse = false,
-//                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
             };
 
             FlipCard.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
