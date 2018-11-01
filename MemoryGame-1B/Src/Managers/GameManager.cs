@@ -31,6 +31,11 @@ namespace MemoryGame_1B.Managers
         public static event Action<Turn, int> OnScoreChanged;
 
         /// <summary>
+        /// The current Gridsize
+        /// </summary>
+        public static GridSize Gridsize { get; set; }
+
+        /// <summary>
         /// First players name
         /// </summary>
         public static string NamePlayer1;
@@ -84,13 +89,15 @@ namespace MemoryGame_1B.Managers
 
                 lhs.FoundPair = rhs.FoundPair = true;
 
+                var score = ScoreManager.GetScore(Gridsize);
+
                 switch (Turn)
                 {
                     case Turn.Player1:
-                        ScorePlayer1 += 100;
+                        ScorePlayer1 += score;
                         break;
                     case Turn.Player2:
-                        ScorePlayer2 += 100;
+                        ScorePlayer2 += score;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
