@@ -42,7 +42,7 @@
                     <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0" Margin="20, 0" Height="25" MaxHeight="25"  Name="GridSize" Padding="5" SelectionChanged="ChangeGridSize"/>
-                <ComboBox Grid.Column="1" Margin="20, 0" Height="25" MaxHeight="25" Name="ThemeChange" Padding="5" SelectionChanged="ChangeTheme"/>
+                <ComboBox Grid.Column="1" Margin="20, 0" Height="25" MaxHeight="25" Name="Theme" Padding="5" SelectionChanged="ChangeTheme"/>
             </Grid>
             <Grid x:Name="inputboxes" Row="4" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
