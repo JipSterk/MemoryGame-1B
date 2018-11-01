@@ -206,70 +206,10 @@ namespace MemoryGame_1B
                 Margin = new Thickness(0, 10, 0, 10)
             };
 
-            var registerRoutedEvent = EventManager.RegisterRoutedEvent("Test", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(Image));
-            image.AddToEventRoute(new EventRoute(registerRoutedEvent), new RoutedEventArgs(registerRoutedEvent, image));
-//            var eventTrigger = new EventTrigger(registerRoutedEvent);
-//            registerRoutedEvent.
-//            eventTrigger.Actions.Add(new BeginStoryboard
-//            {
-//                Storyboard = new Storyboard
-//                {
-//                    Children = new TimelineCollection
-//                    {
-//                        new DoubleAnimation
-//                        {
-//                            From = 0,
-//                            To = 0,
-//                            Duration = TimeSpan.FromSeconds(3),
-//                            AutoReverse = true,
-//                        }
-//                    }
-//                }
-//            });
-//
-//            image.Triggers.Add(eventTrigger);
-
             var cardData = new CardData(image, cardFront, cardBack, turned, number);
 
             image.DataContext = cardData;
-            image.RenderTransformOrigin = new Point(0.5, 0.5);
-            image.RenderTransform = new ScaleTransform
-            {
-                ScaleX = 1,
-                ScaleY = -1
-            };
-//
-//            var registerRoutedEvent = EventManager.RegisterRoutedEvent("Loaded", RoutingStrategy.Tunnel, typeof(RoutedEventHandler), typeof(Image));
-//
-//            image.AddToEventRoute(new EventRoute(registerRoutedEvent), new RoutedEventArgs());
-//
-//            var eventTrigger = new EventTrigger();
-//
-//            eventTrigger.Actions.Add(new BeginStoryboard
-//            {
-//                Storyboard = new Storyboard
-//                {
-//                    Children = new TimelineCollection
-//                    {
-//                        new DoubleAnimation
-//                        {
-//                            From = 0,
-//                            To = 0,
-//                            Duration = TimeSpan.FromSeconds(3),
-//                            AutoReverse = true,
-//                        }
-//                    }
-//                }
-//            });
-//
-//            image.Triggers.Add(eventTrigger);
-//            
-            //            flipTrans.ScaleY = -1;
-//            image.RenderTransform = FlipCard;
 
-//            DoubleAnimation animation =
-
-//            FlipCard.BeginAnimation(RotateTransform.AngleProperty, animation);
             image.MouseDown += CardClick;
 
             CardData[i, j] = cardData;
@@ -278,7 +218,7 @@ namespace MemoryGame_1B
             Grid.SetRow(image, i);
             _grid.Children.Add(image);
         }
-        void Test(object sender, MouseButtonEventArgs e) { }
+
         /// <summary>
         /// Gets all the images
         /// </summary>
@@ -305,11 +245,36 @@ namespace MemoryGame_1B
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+       
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
             if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
             var image = (Image) sender;
+       
+        image.RenderTransformOrigin = new Point(0.5, 0.5);
+            var FlipCard = new RotateTransform
+            {
+//                CenterX = 0.5,
+//                CenterY = -1,
+//                ScaleX = 1,
+//                ScaleY = -1,
+                //                Angle = 0,
+            };
+            //            flipTrans.ScaleY = -1;
+            image.RenderTransform = FlipCard;
+           
+            DoubleAnimation animation = new DoubleAnimation()
+            {
+                From = 0,
+                To = 1,
+                Duration = TimeSpan.FromSeconds(1),
+                AutoReverse = true,
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+            };
+
+
+            FlipCard.BeginAnimation(RotateTransform.AngleProperty, animation);
 
 
             if (SocketIoManager.Online)
