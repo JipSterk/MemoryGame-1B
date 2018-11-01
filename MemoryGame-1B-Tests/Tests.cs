@@ -75,7 +75,7 @@ namespace MemoryGame_1B_Tests
         [Test, Order(3)]
         [TestCase(0, "4x4")]
         [TestCase(1, "6x6")]
-        public void Save(int index, string size)
+        public void SaveGame(int index, string size)
         {
             var application = GetApplication();
 
