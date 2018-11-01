@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.Models;
@@ -256,6 +258,24 @@ namespace MemoryGame_1B
             if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
             var image = (Image) sender;
+
+            image.RenderTransformOrigin = new Point(0.5, 0.5);
+
+            var flipCard = new ScaleTransform
+            {
+                ScaleY = 1,
+            };
+
+            image.RenderTransform = flipCard;
+
+            var animation = new DoubleAnimation
+            {
+                From = 0,
+                Duration = TimeSpan.FromSeconds(0.5),
+                AutoReverse = false,
+            };
+
+            flipCard.BeginAnimation(ScaleTransform.ScaleYProperty, animation);
 
             if (SocketIoManager.Online)
             {
