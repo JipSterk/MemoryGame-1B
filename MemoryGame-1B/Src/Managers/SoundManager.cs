@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Media;
+using System.Windows.Media;
 
 namespace MemoryGame_1B.Managers
 {
@@ -11,20 +12,31 @@ namespace MemoryGame_1B.Managers
     public static class SoundManager
     {
         /// <summary>
+        /// Should it be muted
+        /// </summary>
+        private static bool _mute;
+
+        /// <summary>
         /// All the sound players
         /// </summary>
         private static readonly List<SoundPlayer> SoundPlayers = new List<SoundPlayer>();
 
         /// <summary>
-        /// Constructor
+        /// Media player for background music
         /// </summary>
-        static SoundManager() => LoadSounds();
+        private static readonly MediaPlayer MediaPlayer = new MediaPlayer
+        {
+            Volume = 10
+        };
 
         /// <summary>
         /// Loads The Sounds
         /// </summary>
-        private static void LoadSounds()
+        public static void LoadSounds()
         {
+            MediaPlayer.Open(new Uri("../../SoundEffects/Background/Background.wav", UriKind.Relative));
+            MediaPlayer.Play();
+
             var uri = new Uri("../../SoundEffects/Zombie", UriKind.Relative).ToString();
 
             foreach (var file in Directory.GetFiles(uri))
@@ -34,9 +46,26 @@ namespace MemoryGame_1B.Managers
             }
         }
 
+        public static void ToggleSound()
+        {
+            _mute = !_mute;
+
+            if (_mute)
+            {
+                MediaPlayer.Stop();
+            }
+            else
+            {
+                MediaPlayer.Play();
+            }
+        }
+
         /// <summary>
         /// Plays a random sound
         /// </summary>
-        public static void PlayRandom() => SoundPlayers.Random().Play();
+        public static void PlayRandom()
+        {
+            if (!_mute) SoundPlayers.Random().Play();
+        }
     }
 }
