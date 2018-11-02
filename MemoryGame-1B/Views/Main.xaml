@@ -93,6 +93,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
+                <Image Source="../Images/Ui/Zombie/SoundImg.png" Margin="30,0" Grid.Row="6" MouseDown="ToggleSound" MinWidth="180" MaxWidth="300"/>
             </Grid>
         </Grid>
     </Grid>
