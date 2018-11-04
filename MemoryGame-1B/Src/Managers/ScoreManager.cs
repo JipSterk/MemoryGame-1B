@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using MemoryGame_1B.SaveData;
 using MemoryGame_1B.Score;
 using Newtonsoft.Json;
@@ -36,12 +37,12 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// Path to the 4x4 Score Table
         /// </summary>
-        private static readonly string ScoreTablePath4x4 = new Uri("../../Resources/ScoreTable4x4.json", UriKind.Relative).ToString();
+        private static readonly string ScoreTablePath4x4 = new Uri("Resources/ScoreTable4x4.json", UriKind.Relative).ToString();
 
         /// <summary>
         /// Path to the 6x6 Score Table
         /// </summary>
-        private static readonly string ScoreTablePath6x6 = new Uri("../../Resources/ScoreTable6x6.json", UriKind.Relative).ToString();
+        private static readonly string ScoreTablePath6x6 = new Uri("Resources/ScoreTable6x6.json", UriKind.Relative).ToString();
 
         /// <summary>
         /// Constructor
