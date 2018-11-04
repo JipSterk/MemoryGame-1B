@@ -56,7 +56,7 @@ namespace MemoryGame_1B
         /// The theme of the grid
         /// </summary>
         private readonly Theme _theme;
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
@@ -255,9 +255,15 @@ namespace MemoryGame_1B
         /// <param name="e"></param>
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
-            if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
+            if (GameManager.CardsTurned >= 2) return;
 
+            //GameManager.CardsTurned++;
+            
             var image = (Image) sender;
+
+            var cardData = (CardData) image.DataContext;
+
+            if (cardData.Turned) return;
 
             image.RenderTransformOrigin = new Point(0.5, 0.5);
 
@@ -292,7 +298,6 @@ namespace MemoryGame_1B
                 SocketIoManager.FlipCard(move);
             }
 
-            var cardData = (CardData) image.DataContext;
 
             cardData.Turn();
 

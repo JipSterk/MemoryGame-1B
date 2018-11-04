@@ -56,6 +56,11 @@ namespace MemoryGame_1B.Managers
         public static int ScorePlayer2 { get; set; }
 
         /// <summary>
+        /// Keeps track of how many cards have been turned in one turn
+        /// </summary>
+        public static int CardsTurned { get;  private set; }
+
+        /// <summary>
         /// Start a new game
         /// </summary>
         public static void StartGame()
@@ -72,6 +77,7 @@ namespace MemoryGame_1B.Managers
         {
             var cardData = MemoryGrid.Instance.CardData.Cast<CardData>().Where(x => !x.FoundPair && x.Turned).ToArray();
 
+            CardsTurned++;
             if (cardData.Length < 2) return;
 
             var (lhs, rhs) = Tuple.Create(cardData[0], cardData[1]);
@@ -149,6 +155,8 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         private static void EndGame()
         {
+            CardsTurned = 0;
+
             if (SocketIoManager.Online)
             {
                 SocketIoManager.LeaveGame(SocketIoManager.Room);
@@ -176,6 +184,7 @@ namespace MemoryGame_1B.Managers
         private static void NewPick()
         {
             Turn = Turn == Turn.Player1 ? Turn.Player2 : Turn.Player1;
+            CardsTurned = 0;
 
             OnTurnChanged?.Invoke(Turn);
         }

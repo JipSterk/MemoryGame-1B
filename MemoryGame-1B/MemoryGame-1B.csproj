@@ -248,8 +248,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Resources\ScoreTable6x6.json" />
-    <None Include="Resources\ScoreTable4x4.json" />
+    <None Include="Resources\ScoreTable6x6.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ScoreTable4x4.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Resource Include="font\Deanna.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
