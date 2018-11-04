@@ -56,6 +56,11 @@ namespace MemoryGame_1B.Managers
         public static int ScorePlayer2 { get; set; }
 
         /// <summary>
+        /// Keeps track of how many cards have been turned in one turn
+        /// </summary>
+        public static int CardsTurned { get; set; }
+
+        /// <summary>
         /// Start a new game
         /// </summary>
         public static void StartGame()
@@ -176,6 +181,7 @@ namespace MemoryGame_1B.Managers
         private static void NewPick()
         {
             Turn = Turn == Turn.Player1 ? Turn.Player2 : Turn.Player1;
+            CardsTurned = 0;
 
             OnTurnChanged?.Invoke(Turn);
         }

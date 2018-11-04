@@ -257,6 +257,10 @@ namespace MemoryGame_1B
         {
             if (CardData.Length - CardData.Cast<CardData>().Count(x => x.Turned && x.FoundPair) == 2) return;
 
+            if (GameManager.CardsTurned >= 2) return;
+
+            GameManager.CardsTurned++;
+            
             var image = (Image) sender;
 
             image.RenderTransformOrigin = new Point(0.5, 0.5);
