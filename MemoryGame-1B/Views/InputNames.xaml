@@ -44,9 +44,9 @@
                     <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
                 <ComboBox Grid.Column="0" Margin="20, 0" Height="25" MaxHeight="25" Name="GridSize" Padding="5"
-                          SelectionChanged="ChangeGridSize" AutomationProperties.AutomationId="ChangeGridSize"/>
-                <ComboBox Grid.Column="1" Margin="20, 0" Height="25" MaxHeight="25" Name="ThemeChange" Padding="5"
-                          SelectionChanged="ChangeTheme" />
+                          SelectionChanged="ChangeGridSize" AutomationProperties.AutomationId="ChangeGridSize" />
+                <ComboBox Grid.Column="1" Margin="20, 0" Height="25" MaxHeight="25" Name="Theme" Padding="5"
+                          SelectionChanged="ChangeTheme" AutomationProperties.AutomationId="ChangeTheme" />
             </Grid>
             <Grid Row="4" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
@@ -65,7 +65,8 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <Image Grid.Column="1" MinWidth="150" MaxWidth="300" MouseDown="NewGame" AutomationProperties.AutomationId="NewGame">
+                <Image Grid.Column="1" MinWidth="150" MaxWidth="300" MouseDown="NewGame"
+                       AutomationProperties.AutomationId="NewGame">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png" />

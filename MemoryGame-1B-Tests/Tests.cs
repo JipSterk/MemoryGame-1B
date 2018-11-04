@@ -69,10 +69,26 @@ namespace MemoryGame_1B_Tests
             }
         }
 
+        [Test, Order(3)]
+        [TestCase(0)]
+        [TestCase(1)]
+        public void LoadTheme(int index)
+        {
+            var application = GetApplication();
+
+            using (var window = application.GetWindow("Memory Game", InitializeOption.NoCache))
+            {
+                window.Get<Image>("NewGame").Click();
+                window.Get<ComboBox>("ChangeTheme").Select(index);
+
+                window.Get<Image>("NewGame").Click();
+            }
+        }
+
         /// <summary>
         /// Test the saving of the layout
         /// </summary>
-        [Test, Order(3)]
+        [Test, Order(4)]
         [TestCase(0, "4x4")]
         [TestCase(1, "6x6")]
         public void SaveGame(int index, string size)
@@ -109,7 +125,7 @@ namespace MemoryGame_1B_Tests
         /// Load game tests
         /// </summary>
         /// <param name="size"></param>
-        [Test, Order(4)]
+        [Test, Order(5)]
         [TestCase("4x4")]
         [TestCase("6x6")]
         public void LoadGame(string size)
@@ -124,7 +140,7 @@ namespace MemoryGame_1B_Tests
                 {
                     window.Get(SearchCriteria.ByAutomationId("Item 202")).Click();
                     SendKeys.SendWait(_savePath);
-                    
+
                     window.Get(SearchCriteria.ByAutomationId("1148")).Click();
                     SendKeys.SendWait($"{PlayerName1}Vs{PlayerName2}{size}.json");
 
