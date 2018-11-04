@@ -155,6 +155,8 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         private static void EndGame()
         {
+            CardsTurned = 0;
+
             if (SocketIoManager.Online)
             {
                 SocketIoManager.LeaveGame(SocketIoManager.Room);
