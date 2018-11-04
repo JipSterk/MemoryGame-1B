@@ -123,10 +123,7 @@ namespace MemoryGame_1B.Views
             {
                 FileName = $"{Player1Name.Text}Vs{Player2Name.Text}",
                 DefaultExt = ".json",
-                Filter = "Json documents (.json)|*.json",
-                CheckPathExists = false,
-                CheckFileExists = false,
-                OverwritePrompt = false
+                Filter = "Json documents (.json)|*.json"
             };
 
             var showDialog = saveFileDialog.ShowDialog();

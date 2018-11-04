@@ -33,7 +33,7 @@
                     <RowDefinition Height="30*" />
                     <RowDefinition Height="30*" />
                 </Grid.RowDefinitions>
-                <Image Margin="30,0" Grid.Row="1" MouseDown="NewGame" MinWidth="180" MaxWidth="300" AutomationProperties.AutomationId="NewGame">
+                <Image Margin="30,0" Grid.Row="1" MouseDown="NewGame" MinWidth="180" MaxWidth="300">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/BtnNewGame.png" />
@@ -45,7 +45,7 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <Image Margin="30, 0" Grid.Row="2" MouseDown="LoadGame" MinWidth="180" MaxWidth="300" AutomationProperties.AutomationId="LoadGame">
+                <Image Margin="30, 0" Grid.Row="2" MouseDown="LoadGame" MinWidth="180" MaxWidth="300">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="../Images/Ui/Zombie/btnLoadGame.png" />
