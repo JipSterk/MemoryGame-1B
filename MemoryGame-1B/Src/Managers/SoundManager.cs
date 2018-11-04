@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Media;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace MemoryGame_1B.Managers
 {
@@ -22,20 +23,17 @@ namespace MemoryGame_1B.Managers
         private static readonly List<SoundPlayer> SoundPlayers = new List<SoundPlayer>();
 
         /// <summary>
-        /// Media player for background music
+        /// Sound player for background music
         /// </summary>
-        private static readonly MediaPlayer MediaPlayer = new MediaPlayer
-        {
-            Volume = 10
-        };
+        private static readonly SoundPlayer Player = new SoundPlayer();
 
         /// <summary>
         /// Loads The Sounds
         /// </summary>
         public static void LoadSounds()
         {
-            MediaPlayer.Open(new Uri("../../SoundEffects/Background/Background.wav", UriKind.Relative));
-            MediaPlayer.Play();
+            Player.SoundLocation = "../../SoundEffects/Background/Background.wav";
+            Player.PlayLooping();
 
             var uri = new Uri("../../SoundEffects/Zombie", UriKind.Relative).ToString();
 
@@ -52,12 +50,13 @@ namespace MemoryGame_1B.Managers
 
             if (_mute)
             {
-                MediaPlayer.Stop();
+                Player.Stop();
             }
             else
             {
-                MediaPlayer.Play();
+                Player.Play();
             }
+
         }
 
         /// <summary>
