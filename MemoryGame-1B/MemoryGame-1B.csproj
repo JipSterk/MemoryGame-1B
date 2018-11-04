@@ -403,12 +403,24 @@
     <Resource Include="Images\Cards\Zombie\CardBack\CardBG6x6.png" />
     <Resource Include="Images\Cards\Social\CardBack\BgSocial.png" />
     <Resource Include="Images\Ui\Zombie\SoundImg.png" />
-    <Content Include="SoundEffects\Background\Background.wav" />
-    <Content Include="SoundEffects\Zombie\1.wav" />
-    <Content Include="SoundEffects\Zombie\2.wav" />
-    <Content Include="SoundEffects\Zombie\3.wav" />
-    <Content Include="SoundEffects\Zombie\4.wav" />
-    <Content Include="SoundEffects\Zombie\5.wav" />
+    <Content Include="SoundEffects\Background\Background.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundEffects\Zombie\1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundEffects\Zombie\2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundEffects\Zombie\3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundEffects\Zombie\4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SoundEffects\Zombie\5.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

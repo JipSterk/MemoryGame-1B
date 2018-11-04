@@ -32,10 +32,10 @@ namespace MemoryGame_1B.Managers
         /// </summary>
         public static void LoadSounds()
         {
-            SoundPlayer.SoundLocation = new Uri("../MemoryGame-1B/SoundEffects/Background/Background.wav", UriKind.Relative).ToString();
+            SoundPlayer.SoundLocation = new Uri("SoundEffects/Background/Background.wav", UriKind.Relative).ToString();
             SoundPlayer.PlayLooping();
 
-            var uri = new Uri("../MemoryGame-1B/SoundEffects/Zombie", UriKind.Relative).ToString();
+            var uri = new Uri("SoundEffects/Zombie", UriKind.Relative).ToString();
 
             foreach (var file in Directory.GetFiles(uri))
             {
