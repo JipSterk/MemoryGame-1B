@@ -25,17 +25,17 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// Sound player for background music
         /// </summary>
-        private static readonly SoundPlayer Player = new SoundPlayer();
+        private static readonly SoundPlayer SoundPlayer = new SoundPlayer();
 
         /// <summary>
         /// Loads The Sounds
         /// </summary>
         public static void LoadSounds()
         {
-            Player.SoundLocation = "../../SoundEffects/Background/Background.wav";
-            Player.PlayLooping();
+            SoundPlayer.SoundLocation = new Uri("../MemoryGame-1B/SoundEffects/Background/Background.wav", UriKind.Relative).ToString();
+            SoundPlayer.PlayLooping();
 
-            var uri = new Uri("../../SoundEffects/Zombie", UriKind.Relative).ToString();
+            var uri = new Uri("../MemoryGame-1B/SoundEffects/Zombie", UriKind.Relative).ToString();
 
             foreach (var file in Directory.GetFiles(uri))
             {
@@ -50,11 +50,11 @@ namespace MemoryGame_1B.Managers
 
             if (_mute)
             {
-                Player.Stop();
+                SoundPlayer.Stop();
             }
             else
             {
-                Player.Play();
+                SoundPlayer.Play();
             }
 
         }
