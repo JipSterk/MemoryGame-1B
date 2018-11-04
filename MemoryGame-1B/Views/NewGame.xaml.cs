@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using MemoryGame_1B.Managers;
 using MemoryGame_1B.SaveData;
 using Microsoft.Win32;
-using Newtonsoft.Json;
 
 namespace MemoryGame_1B.Views
 {
@@ -62,10 +58,16 @@ namespace MemoryGame_1B.Views
         /// <param name="saveData"></param>
         public NewGame(SaveData.SaveData saveData) : this()
         {
-            var (playerName1, playerName2, turn, gridSize, cardData) = saveData;
+            var (playerScore1, playerScore2, playerName1, playerName2, turn, gridSize, cardData) = saveData;
+
+            GameManager.PlayerScore1 = playerScore1;
+            GameManager.PlayerScore2 = playerScore2;
 
             Player1Name.Text = playerName1;
             Player2Name.Text = playerName2;
+
+            Player1Score.Text = playerScore1.ToString();
+            Player2Score.Text = playerScore2.ToString();
 
             _memoryGrid = new MemoryGrid(Grid, gridSize, turn, cardData);
         }
@@ -117,7 +119,8 @@ namespace MemoryGame_1B.Views
                 }
             }
 
-            var saveData = new SaveData.SaveData(Player1Name.Text, Player2Name.Text, GameManager.Turn, _gridSize, cardData);
+            var saveData = new SaveData.SaveData(GameManager.PlayerScore1, GameManager.PlayerScore2, Player1Name.Text,
+                Player2Name.Text, GameManager.Turn, _gridSize, cardData);
 
             var saveFileDialog = new SaveFileDialog
             {
@@ -159,7 +162,7 @@ namespace MemoryGame_1B.Views
         private void ReturnToMenu(object sender, MouseButtonEventArgs e) => MainWindow.Instance.Content = new Main();
 
         /// <summary>
-        /// Deconstructor
+        /// DeConstructor
         /// </summary>
         ~NewGame()
         {

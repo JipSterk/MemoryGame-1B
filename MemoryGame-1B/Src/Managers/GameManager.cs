@@ -48,12 +48,12 @@ namespace MemoryGame_1B.Managers
         /// <summary>
         /// First players score
         /// </summary>
-        public static int ScorePlayer1 { get; set; }
+        public static int PlayerScore1 { get; set; }
 
         /// <summary>
         /// Second players score
         /// </summary>
-        public static int ScorePlayer2 { get; set; }
+        public static int PlayerScore2 { get; set; }
 
         /// <summary>
         /// Keeps track of how many cards have been turned in one turn
@@ -100,16 +100,16 @@ namespace MemoryGame_1B.Managers
                 switch (Turn)
                 {
                     case Turn.Player1:
-                        ScorePlayer1 += score;
+                        PlayerScore1 += score;
                         break;
                     case Turn.Player2:
-                        ScorePlayer2 += score;
+                        PlayerScore2 += score;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
 
-                OnScoreChanged?.Invoke(Turn, Turn == Turn.Player1 ? ScorePlayer1 : ScorePlayer2);
+                OnScoreChanged?.Invoke(Turn, Turn == Turn.Player1 ? PlayerScore1 : PlayerScore2);
             }
 
             await Task.Delay(1000);
@@ -163,15 +163,15 @@ namespace MemoryGame_1B.Managers
                 Task.Run(() => GraphqlManager.DeleteServer(SocketIoManager.Room));
             }
 
-            var b = ScorePlayer1 > ScorePlayer2;
+            var b = PlayerScore1 > PlayerScore2;
 
             var scoreEntry = new ScoreEntry
             {
                 Name = b ? NamePlayer1 : NamePlayer2,
-                Score = b ? ScorePlayer1 : ScorePlayer2
+                Score = b ? PlayerScore1 : PlayerScore2
             };
 
-            ScorePlayer1 = ScorePlayer2 = 0;
+            PlayerScore1 = PlayerScore2 = 0;
 
             ScoreManager.AddEntry(scoreEntry);
 
