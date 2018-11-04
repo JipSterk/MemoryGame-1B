@@ -56,12 +56,7 @@ namespace MemoryGame_1B
         /// The theme of the grid
         /// </summary>
         private readonly Theme _theme;
-
-        /// <summary>
-        /// The last card that has been clicked
-        /// </summary>
-        private Image _lastClickedImage;
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
