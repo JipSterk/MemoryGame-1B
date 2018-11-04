@@ -87,7 +87,7 @@
                         </Image.Style>
                     </Image>
                     <Image Margin="0,0,0,-10" Grid.Column="2" MouseDown="Save" Stretch="Uniform"
-                           StretchDirection="DownOnly" VerticalAlignment="Bottom">
+                           StretchDirection="DownOnly" VerticalAlignment="Bottom" AutomationProperties.AutomationId="Save">
                         <Image.Style>
                             <Style TargetType="{x:Type Image}">
                                 <Setter Property="Source" Value="../Images/Ui/Zombie/SaveGravestone.png" />
